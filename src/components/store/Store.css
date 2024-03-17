@@ -1,0 +1,48 @@
+.store-container {
+    display: flex;
+    position: relative;
+    background-color: var(--c-white);
+    overflow: hidden;
+    height: 100vh;
+    width: 100vw;
+    justify-content: center;
+    scroll-snap-align: start;
+}
+
+.store-container .container-full {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100vw;
+    max-width: var(--max-width);
+}
+
+.store-container .content-wrapper-store {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 4rem;
+    width: 26rem;
+    z-index: 1;
+}
+
+.img-plant {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translateX(-60%);
+    z-index: 0;
+}
+
+.img-t-front {
+    position: absolute;
+    top: 0;
+    right: 20rem;
+    z-index: 1;
+}
+
+.img-t-back {
+    position: absolute;
+    top: 0;
+    right: -15rem;
+}

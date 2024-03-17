@@ -1,0 +1,70 @@
+@import url("https://use.typekit.net/rwx3mzt.css");
+
+html {
+  font-family: "museo-slab", sans-serif;
+  font-size: max(12px, min(16px, 1vw));
+  scroll-snap-type: y mandatory;
+}
+
+body {
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  background-color: #07332C;
+  width: 100vw;
+  display: flex;
+}
+
+h1 {
+  color: #FFF;
+  text-align: right;
+  font-family: museo-slab-rounded, sans-serif;
+  font-size: 5rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;
+}
+
+h3 {
+  font-family: museo-slab-rounded, sans-serif;
+  font-size: 3.125rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0;  
+}
+
+p {
+  margin: 0;
+  font-family: museo-sans, sans-serif;
+  font-size: 1.125rem;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 2.125rem;
+}
+
+h2 {
+  margin: 0;
+}
+
+#root {
+  --max-width: 1200px;
+  --shadow: 0px 0px 2rem 0px rgba(0, 0, 0, 0.25);
+  --c-black: rgba(0, 0, 0, 1);
+  --c-dark: rgba(39, 39, 39, 1);
+  --c-gray: rgba(217, 217, 217, 1);
+  --c-light-grey: rgba(240, 240, 240, 1);
+  --c-primary: rgba(134, 236, 189, 1);
+  --c-primary-interaction: rgba(107, 185, 149, 1);
+  --c-secondary: rgba(253, 194, 134, 1);
+  --c-secondary-interaction: rgba(226, 165, 102, 1);
+  --c-support: rgba(67, 90, 84, 1);
+  --c-white: rgba(255, 255, 255, 1);
+}
+
+body::-webkit-scrollbar {
+  width: 0;
+}

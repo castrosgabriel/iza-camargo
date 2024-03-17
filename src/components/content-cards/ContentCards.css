@@ -1,0 +1,57 @@
+.card-info {
+    align-items: flex-start;
+    background-color: var(--c-white);
+    border-radius: .5rem;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    height: 40rem;
+    justify-content: flex-end;
+    padding: 0rem 6.5rem 4rem 4rem;
+    position: relative;
+    width: 32rem;
+
+}
+
+.card-info .content-wrapper {
+    align-items: flex-start;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+    height: 20rem;
+    width: 100%;
+    z-index: 1;
+}
+
+.card-info .subtitle {
+    align-self: stretch;
+    color: var(--c-dark);
+    font-family: "museo-sans", Helvetica;
+    font-size: 1.125rem;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: 2rem;
+    text-transform: uppercase;
+}
+
+.card-info .img-wrapper {
+    right: 3rem;
+    top: 3rem;
+    position: absolute;
+    z-index: 0;
+    width: 15rem;
+    height: 15rem;
+}
+
+.card-container {
+    display: flex;
+    gap: 1.25rem;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: #FBFBFB;
+    scroll-snap-align: start;
+}

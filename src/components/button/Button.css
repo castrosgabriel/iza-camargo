@@ -1,0 +1,25 @@
+button {
+    all: unset;
+}
+
+.btn-wrapper {
+    display: flex;
+    padding: 1.25rem 2rem;
+    justify-content: center;
+    align-items: center;
+    color: var(--c-dark);
+    font-family: museo-sans, sans-serif;
+    font-size: 1.625rem;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 2rem;
+    border-radius: .3rem;
+    width: fit-content;
+    gap: .5rem;
+}
+
+.btn-wrapper.small {
+    padding: .75rem 1rem;
+    font-size: 1rem;
+    line-height: normal;
+}

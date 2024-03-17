@@ -1,0 +1,34 @@
+.book-container {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100vw;
+    overflow: hidden;
+    height: 100vh;
+    background-color: #FBFBFB;
+    scroll-snap-align: start;
+}
+
+.book-container .book-content {
+    padding-top: 10rem;
+    position: relative;
+    display: flex;
+    flex: 1;
+    max-width: var(--max-width);
+}
+
+.book-content .book-content-wrapper {
+    display: inline-flex;
+    width: 19rem;
+    padding-top: 10rem;
+    padding: 4rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+}
+
+.book-img {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%) translateY(-7rem);
+}

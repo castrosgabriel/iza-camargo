@@ -1,0 +1,99 @@
+.ola-container {
+    background-color: #E6EADF;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    scroll-snap-align: start;
+}
+
+.ola-container .sections-wrapper {
+    display: flex;
+    width: 200vw;
+}
+
+.ola-container h2 {
+    color: var(--c-primary-interaction);
+}
+
+.ola-container .ola-first {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.ola-container .ola-second {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    overflow: hidden;
+    align-items: flex-start;
+    justify-content: center;
+}
+
+.ola-second .frame-container{
+    display: flex;
+    padding-top: 7rem;
+    gap: 2rem;
+}
+
+.ola-first .max-width {
+    width: 100%;
+    display: flex;
+    max-width: var(--max-width);
+}
+
+.ola-first .ola-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 4rem;
+    width: 24rem;
+    z-index: 1;
+}
+
+.img-plant-1 {
+    position: absolute;
+    left: -3rem;
+    z-index: 0;
+}
+
+.img-plant-2 {
+    position: absolute;
+    right: -20rem;
+    bottom: 0;
+}
+
+.img-iza-recorte {
+    position: absolute;
+    right: 12rem;
+    z-index: 0;
+}
+
+.img-light-ola {
+    position: absolute;
+    right: 0;
+    z-index: 0;
+}
+
+.img-plant-3 {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+}
+
+.img-sofa {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 0;
+    object-fit: cover;
+    object-position: bottom;
+    width: 90%;
+}

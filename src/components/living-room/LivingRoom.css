@@ -1,0 +1,76 @@
+.living-room {
+    scroll-snap-align: start;
+    background-color: #435A54;
+    height: 100vh;
+    width: 100vw;
+    overflow-x: scroll;
+    overflow-y: hidden;
+}
+
+.living-room .sections-wrapper {
+    display: flex;
+    width: 200vw;
+    height: 100vh;
+}
+
+.living-room-first {
+    position: relative;
+    width: 100vw;
+}
+
+.living-room-first .rack {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.living-room-first .tv {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+[class="tv"] {
+    box-shadow: -17px 12px 14px 0px rgba(0, 0, 0, 0.25);
+}
+
+.tv.tv-content {
+    z-index: 99;
+}
+
+.living-room-second {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    position: relative;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.living-room-second .cellphone {
+    position: absolute;
+    right: -5%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.living-room-second .content-wrapper {
+    color: var(--c-white);
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    padding: 4rem;
+    z-index: 1;
+    width: 100%;
+    max-width: var(--max-width);
+
+    h2 {
+        width: 14rem;
+    }
+
+    p{
+        width: 24rem;
+    }
+}

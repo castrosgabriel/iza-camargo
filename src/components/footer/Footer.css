@@ -1,0 +1,59 @@
+.footer {
+    scroll-snap-align: end;
+    display: flex;
+    justify-content: center;
+
+}
+
+.footer .footer-content {
+    flex: 1;
+    max-width: var(--max-width);
+    padding: 4rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.footer-content .pages {
+    display: flex;
+    gap: 0.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #647875;
+}
+
+.pages b {
+    color: var(--c-primary);
+}
+
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    align-items: flex-start;
+    color: #647875;
+}
+
+.contact-section b {
+    color: var(--c-primary);
+}
+
+.contact-section span {
+    color: var(--c-white)
+}
+
+.contact-section .contact-content {
+    display: flex;
+    gap: 4rem;
+    align-items: center;
+}
+
+.contact-content>div {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+}
+
+.contact-content>div>div {
+    padding-top: .5rem;
+}
