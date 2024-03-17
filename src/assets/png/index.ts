@@ -17,8 +17,10 @@ import PngRack from './rack.png';
 import PngCellphone from './cellphone.png';
 import PngTv from './tv.png';
 import PngTvContent from './tv-content.png';
+import PngShadowOla from './shadow-ola.png';
 
 export {
+    PngShadowOla,
     PngTvContent,
     PngTv,
     PngCellphone,

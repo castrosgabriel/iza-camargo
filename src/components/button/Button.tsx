@@ -7,7 +7,15 @@ type ButtonProps = {
 }
 
 const Button = ({ text, color = 'var(--c-primary)' }: ButtonProps) =>
-    <button style={{ backgroundColor: color }} className='btn-wrapper'>{text}</button>
+    <button style={{ backgroundColor: color }} className='btn-wrapper'>
+        <div className='hover-text'>
+            <div className='col-hover'>
+                <span>{text}</span>
+                <span style={{color:'white'}}>{text}</span>
+            </div>
+        </div>
+        <div className='hover-btn' />
+    </button>
 
 export const SmallButton = ({ text, color = 'var(--c-primary)' }: ButtonProps) =>
     <button style={{ backgroundColor: color }} className='btn-wrapper small'>

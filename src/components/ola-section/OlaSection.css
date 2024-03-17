@@ -1,15 +1,17 @@
 .ola-container {
     background-color: #E6EADF;
-    height: 100vh;
+    height: 200vh;
     width: 100vw;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
     scroll-snap-align: start;
+    position: relative;
 }
 
 .ola-container .sections-wrapper {
     display: flex;
     width: 200vw;
+    height: 100vh;
 }
 
 .ola-container h2 {
@@ -23,6 +25,7 @@
     align-items: center;
     justify-content: center;
     position: relative;
+
 }
 
 .ola-container .ola-second {
@@ -33,9 +36,10 @@
     overflow: hidden;
     align-items: flex-start;
     justify-content: center;
+
 }
 
-.ola-second .frame-container{
+.ola-second .frame-container {
     display: flex;
     padding-top: 7rem;
     gap: 2rem;
@@ -96,4 +100,11 @@
     object-fit: cover;
     object-position: bottom;
     width: 90%;
+}
+
+.img-shadow-ola {
+    position: absolute;
+    top: -8%;
+    left: -5%;
+    z-index: 999;
 }

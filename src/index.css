@@ -3,7 +3,7 @@
 html {
   font-family: "museo-slab", sans-serif;
   font-size: max(12px, min(16px, 1vw));
-  scroll-snap-type: y mandatory;
+  /* scroll-snap-type: y mandatory; */
 }
 
 body {

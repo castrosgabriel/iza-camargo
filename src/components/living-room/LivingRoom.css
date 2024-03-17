@@ -1,13 +1,13 @@
 .living-room {
-    scroll-snap-align: start;
+    scroll-snap-align: start;    
     background-color: #435A54;
-    height: 100vh;
+    height: 200vh;
     width: 100vw;
-    overflow-x: scroll;
+    overflow-x: hidden;
     overflow-y: hidden;
 }
 
-.living-room .sections-wrapper {
+.living-room .page-wrapper {
     display: flex;
     width: 200vw;
     height: 100vh;
@@ -71,6 +71,6 @@
     }
 
     p{
-        width: 24rem;
+        width: 20rem;
     }
 }

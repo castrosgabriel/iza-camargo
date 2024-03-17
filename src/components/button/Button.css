@@ -16,10 +16,57 @@ button {
     border-radius: .3rem;
     width: fit-content;
     gap: .5rem;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all .5s cubic-bezier(.6, 0, 0, .8);
+}
+
+.hover-text {
+    height: 2rem;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.col-hover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: .5rem;
+    z-index: 1;
+    justify-content: start;
+    transition: all .5s cubic-bezier(.6, 0, 0, .8);
+}
+
+.btn-wrapper>span {
+    z-index: 1;
 }
 
 .btn-wrapper.small {
     padding: .75rem 1rem;
     font-size: 1rem;
     line-height: normal;
+}
+
+.hover-btn {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 200%;
+    width: 140%;
+    border-radius: 6rem;
+    background-color: var(--c-support);
+    z-index: 0;
+    transform: translateX(-100%);
+    transition: all .5s cubic-bezier(.6, 0, 0, .8);
+}
+
+.btn-wrapper:hover .hover-btn {
+    transform: translateX(-15%) translateY(-20%);
+    /* border-radius: 0; */
+}
+
+.btn-wrapper:hover .col-hover{
+    transform: translateY(-2.5rem);
 }
