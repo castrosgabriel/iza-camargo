@@ -25,7 +25,7 @@ type olaSectionProps = {
 }
 
 const OlaSection = ({ mouseMove }: olaSectionProps) => {
-    const moveImg = (distance:number) => {
+    const moveImg = (distance: number) => {
         return {
             transform: `translateX(${(mouseMove.x - 50) * distance}px)`
         };
@@ -59,7 +59,9 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
             }
         })
 
-        const tl = gsap.timeline({
+
+        gsap.to('.sections-wrapper', {
+            x: '-100vw',
             scrollTrigger: {
                 trigger: '.ola-container',
                 start: 'top top',
@@ -69,15 +71,11 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
             }
         })
 
-        tl.to('.sections-wrapper', {
-            x: '-100vw',
-        })
-
         return (
             () => {
-                tl.kill()
                 gsap.killTweensOf('.ola-content')
                 gsap.killTweensOf('.ola-first img')
+                gsap.killTweensOf('.sections-wrapper')
             }
         )
     }, [])
@@ -100,10 +98,10 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                             <p>
                                 <b>Fico muito feliz em saber que você chegou até aqui!</b>
                                 <br /><br />
-                                Neste site você vai encontrar informações oficiais da jornalista Izabella Camargo 
+                                Neste site você vai encontrar informações oficiais da jornalista Izabella Camargo
                                 e do movimento da Produtividade Sustentável.
                                 <br /><br />
-                                Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais 
+                                Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais
                                 e profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
                             </p>
                             <div>
