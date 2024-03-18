@@ -24,6 +24,14 @@
     }
 }
 
+.bottom-container {
+    display: flex;
+    width: 100vw;
+    background-color: rgba(91, 83, 83, 0.4);
+    backdrop-filter: blur(3.75rem);
+    justify-content: center;
+}
+
 .bottom-container .bottom-bar {
     display: flex;
     justify-content: space-between;
@@ -34,13 +42,7 @@
     gap: .5rem;
 }
 
-.bottom-container {
-    display: flex;
-    width: 100vw;
-    background-color: rgba(91, 83, 83, 0.4);
-    backdrop-filter: blur(3.75rem);
-    justify-content: center;
-}
+
 
 .social-container {
     display: flex;

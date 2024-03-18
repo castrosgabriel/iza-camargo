@@ -8,49 +8,85 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-type OlaSectionProps = {
+type olaSectionProps = {
     mouseMove: {
         x: number
         y: number
     }
 }
 
-const OlaSection = ({ mouseMove }: OlaSectionProps) => {
+const OlaSection = ({ mouseMove }: olaSectionProps) => {
+
+    const moveImg = (distance: number) => {
+        return {
+            transform: `translateX(${(mouseMove.x - 50) * distance}px`
+        }
+    }
 
     useLayoutEffect(() => {
+        gsap.from('.ola-content', {
+            y: '10%',
+            duration: 1,
+            ease: 'ease.inOut',
+            opacity: 0,
+            delay: .3,
+            stagger: .1,
+            scrollTrigger: {
+                trigger: '.ola-first',
+                start: 'top center',
+            }
+        })
+
+        gsap.from('.ola-first img', {
+            y: '+=24%',
+            duration: 1,
+            ease: 'ease.inOut',
+            stagger: .2,
+            scrollTrigger: {
+                trigger: '.ola-first',
+                start: 'top bottom',
+                end: 'bottom bottom',
+                scrub: 1,
+            }
+        })
+
         const tl = gsap.timeline({
             scrollTrigger: {
-                trigger: '.sections-wrapper',
+                trigger: '.ola-container',
                 start: 'top top',
                 end: 'bottom top',
-                scrub: true,
+                scrub: 1,
                 pin: true,
+                // snap: 1,
             }
         })
 
         tl.to('.sections-wrapper', {
             x: '-100vw',
         })
-        // tl.to('.img-shadow-ola', {
-        //     x: '100vw',
-        // }, 0)
+
+        return (
+            () => {
+                tl.kill()
+            }
+        )
     }, [])
 
     const moveShadow = {
-        transform: `translate(${(mouseMove.x - 50) * 0.6}px, ${(mouseMove.y - 50) * 0.6}px)`,
+        transform: `translate(${mouseMove.x - 50}px, ${mouseMove.y - 50}px)`,
     }
-
-
 
     return (
         <div className='ola-container'>
             <div className='sections-wrapper'>
                 <img style={moveShadow} src={PngShadowOla} className='img-shadow-ola' alt='shadow' />
                 <div className='ola-first'>
-                    <img src={PngPlan1Ola} className='img-plant-1' alt='plant' />
+                    <img src={PngPlan1Ola} style={moveImg(.4)} className='img-plant-1' alt='plant' />
                     <div className='max-width'>
                         <div className='ola-content'>
-                            <h2>Olá,</h2>
+                            <h2>
+                                Olá,
+                            </h2>
                             <p>
                                 <b>Fico muito feliz em saber que você chegou até aqui!</b>
                                 <br /><br />
@@ -58,12 +94,14 @@ const OlaSection = ({ mouseMove }: OlaSectionProps) => {
                                 <br /><br />
                                 Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais e profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
                             </p>
-                            <Button text='Minha história' color='var(--c-primary-interaction)' />
+                            <div>
+                                <Button text='Minha história' color='var(--c-primary-interaction)' />
+                            </div>
                         </div>
                     </div>
-                    <img src={PngIzaRecorte} className='img-iza-recorte' alt='iza' />
-                    <img src={PngLightOla} className='img-light-ola' alt='light' />
-                    <img src={PngPlant2Ola} className='img-plant-2' alt='plant' />
+                    <img src={PngIzaRecorte} style={moveImg(.2)} className='img-iza-recorte' alt='iza' />
+                    <img src={PngLightOla} style={moveImg(.7)} className='img-light-ola' alt='light' />
+                    <img src={PngPlant2Ola} style={moveImg(1.2)} className='img-plant-2' alt='plant' />
                 </div>
                 <div className='ola-second'>
                     <div className='frame-container'>

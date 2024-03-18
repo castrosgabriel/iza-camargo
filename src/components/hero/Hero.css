@@ -8,6 +8,7 @@
     align-items: center;
     scroll-snap-align: start;
     z-index: 9999;
+    overflow: hidden;
 }
 
 .hero-container .hero-content {
@@ -16,6 +17,7 @@
     justify-content: space-between;
     width: 100%;
     align-items: flex-start;
+    
 }
 
 .hero-container .hero-content h1 {
@@ -29,7 +31,17 @@
     gap: 2rem;
 }
 
-.hero-img {
+.hero-img-wrapper {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: -1;
+}
+
+.hero-img-wrapper .hero-img {
     position: absolute;
     top: 0;
     right: 0;
@@ -38,3 +50,4 @@
     height: 100vh;    
     z-index: -1;
 }
+
