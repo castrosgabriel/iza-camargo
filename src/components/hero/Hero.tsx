@@ -80,6 +80,14 @@ const Hero = () => {
                 opacity: 0,
                 duration: 1.5,
             }, 0)
+
+        return () => {
+            tl.kill()
+            gsap.killTweensOf('.hero-logo')
+            gsap.killTweensOf('.title')
+            gsap.killTweensOf('.hero-img')
+            gsap.killTweensOf(headerRef.current)
+        }
     }, [])
 
     return (

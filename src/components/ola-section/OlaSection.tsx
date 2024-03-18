@@ -1,8 +1,17 @@
 import Button from '../button/Button'
-import { PngPlan1Ola, PngPlant2Ola, PngPlang3Ola, PngIzaRecorte, PngLightOla, PngSofa, PngFrame1, PngFrame2, PngShadowOla } from '../../assets/png'
-
+import {
+    PngPlan1Ola,
+    PngPlant2Ola,
+    PngPlang3Ola,
+    PngIzaRecorte,
+    PngLightOla,
+    PngSofa,
+    PngFrame1,
+    PngFrame2,
+    PngShadowOla
+} from '../../assets/png'
 import './OlaSection.css'
-import { useLayoutEffect } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -16,12 +25,12 @@ type olaSectionProps = {
 }
 
 const OlaSection = ({ mouseMove }: olaSectionProps) => {
-
-    const moveImg = (distance: number) => {
+    const moveImg = (distance:number) => {
         return {
-            transform: `translateX(${(mouseMove.x - 50) * distance}px`
-        }
-    }
+            transform: `translateX(${(mouseMove.x - 50) * distance}px)`
+        };
+    };
+
 
     useLayoutEffect(() => {
         gsap.from('.ola-content', {
@@ -57,7 +66,6 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                 end: 'bottom top',
                 scrub: 1,
                 pin: true,
-                // snap: 1,
             }
         })
 
@@ -68,6 +76,8 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
         return (
             () => {
                 tl.kill()
+                gsap.killTweensOf('.ola-content')
+                gsap.killTweensOf('.ola-first img')
             }
         )
     }, [])
@@ -90,9 +100,11 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                             <p>
                                 <b>Fico muito feliz em saber que você chegou até aqui!</b>
                                 <br /><br />
-                                Neste site você vai encontrar informações oficiais da jornalista Izabella Camargo e do movimento da Produtividade Sustentável.
+                                Neste site você vai encontrar informações oficiais da jornalista Izabella Camargo 
+                                e do movimento da Produtividade Sustentável.
                                 <br /><br />
-                                Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais e profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
+                                Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais 
+                                e profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
                             </p>
                             <div>
                                 <Button text='Minha história' color='var(--c-primary-interaction)' />
