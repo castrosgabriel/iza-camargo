@@ -1,14 +1,36 @@
 import './Header.css';
-import { SvgLogoHor, SvgMenu } from '../../assets/svg';
-import { forwardRef } from 'react';
+import { SvgLogoHor } from '../../assets/svg';
+import { useLayoutEffect } from 'react';
+import MenuIcon from './MenuIcon';
+import gsap from 'gsap';
 
-const Header = forwardRef<HTMLDivElement>((props, ref) => {
+type headerProps = {
+    toggleMenu: () => void
+}
+
+const Header = ({toggleMenu}:headerProps) => {
+
+    useLayoutEffect(() => {
+        gsap.from('.header', {
+            y: '-=100%',
+            duration: 1.5,
+            delay: .1,
+            ease: 'expo.inOut',
+        })
+        return () => {
+            gsap.killTweensOf('.header')
+        }
+    }, [])
+
+
     return (
-        <header ref={ref} className="header">
-            <img src={SvgLogoHor} alt='logo'/>
-            <img src={SvgMenu} alt='menu' />
-        </header>
+        <div className='header-container'>
+            <header className="header">
+                <img src={SvgLogoHor} alt='logo' />
+                <MenuIcon toggleMenu={toggleMenu} />
+            </header>
+        </div>
     );
-})
+}
 
 export default Header;

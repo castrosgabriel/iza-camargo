@@ -11,7 +11,7 @@ import {
     PngShadowOla
 } from '../../assets/png'
 import './OlaSection.css'
-import { useLayoutEffect, useState } from 'react'
+import { useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
@@ -25,11 +25,29 @@ type olaSectionProps = {
 }
 
 const OlaSection = ({ mouseMove }: olaSectionProps) => {
-    const moveImg = (distance: number) => {
-        return {
-            transform: `translateX(${(mouseMove.x - 50) * distance}px)`
-        };
-    };
+
+    const handleParallax = () => {
+        gsap.to('.img-plant-1', {
+            x: (mouseMove.x - 50) * .3,
+            duration: 0.3,
+        });
+        gsap.to('.img-iza-recorte', {
+            x: (mouseMove.x - 50) * .2,
+            duration: 0.3,
+        });
+        gsap.to('.img-light-ola', {
+            x: (mouseMove.x - 50) * .6,
+            duration: 0.3,
+        });
+        gsap.to('.img-plant-2', {
+            x: (mouseMove.x - 50) * .8,
+            duration: 0.3,
+        });
+        gsap.to('.img-plant-3', {
+            x: (mouseMove.x - 50) * .2,
+            duration: 0.3,
+        });
+    }
 
 
     useLayoutEffect(() => {
@@ -68,6 +86,7 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                 end: 'bottom top',
                 scrub: 1,
                 pin: true,
+                snap: 1,
             }
         })
 
@@ -85,11 +104,14 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
     }
 
     return (
-        <div className='ola-container'>
+        <div className='ola-container' onMouseMove={handleParallax}>
             <div className='sections-wrapper'>
-                <img style={moveShadow} src={PngShadowOla} className='img-shadow-ola' alt='shadow' />
+                <div className='img-shadow-ola'>
+                    <img style={moveShadow} src={PngShadowOla} alt='shadow' />
+                    <img style={moveShadow} src={PngShadowOla} alt='shadow' />
+                </div>
                 <div className='ola-first'>
-                    <img src={PngPlan1Ola} style={moveImg(.4)} className='img-plant-1' alt='plant' />
+                    <img src={PngPlan1Ola} className='img-plant-1' alt='plant' />
                     <div className='max-width'>
                         <div className='ola-content'>
                             <h2>
@@ -109,9 +131,9 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                             </div>
                         </div>
                     </div>
-                    <img src={PngIzaRecorte} style={moveImg(.2)} className='img-iza-recorte' alt='iza' />
-                    <img src={PngLightOla} style={moveImg(.7)} className='img-light-ola' alt='light' />
-                    <img src={PngPlant2Ola} style={moveImg(1.2)} className='img-plant-2' alt='plant' />
+                    <img src={PngIzaRecorte} className='img-iza-recorte' alt='iza' />
+                    <img src={PngLightOla} className='img-light-ola' alt='light' />
+                    <img src={PngPlant2Ola} className='img-plant-2' alt='plant' />
                 </div>
                 <div className='ola-second'>
                     <div className='frame-container'>

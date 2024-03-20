@@ -18,8 +18,14 @@ import PngCellphone from './cellphone.png';
 import PngTv from './tv.png';
 import PngTvContent from './tv-content.png';
 import PngShadowOla from './shadow-ola.png';
+import PngIzaHero from './iza-hero.png';
+import PngIzaOverHero from './iza-over-hero.png';
+import PngShadowCards from './shadow-cards.png';
 
 export {
+    PngShadowCards,
+    PngIzaOverHero,
+    PngIzaHero,
     PngShadowOla,
     PngTvContent,
     PngTv,

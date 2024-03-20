@@ -11,7 +11,7 @@
     padding: 0rem 6.5rem 4rem 4rem;
     position: relative;
     width: 32rem;
-
+    z-index: 1;
 }
 
 .card-info .content-wrapper {
@@ -46,6 +46,7 @@
 }
 
 .card-container {
+    position: relative;
     display: flex;
     gap: 1.25rem;
     align-items: center;
@@ -54,4 +55,20 @@
     height: 100vh;
     background-color: #FBFBFB;
     scroll-snap-align: start;
+}
+
+.shadow-cards{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0;
+    width: 100vw;
+    overflow: hidden;
+
+    img{
+        width: 110vw;
+        height: 200vh;
+        object-fit: cover;
+        mix-blend-mode: multiply;
+    }
 }

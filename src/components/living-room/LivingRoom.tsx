@@ -15,11 +15,16 @@ const LivingRoom = () => {
                 trigger: '.page-wrapper',
                 start: 'top top',
                 end: 'bottom top',
-                scrub: true,
+                scrub: 1,
                 pin: true,
             },
             x: '-100vw',
         })
+
+        return () => {
+            gsap.killTweensOf('.page-wrapper')
+        }
+    
     }, [])
 
     return (

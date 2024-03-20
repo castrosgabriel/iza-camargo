@@ -45,6 +45,17 @@
     gap: 2rem;
 }
 
+.frame-container>img {
+    transition: transform 0.3s;
+    cursor: pointer;
+
+}
+
+.frame-container>img:hover {
+    transform: scale(1.05);
+
+}
+
 .ola-first .max-width {
     width: 100%;
     display: flex;
@@ -97,7 +108,7 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    z-index: 0;
+    z-index: -1;
     object-fit: cover;
     object-position: bottom;
     width: 90%;
@@ -109,4 +120,6 @@
     left: -5%;
     z-index: 999;
     pointer-events: none;
+    display: flex;
+    gap: -1rem;
 }

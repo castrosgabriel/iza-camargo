@@ -2,19 +2,37 @@ import './Hero.css';
 import Header from '../header/Header';
 import BottomBar from '../bottom-bar/BottomBar';
 import { SvgLogo, SvgArrow } from '../../assets/svg';
-import { PngHero } from '../../assets/png';
+import { PngIzaHero, PngIzaOverHero } from '../../assets/png';
 import gsap from 'gsap';
 import { useLayoutEffect, useRef } from 'react';
 import ScrollTrigger from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Hero = () => {
+type heroProps = {
+    mouseMove: {
+        x: number
+        y: number
+    }
+}
+
+const Hero = ({ mouseMove }: heroProps) => {
     const bottomBarRef = useRef<HTMLDivElement>(null)
-    const headerRef = useRef<HTMLDivElement>(null)
+
+    const handleParallax = () => {
+        gsap.to('.img-over', {
+            y: (mouseMove.y - 50) * .3,
+            x: (mouseMove.x - 50) * .3,
+            duration: 0.3,
+        });
+        gsap.to('.img-bg', {
+            y: (mouseMove.y - 50) * .8,
+            x: (mouseMove.x - 50) * .8,
+            duration: 0.3,
+        });
+    }
 
     useLayoutEffect(() => {
-
         gsap.from('.hero-logo', {
             scale: .8,
             y: '+=20',
@@ -30,12 +48,6 @@ const Hero = () => {
             duration: 1.5,
             stagger: .5,
             delay: .4,
-            ease: 'expo.inOut',
-        })
-        gsap.from(headerRef.current, {
-            y: '-=100%',
-            duration: 1.5,
-            delay: .1,
             ease: 'expo.inOut',
         })
         gsap.from('.hero-img', {
@@ -86,14 +98,13 @@ const Hero = () => {
             gsap.killTweensOf('.hero-logo')
             gsap.killTweensOf('.title')
             gsap.killTweensOf('.hero-img')
-            gsap.killTweensOf(headerRef.current)
         }
     }, [])
 
     return (
         <>
-            <div className='hero-container'>
-                <Header ref={headerRef} />
+            <div className='hero-container' onMouseMove={handleParallax}>
+                <div style={{ height: '2.3rem' }}/>
                 <div className='hero-content'>
                     <img alt='logo' src={SvgLogo} className='hero-logo' />
                     <div className='hero-title'>
@@ -104,7 +115,10 @@ const Hero = () => {
                 <BottomBar ref={bottomBarRef} />
             </div>
             <div className='hero-img-wrapper'>
-                <img src={PngHero} alt='hero' className='hero-img' />
+                <div className='hero-img'>
+                    <img src={PngIzaOverHero} className='img-over' />
+                    <img src={PngIzaHero} className='img-bg' />
+                </div>
             </div>
         </>
     )

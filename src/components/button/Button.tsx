@@ -4,10 +4,12 @@ import './Button.css'
 type ButtonProps = {
     text: string
     color?: string
+    onMouseEnter?: () => void
+    onMouseLeave?: () => void
 }
 
-const Button = ({ text, color = 'var(--c-primary)' }: ButtonProps) =>
-    <button style={{ backgroundColor: color }} className='btn-wrapper'>
+const Button = ({ text, color = 'var(--c-primary)', onMouseEnter, onMouseLeave }: ButtonProps) =>
+    <button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={{ backgroundColor: color }} className='btn-wrapper'>
         <div className='hover-text'>
             <div className='col-hover'>
                 <span>{text}</span>

@@ -11,6 +11,7 @@
     overflow: hidden;
 }
 
+
 .hero-container .hero-content {
     display: flex;
     max-width: var(--max-width);
@@ -50,4 +51,26 @@
     height: 100vh;    
     z-index: -1;
 }
+
+.hero-img .img-over {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 1;
+    transform: scale(1.02);
+}
+
+.hero-img .img-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    transform: scale(1.1);
+}
+
+
 

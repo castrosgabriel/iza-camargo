@@ -65,6 +65,13 @@ const BottomBar = forwardRef<HTMLDivElement>((props, ref) => {
             stagger: .1,
             opacity: 0,
         })
+
+        return () => {
+            gsap.killTweensOf('.bottom-container')
+            gsap.killTweensOf('.big-number')
+            gsap.killTweensOf('.spacer-bar')
+            gsap.killTweensOf('.social-container img')
+        }
     }, [])
 
     return (
