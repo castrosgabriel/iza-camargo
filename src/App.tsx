@@ -35,7 +35,7 @@ function App() {
       <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />
       <BookSeller />
       <LivingRoom mouseMove={{ x: mouseX, y: mouseY }} />
-      <Store />
+      <Store mouseMove={{ x: mouseX, y: mouseY }} />
       <Footer />
     </>
   )
