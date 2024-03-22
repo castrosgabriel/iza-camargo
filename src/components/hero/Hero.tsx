@@ -1,5 +1,4 @@
 import './Hero.css';
-import Header from '../header/Header';
 import BottomBar from '../bottom-bar/BottomBar';
 import { SvgLogo, SvgArrow } from '../../assets/svg';
 import { PngIzaHero, PngIzaOverHero } from '../../assets/png';

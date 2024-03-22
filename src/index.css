@@ -68,3 +68,8 @@ h2 {
 body::-webkit-scrollbar {
   width: 0;
 }
+
+a{
+  all: unset;
+  cursor: pointer;
+}

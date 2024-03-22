@@ -56,7 +56,6 @@ button {
     height: 200%;
     width: 140%;
     border-radius: 6rem;
-    background-color: var(--c-support);
     z-index: 0;
     transform: translateX(-100%);
     transition: all .5s cubic-bezier(.6, 0, 0, .8);

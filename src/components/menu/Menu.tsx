@@ -7,6 +7,31 @@ type MenuProps = {
     isShown: boolean
 }
 
+type MenuBtnProps = {
+    text: string,
+    link?: string,
+    active?: boolean
+}
+
+const MenuBtn = ({ text, link, active }: MenuBtnProps) => {
+    return (
+        <a href={link}>
+            <h2 className={active ? 'menu-btn active' : 'menu-btn inactive'}>
+                {text}
+            </h2>
+        </a>
+    )
+}
+
+const menuArray = [
+    { text: 'Home', link: 'https://www.google.com.ar/maps/preview', active: true },
+    { text: 'Minha História' },
+    { text: 'Palestras' },
+    { text: 'Mentorias' },
+    { text: 'Loja' },
+    { text: 'Contato' }
+];
+
 const Menu = ({ isShown }: MenuProps) => {
 
     useLayoutEffect(() => {
@@ -14,11 +39,6 @@ const Menu = ({ isShown }: MenuProps) => {
             gsap.to('.menu-wrapper', {
                 duration: 0.6,
                 x: 0,
-                ease: 'circ.inOut'
-            })
-            gsap.to('.content-web', {
-                duration: 0.6,
-                x: '-20%',
                 ease: 'circ.inOut'
             })
             gsap.to('.menu-content h2', {
@@ -32,11 +52,6 @@ const Menu = ({ isShown }: MenuProps) => {
             gsap.to('.menu-wrapper', {
                 duration: 0.6,
                 x: '100%',
-                ease: 'circ.inOut'
-            })
-            gsap.to('.content-web', {
-                duration: 0.6,
-                x: '0',
                 ease: 'circ.inOut'
             })
             gsap.to('.menu-content h2', {
@@ -59,12 +74,7 @@ const Menu = ({ isShown }: MenuProps) => {
         <div className='menu-container'>
             <div className='menu-wrapper'>
                 <div className='menu-content'>
-                    <h2>Home</h2>
-                    <h2>Minha História</h2>
-                    <h2>Palestras</h2>
-                    <h2>Mentorias</h2>
-                    <h2>Loja</h2>
-                    <h2>Contato</h2>
+                    {menuArray.map((item, index) => <MenuBtn key={index} active={item.active} link={item.link} text={item.text} />)}
                 </div>
                 <div className='social-media-wrapper'>
                     <SocialMedia />

@@ -1,14 +1,19 @@
 import './Header.css';
 import { SvgLogoHor } from '../../assets/svg';
-import { useLayoutEffect } from 'react';
+import { useEffect, useLayoutEffect, useState } from 'react';
 import MenuIcon from './MenuIcon';
 import gsap from 'gsap';
+import LogoHorizontal from './LogoHorizontal';
 
 type headerProps = {
+    menuIsShown: boolean
     toggleMenu: () => void
+    hasDarkBg?: boolean
 }
 
-const Header = ({toggleMenu}:headerProps) => {
+const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
+
+    const [contentColor, setContentColor] = useState('var(--c-white)')
 
     useLayoutEffect(() => {
         gsap.from('.header', {
@@ -22,12 +27,18 @@ const Header = ({toggleMenu}:headerProps) => {
         }
     }, [])
 
+    useEffect(() => {
+        if (!hasDarkBg) {
+            setContentColor('var(--c-dark)')
+        }
+    })
+
 
     return (
         <div className='header-container'>
             <header className="header">
-                <img src={SvgLogoHor} alt='logo' />
-                <MenuIcon toggleMenu={toggleMenu} />
+                <LogoHorizontal strokeColor={contentColor} />
+                <MenuIcon strokeColor={contentColor} menuIsShown={menuIsShown} toggleMenu={toggleMenu} />
             </header>
         </div>
     );

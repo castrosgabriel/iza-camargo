@@ -3,7 +3,7 @@ import Button from '../button/Button';
 import { PngRodaVida, PngIzaCard, PngShadowCards } from '../../assets/png';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { MouseEvent, RefObject, createRef, forwardRef, useLayoutEffect, useRef } from 'react';
+import { RefObject, createRef, forwardRef, useLayoutEffect, useRef } from 'react';
 
 type CardProps = {
     id: number;
@@ -73,8 +73,7 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                         snapTo: 1,
                         duration: { min: 0.1, max: .8 },
                         delay: 0,
-                        ease: 'power1.inOut'
-
+                        ease: 'power1.inOut',
                     },
                 },
                 opacity: 0,
@@ -88,7 +87,7 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
         return () => {
             gsap.killTweensOf('.card-info')
         }
-        
+
     }, [])
 
     const handleCtaEnter = (id: number) => {
@@ -98,7 +97,14 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                 scale: '+=0.05',
                 opacity: 1,
                 duration: 0.5,
-            });
+            })
+            gsap.to(currentRef.current.querySelector('.img-wrapper'), {
+                scale: 1.2,
+                duration: 0.4,
+                ease: 'power1.inOut',
+                delay: 0.1,
+                y: -15,
+            })
         }
 
         cardsRefs.current.forEach((ref, index) => {
@@ -107,10 +113,10 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                     scale: '-=0.05',
                     opacity: '-=0.6',
                     duration: 0.5
-                });
+                })
             }
-        });
-    };
+        })
+    }
 
     const handleCtaLeave = (id: number) => {
         cardsRefs.current.forEach((ref) => {
@@ -119,6 +125,12 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                     scale: 1,
                     opacity: 1,
                     duration: 0.5
+                })
+                gsap.to(ref.current.querySelector('.img-wrapper'), {
+                    scale: 1,
+                    duration: 0.4,
+                    ease: 'power1.inOut',
+                    y: 0,
                 });
             }
         });

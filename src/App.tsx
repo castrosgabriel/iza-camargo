@@ -15,6 +15,7 @@ function App() {
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
   const [showMenu, setShowMenu] = useState(false)
+  const [hasDarkBg, setHasDarkBg] = useState(true)
 
   useEffect(() => {
     const handleMouseMove = (e: any) => {
@@ -22,22 +23,21 @@ function App() {
       setMouseY(e.clientY / window.innerHeight * 100)
     }
     window.addEventListener('mousemove', handleMouseMove)
+
     return () => window.removeEventListener('mousemove', handleMouseMove)
   })
 
   return (
     <>
-      <Header toggleMenu={() => setShowMenu(!showMenu)}/>
+      <Header hasDarkBg={hasDarkBg} menuIsShown={showMenu} toggleMenu={() => setShowMenu(!showMenu)} />
       <Menu isShown={showMenu} />
-      <div className='content-web'>
-        <Hero mouseMove={{ x: mouseX, y: mouseY }} />
-        <OlaSection mouseMove={{ x: mouseX, y: mouseY }} />
-        <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />
-        <BookSeller mouseMove={{ x: mouseX, y: mouseY }} />
-        <LivingRoom />
-        <Store />
-        <Footer />
-      </div>
+      <Hero mouseMove={{ x: mouseX, y: mouseY }} />
+      <OlaSection mouseMove={{ x: mouseX, y: mouseY }} />
+      <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />
+      <BookSeller mouseMove={{ x: mouseX, y: mouseY }} />
+      <LivingRoom />
+      <Store />
+      <Footer />
     </>
   )
 }
