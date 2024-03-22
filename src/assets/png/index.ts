@@ -21,8 +21,10 @@ import PngShadowOla from './shadow-ola.png';
 import PngIzaHero from './iza-hero.png';
 import PngIzaOverHero from './iza-over-hero.png';
 import PngShadowCards from './shadow-cards.png';
+import PngShadowLiving from './shadow-living.png';
 
 export {
+    PngShadowLiving,
     PngShadowCards,
     PngIzaOverHero,
     PngIzaHero,

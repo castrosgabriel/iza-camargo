@@ -1,5 +1,4 @@
 import './Header.css';
-import { SvgLogoHor } from '../../assets/svg';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import MenuIcon from './MenuIcon';
 import gsap from 'gsap';

@@ -118,7 +118,7 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
         })
     }
 
-    const handleCtaLeave = (id: number) => {
+    const handleCtaLeave = () => {
         cardsRefs.current.forEach((ref) => {
             if (ref.current) {
                 gsap.to(ref.current, {

@@ -60,6 +60,7 @@
     height: 100vh;
     z-index: 1;
     transform: scale(1.02);
+    object-fit: cover;
 }
 
 .hero-img .img-bg {
@@ -70,6 +71,7 @@
     height: 100vh;
     z-index: -1;
     transform: scale(1.1);
+    object-fit: cover;
 }
 
 

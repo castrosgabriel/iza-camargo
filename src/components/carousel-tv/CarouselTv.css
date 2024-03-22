@@ -1,0 +1,67 @@
+.container-carousel {
+    width: 56rem;
+    height: 31.5rem;
+    overflow: hidden;
+    position: relative;
+}
+
+.container-carousel .corousel-wrapper {
+    display: flex;
+    justify-content: flex-start;
+    flex-direction: column;
+}
+
+.container-carousel .corousel-wrapper .carousel-item {
+    width: 56rem;
+    height: 31.5rem;
+}
+
+.container-carousel .corousel-wrapper .carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.side-options {
+    display: flex;
+    flex-direction: column;
+    z-index: 99;
+    gap: 2rem;
+    position: absolute;
+    top: 50%;
+    left: -4rem;
+    transform: translateY(-50%);
+}
+
+.side-options img{
+    width: 1.5rem;
+    height: 2rem;
+    cursor: pointer;
+}
+
+.carousel {
+    position: relative
+}
+
+.paginator {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    align-items: center;
+}
+
+.paginator-item {
+    width: .75rem;
+    height: .75rem;
+    border-radius: 50%;
+    background-color: var(--c-white);
+    transition: all 0.3s ease-in-out;
+    opacity: 0.5;
+}
+
+.paginator-item.active {
+    transform: scale(1.5);
+    background-color: var(--c-primary);
+    transition: all 0.3s ease-in-out;
+    opacity: 1;
+}

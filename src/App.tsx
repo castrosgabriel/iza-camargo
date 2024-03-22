@@ -15,7 +15,6 @@ function App() {
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
   const [showMenu, setShowMenu] = useState(false)
-  const [hasDarkBg, setHasDarkBg] = useState(true)
 
   useEffect(() => {
     const handleMouseMove = (e: any) => {
@@ -29,13 +28,13 @@ function App() {
 
   return (
     <>
-      <Header hasDarkBg={hasDarkBg} menuIsShown={showMenu} toggleMenu={() => setShowMenu(!showMenu)} />
+      <Header menuIsShown={showMenu} toggleMenu={() => setShowMenu(!showMenu)} />
       <Menu isShown={showMenu} />
       <Hero mouseMove={{ x: mouseX, y: mouseY }} />
       <OlaSection mouseMove={{ x: mouseX, y: mouseY }} />
       <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />
-      <BookSeller mouseMove={{ x: mouseX, y: mouseY }} />
-      <LivingRoom />
+      <BookSeller />
+      <LivingRoom mouseMove={{ x: mouseX, y: mouseY }} />
       <Store />
       <Footer />
     </>

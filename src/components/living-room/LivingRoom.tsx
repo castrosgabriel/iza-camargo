@@ -1,13 +1,21 @@
 import { useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { PngCellphone, PngRack, PngTv, PngTvContent } from '../../assets/png'
+import CarouselTv from '../carousel-tv/CarouselTv'
+import { PngCellphone, PngRack, PngShadowLiving, PngTv } from '../../assets/png'
 import Button from '../button/Button'
 import './LivingRoom.css'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const LivingRoom = () => {
+type LivingRoomProps = {
+    mouseMove: {
+        x: number,
+        y: number
+    }
+}
+
+const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
 
     useLayoutEffect(() => {
         const tl = gsap.timeline({
@@ -28,41 +36,60 @@ const LivingRoom = () => {
                 y: '30%',
                 duration: 1,
             }, 2)
-        gsap.to('.page-wrapper', {
+
+        const scrollHorTl = gsap.timeline({
             scrollTrigger: {
-                trigger: '.page-wrapper',
+                trigger: '.living-room',
                 start: 'top top',
-                end: 'bottom top',
+                end: '+=400%',
                 scrub: 1,
                 pin: true,
                 snap: 1,
             },
+        })
+
+        scrollHorTl.to('.page-wrapper', {
             x: '-100vw',
         })
 
         return () => {
-            gsap.killTweensOf('.page-wrapper')
+            tl.kill()
+            scrollHorTl.kill()
         }
     }, [])
 
+    const handleMouseMove = () => {
+        gsap.to('.img-shadow-living', {
+            x: (mouseMove.x - 50) * 1,
+            y: (mouseMove.y - 50) * 1,
+            duration: .3
+        })
+    }
+
     return (
-        <div className='living-room'>
+        <div className='living-room' onMouseMove={handleMouseMove}>
             <div className='page-wrapper'>
+                <div className='img-shadow-living'>
+                    <img src={PngShadowLiving} />
+                    <img style={{ transform: 'scaleX(-1)' }} src={PngShadowLiving} />
+                </div>
                 <div className='living-room-first'>
                     <img className='rack' src={PngRack} />
-                    <img className='tv tv-content' src={PngTvContent} />
+                    <div className='tv tv-content'>
+                        <CarouselTv />
+                    </div>
                     <img className='tv' src={PngTv} />
                 </div>
                 <div className='living-room-second'>
                     <div className='content-wrapper'>
                         <h2>Já conhece o Podcast Interioriza?</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, massa id maximus efficitur, mi nulla molestie velit, efficitur dapibus leo arcu aliquam lectus. Vivamus tempor mauris eu neque tincidunt maximus. </p>
-                        <Button text='Ouvir agora' hoverColor='#2B3836' />
+                        <Button link='https://podcasters.spotify.com/pod/show/izabella-camargo3' text='Ouvir agora' hoverColor='#2B3836' />
                     </div>
                     <img className='cellphone' src={PngCellphone} />
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 

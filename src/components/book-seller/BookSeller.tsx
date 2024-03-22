@@ -5,16 +5,9 @@ import { useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 
-type bookSellerProps = {
-    mouseMove: {
-        x: number
-        y: number
-    }
-}
-
 gsap.registerEffect(ScrollToPlugin)
 
-const BookSeller = ({ mouseMove }: bookSellerProps) => {
+const BookSeller = () => {
 
     useLayoutEffect(() => {
         const enterElementsTl = gsap.timeline({

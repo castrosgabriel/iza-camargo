@@ -47,6 +47,11 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
             x: (mouseMove.x - 50) * .2,
             duration: 0.3,
         });
+        gsap.to('.img-shadow-ola', {
+            x: (mouseMove.x - 50) * 1,
+            y: (mouseMove.y - 50) * 1,
+            duration: .3
+        });
     }
 
 
@@ -83,12 +88,13 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
             scrollTrigger: {
                 trigger: '.ola-container',
                 start: 'top top',
-                end: 'bottom top',
+                end: '+=300%',
                 scrub: 1,
                 pin: true,
                 snap: 1,
             }
         })
+
 
         return (
             () => {
@@ -99,16 +105,12 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
         )
     }, [])
 
-    const moveShadow = {
-        transform: `translate(${mouseMove.x - 50}px, ${mouseMove.y - 50}px)`,
-    }
-
     return (
         <div className='ola-container' onMouseMove={handleParallax}>
             <div className='sections-wrapper'>
                 <div className='img-shadow-ola'>
-                    <img style={moveShadow} src={PngShadowOla} alt='shadow' />
-                    <img style={moveShadow} src={PngShadowOla} alt='shadow' />
+                    <img src={PngShadowOla} alt='shadow' />
+                    <img src={PngShadowOla} alt='shadow' />
                 </div>
                 <div className='ola-first'>
                     <img src={PngPlan1Ola} className='img-plant-1' alt='plant' />

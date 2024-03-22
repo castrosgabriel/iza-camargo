@@ -36,6 +36,7 @@ export const SocialMedia = () =>
 const BottomBar = forwardRef<HTMLDivElement>((props, ref) => {
 
     useLayoutEffect(() => {
+        props
         gsap.from('.bottom-container', {
             y: '+=100%',
             duration: 1.5,

@@ -9,8 +9,10 @@ import SvgLogoHor from './logo-hor.svg';
 import SvgLinkedin from './icon_linkedin.svg';
 import SvgIso from './iso.svg';
 import SvgWhatsBtn from './whats-btn.svg';
+import SvgArrowSlider from './arrow-slider.svg';
 
 export {
+    SvgArrowSlider,
     SvgWhatsBtn,
     SvgIso,
     SvgArrow,
