@@ -54,7 +54,7 @@ const Store = ({ mouseMove }: StoreProps) => {
         <div className='store-container' onMouseMove={handleMouseMove}>
             <div className='img-shadow-living'>
                 <img id='shadow-store' src={PngShadowStore} />
-            </div>
+            </div>  
             <img src={PngPlant} className='img-plant' alt='plant-store' />
             <div className='container-full'>
                 <div className='content-wrapper-store'>
