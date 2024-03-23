@@ -28,26 +28,27 @@ const Store = ({ mouseMove }: StoreProps) => {
                 trigger: '.store-container',
                 start: 'top bottom',
                 end: 'bottom bottom',
-                scrub: true,
+                scrub: 1,
+                snap: 1,
             },
             ease: 'none'
         })
         enterElementsTl.from('.img-plant', {
-            y: -100,
+            y: 260,
             duration: .6
         })
         enterElementsTl.from('.content-wrapper-store', {
-            y: -80,
+            y: 320,
             duration: .6
-        }, '-=.6')
+        }, 0)
         enterElementsTl.from('.img-t-front', {
-            y: -100,
+            y: 320,
             duration: .6
-        }, '-=.8')
+        }, 0)
         enterElementsTl.from('.img-t-back', {
-            y: -50,
+            y: 600,
             duration: .6
-        }, '-=1')
+        }, 0)
     }, [])
 
     return (
