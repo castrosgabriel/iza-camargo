@@ -21,6 +21,8 @@
 .living-room-first .rack {
     position: absolute;
     bottom: 0;
+    width: 90vw;
+    object-fit: cover;
     left: 50%;
     transform: translateX(-50%);
 }
@@ -30,6 +32,11 @@
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+.tv.screen {
+    width: 57.31rem;
+    height: 32.75rem;
 }
 
 [class="tv"] {

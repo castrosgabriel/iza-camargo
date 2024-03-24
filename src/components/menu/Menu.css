@@ -4,7 +4,6 @@
     height: 100vh;
     overflow: hidden;
     z-index: 99998;
-    pointer-events: none;
 }
 
 .menu-wrapper {
@@ -29,7 +28,8 @@
     max-width: var(--max-width);
     padding: 0 4rem;
 }
-.menu-wrapper .social-media-wrapper{
+
+.menu-wrapper .social-media-wrapper {
     position: absolute;
     bottom: 0;
     left: 50%;
@@ -40,11 +40,10 @@
 }
 
 .menu-btn.active {
-        color: var(--c-primary);
+    color: var(--c-primary);
 }
 
 .menu-btn.inactive {
-        color: #6D6D6D;
-        font-weight: 400;
-    }
-
+    color: #6D6D6D;
+    font-weight: 400;
+}

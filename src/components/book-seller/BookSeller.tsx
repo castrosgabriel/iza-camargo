@@ -1,15 +1,15 @@
 import Button from '../button/Button';
 import { PngBook } from '../../assets/png';
 import './BookSeller.css'
-import { useLayoutEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerEffect(ScrollToPlugin)
 
 const BookSeller = () => {
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         const enterElementsTl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.book-container',
@@ -57,14 +57,7 @@ const BookSeller = () => {
                 y: '-=20%',
                 duration: 1,
             }
-
             )
-
-        return () => {
-            gsap.killTweensOf('.book-content')
-            gsap.killTweensOf('.book-container')
-        }
-
     }, [])
 
     return (

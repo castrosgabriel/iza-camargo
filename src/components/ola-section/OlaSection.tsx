@@ -11,9 +11,9 @@ import {
     PngShadowOla
 } from '../../assets/png'
 import './OlaSection.css'
-import { useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -26,36 +26,44 @@ type olaSectionProps = {
 
 const OlaSection = ({ mouseMove }: olaSectionProps) => {
 
+    //parallax move controls
+    const PLANT_1_MOVE_DIST = 0.15
+    const PLANT_2_MOVE_DIST = 0.1
+    const PLANT_3_MOVE_DIST = 0.15
+    const IZA_MOVE_DIST = 0.3
+    const LIGHT_MOVE_DIST = 0.2
+    const SHADOW_MOVE_DIST = { x: 0.5, y: 0.5 }
+
     const handleParallax = () => {
         gsap.to('.img-plant-1', {
-            x: (mouseMove.x - 50) * .3,
+            x: (mouseMove.x - 50) * PLANT_1_MOVE_DIST,
             duration: 0.3,
         });
         gsap.to('.img-iza-recorte', {
-            x: (mouseMove.x - 50) * .2,
+            x: (mouseMove.x - 50) * IZA_MOVE_DIST,
             duration: 0.3,
         });
         gsap.to('.img-light-ola', {
-            x: (mouseMove.x - 50) * .6,
+            x: (mouseMove.x - 50) * LIGHT_MOVE_DIST,
             duration: 0.3,
         });
         gsap.to('.img-plant-2', {
-            x: (mouseMove.x - 50) * .8,
+            x: (mouseMove.x - 50) * PLANT_2_MOVE_DIST,
             duration: 0.3,
         });
         gsap.to('.img-plant-3', {
-            x: (mouseMove.x - 50) * .2,
+            x: (mouseMove.x - 50) * PLANT_3_MOVE_DIST,
             duration: 0.3,
         });
         gsap.to('.img-shadow-ola', {
-            x: (mouseMove.x - 50) * 1,
-            y: (mouseMove.y - 50) * 1,
+            x: (mouseMove.x - 50) * SHADOW_MOVE_DIST.x,
+            y: (mouseMove.y - 50) * SHADOW_MOVE_DIST.y,
             duration: .3
         });
     }
 
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         gsap.from('.ola-content', {
             y: '10%',
             duration: 1,
@@ -94,15 +102,6 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                 snap: 1,
             }
         })
-
-
-        return (
-            () => {
-                gsap.killTweensOf('.ola-content')
-                gsap.killTweensOf('.ola-first img')
-                gsap.killTweensOf('.sections-wrapper')
-            }
-        )
     }, [])
 
     return (
@@ -113,7 +112,6 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                     <img src={PngShadowOla} alt='shadow' />
                 </div>
                 <div className='ola-first'>
-                    <img src={PngPlan1Ola} className='img-plant-1' alt='plant' />
                     <div className='max-width'>
                         <div className='ola-content'>
                             <h2>
@@ -129,13 +127,16 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                                 e profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
                             </p>
                             <div>
-                                <Button text='Minha história' color='var(--c-primary-interaction)' />
+                                <Button text='Minha história' link='/minha-historia' color='var(--c-primary-interaction)' />
                             </div>
                         </div>
                     </div>
-                    <img src={PngIzaRecorte} className='img-iza-recorte' alt='iza' />
-                    <img src={PngLightOla} className='img-light-ola' alt='light' />
-                    <img src={PngPlant2Ola} className='img-plant-2' alt='plant' />
+                    <div className='first-img-wrapper'>
+                        <img src={PngPlan1Ola} className='img-plant-1' alt='plant' />
+                        <img src={PngIzaRecorte} className='img-iza-recorte' alt='iza' />
+                        <img src={PngLightOla} className='img-light-ola' alt='light' />
+                        <img src={PngPlant2Ola} className='img-plant-2' alt='plant' />
+                    </div>
                 </div>
                 <div className='ola-second'>
                     <div className='frame-container'>

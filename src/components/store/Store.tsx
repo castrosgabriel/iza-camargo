@@ -1,8 +1,8 @@
-import { useLayoutEffect } from 'react'
 import { PngPlant, PngShadowStore, PngTBack, PngTFront } from '../../assets/png'
 import Button from '../button/Button'
 import './Store.css'
 import gsap from 'gsap'
+import { useGSAP } from '@gsap/react'
 
 type StoreProps = {
     mouseMove: {
@@ -22,7 +22,7 @@ const Store = ({ mouseMove }: StoreProps) => {
         })
     }
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         const enterElementsTl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.store-container',

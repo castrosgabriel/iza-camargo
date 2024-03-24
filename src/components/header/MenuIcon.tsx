@@ -1,5 +1,5 @@
 import gsap from "gsap";
-import { useLayoutEffect } from "react";
+import { useGSAP } from "@gsap/react";
 
 type menuIconProps = {
     menuIsShown: boolean
@@ -7,7 +7,7 @@ type menuIconProps = {
     strokeColor?: string
 }
 
-const MenuIcon = ({ strokeColor = 'white' , menuIsShown, toggleMenu }: menuIconProps) => {
+const MenuIcon = ({ strokeColor = 'white', menuIsShown, toggleMenu }: menuIconProps) => {
 
     const mouseLeaveAnimationTl = gsap.timeline({ paused: true })
     mouseLeaveAnimationTl.to('#Path', {
@@ -51,7 +51,7 @@ const MenuIcon = ({ strokeColor = 'white' , menuIsShown, toggleMenu }: menuIconP
             ease: 'power1.inOut',
         }, 0)
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         const exitAnimationTl = gsap.timeline({ paused: true })
         exitAnimationTl.to('#Path', {
             duration: .3,
@@ -77,10 +77,6 @@ const MenuIcon = ({ strokeColor = 'white' , menuIsShown, toggleMenu }: menuIconP
 
         menuIsShown && exitAnimationTl.play()
         !menuIsShown && mouseLeaveAnimationTl.play()
-
-        return () => {
-            exitAnimationTl.kill()
-        }
 
     }, [menuIsShown])
 

@@ -1,7 +1,8 @@
-import { useLayoutEffect } from 'react';
 import { SocialMedia } from '../bottom-bar/BottomBar';
 import gsap from 'gsap';
 import './Menu.css'
+import { useGSAP } from '@gsap/react';
+import { Link } from 'react-router-dom';
 
 type MenuProps = {
     isShown: boolean
@@ -13,28 +14,28 @@ type MenuBtnProps = {
     active?: boolean
 }
 
-const MenuBtn = ({ text, link, active }: MenuBtnProps) => {
+const MenuBtn = ({ text, link = '', active }: MenuBtnProps) => {
     return (
-        <a href={link}>
+        <Link to={link}>
             <h2 className={active ? 'menu-btn active' : 'menu-btn inactive'}>
                 {text}
             </h2>
-        </a>
+        </Link>
     )
 }
 
 const menuArray = [
-    { text: 'Home', link: 'https://www.google.com.ar/maps/preview', active: true },
-    { text: 'Minha História' },
-    { text: 'Palestras' },
-    { text: 'Mentorias' },
-    { text: 'Loja' },
-    { text: 'Contato' }
+    { text: 'Home', link: '/', active: true },
+    { text: 'Minha História', link: '/minha-historia' },
+    { text: 'Palestras', link: '/palestras' },
+    { text: 'Mentorias', link: '/mentorias' },
+    { text: 'Loja', link: ''},
+    { text: 'Contato', link: '/contato'}
 ];
 
 const Menu = ({ isShown }: MenuProps) => {
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         if (isShown) {
             gsap.to('.menu-wrapper', {
                 duration: 0.6,
@@ -62,16 +63,14 @@ const Menu = ({ isShown }: MenuProps) => {
                 ease: 'circ.inOut'
             })
         }
-
-        return () => {
-            gsap.killTweensOf('.menu-wrapper')
-            gsap.killTweensOf('.content-web')
-            gsap.killTweensOf('.menu-content h2')
-        }
     }, [isShown])
 
+    const mouseEventsStyle:React.CSSProperties = {
+        pointerEvents: isShown ? 'all' : 'none'
+    }
+
     return (
-        <div className='menu-container'>
+        <div style={mouseEventsStyle} className='menu-container' >
             <div className='menu-wrapper'>
                 <div className='menu-content'>
                     {menuArray.map((item, index) => <MenuBtn key={index} active={item.active} link={item.link} text={item.text} />)}

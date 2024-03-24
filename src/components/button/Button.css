@@ -49,6 +49,10 @@ button {
     line-height: normal;
 }
 
+.btn-wrapper.small:hover {
+    background-color: #479b74 !important;
+}
+
 .hover-btn {
     position: absolute;
     top: 0;
@@ -63,7 +67,6 @@ button {
 
 .btn-wrapper:hover .hover-btn {
     transform: translateX(-15%) translateY(-20%);
-    /* border-radius: 0; */
 }
 
 .btn-wrapper:hover .col-hover {

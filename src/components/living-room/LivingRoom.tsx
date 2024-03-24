@@ -1,10 +1,10 @@
-import { useLayoutEffect } from 'react'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
 import CarouselTv from '../carousel-tv/CarouselTv'
 import { PngCellphone, PngRack, PngShadowLiving, PngTv } from '../../assets/png'
 import Button from '../button/Button'
 import './LivingRoom.css'
+import { useGSAP } from '@gsap/react'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -17,7 +17,7 @@ type LivingRoomProps = {
 
 const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: '.living-room-first',
@@ -51,11 +51,6 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
         scrollHorTl.to('.page-wrapper', {
             x: '-100vw',
         })
-
-        return () => {
-            tl.kill()
-            scrollHorTl.kill()
-        }
     }, [])
 
     const handleMouseMove = () => {
@@ -78,7 +73,7 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                     <div className='tv tv-content'>
                         <CarouselTv />
                     </div>
-                    <img className='tv' src={PngTv} />
+                    <img className='tv screen' src={PngTv} />
                 </div>
                 <div className='living-room-second'>
                     <div className='content-wrapper'>

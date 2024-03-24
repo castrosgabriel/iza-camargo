@@ -1,7 +1,8 @@
 import './BottomBar.css';
 import { SvgInstagram, SvgYoutube, SvgSpotify, SvgWhats, SvgLinkedin } from '../../assets/svg';
-import { forwardRef, useLayoutEffect } from 'react';
+import { forwardRef } from 'react';
 import gsap from 'gsap';
+import { useGSAP } from '@gsap/react';
 
 
 type BigNumberProps = {
@@ -35,17 +36,17 @@ export const SocialMedia = () =>
 
 const BottomBar = forwardRef<HTMLDivElement>((props, ref) => {
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         props
         gsap.from('.bottom-container', {
             y: '+=100%',
-            duration: 1.5,
+            duration: 1,
             delay: .2,
             ease: 'expo.inOut',
         })
         gsap.from('.big-number', {
             y: '+=150%',
-            duration: 1.5,
+            duration: 1,
             delay: .4,
             ease: 'expo.inOut',
             stagger: .1,
@@ -53,26 +54,19 @@ const BottomBar = forwardRef<HTMLDivElement>((props, ref) => {
         })
         gsap.from('.spacer-bar', {
             scaleY: 0,
-            duration: 1.5,
+            duration: 1,
             delay: .5,
             ease: 'expo.inOut',
             stagger: .15,
         })
         gsap.from('.social-container img', {
             y: '+=100%',
-            duration: 1.5,
+            duration: 1,
             delay: .5,
             ease: 'expo.inOut',
             stagger: .1,
             opacity: 0,
         })
-
-        return () => {
-            gsap.killTweensOf('.bottom-container')
-            gsap.killTweensOf('.big-number')
-            gsap.killTweensOf('.spacer-bar')
-            gsap.killTweensOf('.social-container img')
-        }
     }, [])
 
     return (

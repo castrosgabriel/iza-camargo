@@ -75,7 +75,6 @@ const CarouselTv = () => {
         const nextIndex = (currentIndex + 1) % carouselLength;
         setCurrentIndex(nextIndex)
         goTo(nextIndex);
-        console.log(nextIndex);
     }
 
 
@@ -83,7 +82,6 @@ const CarouselTv = () => {
         let prevIndex = (currentIndex - 1 + carouselLength) % carouselLength;
         setCurrentIndex(prevIndex);
         goTo(prevIndex);
-        console.log(prevIndex);
     }
 
 
@@ -92,9 +90,7 @@ const CarouselTv = () => {
             <div className='side-options'>
                 <img src={SvgArrowSlider} onClick={goToPrevious} />
                 <Paginator length={carouselLength} indexActive={currentIndex} />
-                <img style={{
-                    transform: 'rotate(180deg)'
-                }} src={SvgArrowSlider} onClick={goToNext} />
+                <img style={{ transform: 'rotate(180deg)' }} src={SvgArrowSlider} onClick={goToNext} />
             </div>
             <div className='container-carousel'>
                 <div className='corousel-wrapper'>

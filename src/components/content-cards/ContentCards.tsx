@@ -3,7 +3,8 @@ import Button from '../button/Button';
 import { PngRodaVida, PngIzaCard, PngShadowCards } from '../../assets/png';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
-import { RefObject, createRef, forwardRef, useLayoutEffect, useRef } from 'react';
+import { RefObject, createRef, forwardRef, useRef } from 'react';
+import { useGSAP } from '@gsap/react';
 
 type CardProps = {
     id: number;
@@ -40,7 +41,7 @@ type contentCardsProps = {
 }
 
 const ContentCards = ({ mouseMove }: contentCardsProps) => {
-
+    mouseMove
     const cardData = [
         {
             subtitle: 'Como está seu tempo?',
@@ -60,7 +61,7 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
 
     const cardsRefs = useRef<RefObject<HTMLDivElement>[]>(cardData.map(() => createRef()));
 
-    useLayoutEffect(() => {
+    useGSAP(() => {
         gsap.from(
             '.card-info',
             {
@@ -83,11 +84,6 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                 y: '10rem',
             }
         )
-
-        return () => {
-            gsap.killTweensOf('.card-info')
-        }
-
     }, [])
 
     const handleCtaEnter = (id: number) => {
@@ -136,19 +132,11 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
         });
     };
 
-    const handleShadowMove = () => {
-        gsap.to('.shadow-cards>img', {
-            x: (mouseMove.x - 50),
-            y: (mouseMove.y - 50),
-            duration: 0.3,
-        });
-    }
-
 
     return (
-        <div className='card-container' onMouseMove={handleShadowMove}>
+        <div className='card-container'>
             <div className='shadow-cards'>
-                <img src={PngShadowCards} alt="shadow-cards" />
+                <img src={PngShadowCards} />
             </div>
             {cardData.map((card, index) => (
                 <Card
