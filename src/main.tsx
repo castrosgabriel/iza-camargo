@@ -16,7 +16,7 @@ import Palestras from './components/palestras/Palestras.tsx';
 const router = createBrowserRouter(
   createRoutesFromElements(
     <>
-      <Route path="/" element={<App />} />
+      <Route path="/" element={<App />} />  
       <Route path="minha-historia" element={<MinhaHistoria />} />
       <Route path="mentorias" element={<Mentorias />} />
       <Route path="palestras" element={<Palestras />} />

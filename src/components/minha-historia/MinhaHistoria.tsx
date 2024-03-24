@@ -1,9 +1,12 @@
+import MenuWrapper from "../menu/MenuWrapper";
+
 const MinhaHistoria = () => {
     return (
-        <div>
+        <>
+            <MenuWrapper whichIsActive='minha-historia' />
             <h1>Minha História</h1>
             <p>...</p>
-        </div>
+        </>
     );
 }
 

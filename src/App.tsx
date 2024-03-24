@@ -7,14 +7,12 @@ import OlaSection from './components/ola-section/OlaSection'
 import LivingRoom from './components/living-room/LivingRoom'
 import Footer from './components/footer/Footer'
 import { useEffect, useState } from 'react'
-import Menu from './components/menu/Menu'
-import Header from './components/header/Header'
+import MenuWrapper from './components/menu/MenuWrapper'
 
 function App() {
 
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
-  const [showMenu, setShowMenu] = useState(false)
 
   useEffect(() => {
     const handleMouseMove = (e: any) => {
@@ -28,15 +26,16 @@ function App() {
 
   return (
     <>
-      <Header menuIsShown={showMenu} toggleMenu={() => setShowMenu(!showMenu)} />
-      <Menu isShown={showMenu} />
-      <Hero mouseMove={{ x: mouseX, y: mouseY }} />
-      <OlaSection mouseMove={{ x: mouseX, y: mouseY }} />
-      <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />
-      <BookSeller />
-      <LivingRoom mouseMove={{ x: mouseX, y: mouseY }} />
-      <Store mouseMove={{ x: mouseX, y: mouseY }} />
-      <Footer />
+      <MenuWrapper whichIsActive='home'/>
+      <>
+        <Hero mouseMove={{ x: mouseX, y: mouseY }} />
+        <OlaSection mouseMove={{ x: mouseX, y: mouseY }} />
+        <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />
+        <BookSeller />
+        <LivingRoom mouseMove={{ x: mouseX, y: mouseY }} />
+        <Store mouseMove={{ x: mouseX, y: mouseY }} />
+        <Footer />
+      </>
     </>
   )
 }

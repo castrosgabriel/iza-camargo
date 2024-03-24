@@ -4,6 +4,7 @@ import MenuIcon from './MenuIcon';
 import gsap from 'gsap';
 import LogoHorizontal from './LogoHorizontal';
 import { useGSAP } from '@gsap/react';
+import { Link } from 'react-router-dom';
 
 type headerProps = {
     menuIsShown: boolean
@@ -18,7 +19,7 @@ const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
     useGSAP(() => {
         gsap.from('.header', {
             y: '-=100%',
-            duration: 1.5,
+            duration: 1,
             delay: .1,
             ease: 'expo.inOut',
         })
@@ -34,7 +35,9 @@ const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
     return (
         <div className='header-container'>
             <header className="header">
-                <LogoHorizontal strokeColor={contentColor} />
+                <Link to='/' className='logo-link'>
+                    <LogoHorizontal strokeColor={contentColor} />
+                </Link>
                 <MenuIcon strokeColor={contentColor} menuIsShown={menuIsShown} toggleMenu={toggleMenu} />
             </header>
             <div className='background-header' />

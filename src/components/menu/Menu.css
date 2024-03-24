@@ -4,6 +4,8 @@
     height: 100vh;
     overflow: hidden;
     z-index: 99998;
+    top: 0;
+    left: 0;
 }
 
 .menu-wrapper {
@@ -39,6 +41,10 @@
     padding: 4rem;
 }
 
+.menu-btn.inactive:hover {
+    transform: translateX(0.5rem) !important;
+}
+
 .menu-btn.active {
     color: var(--c-primary);
 }
@@ -46,4 +52,8 @@
 .menu-btn.inactive {
     color: #6D6D6D;
     font-weight: 400;
+}
+
+.menu-btn {
+    transition: all 0.2s ease-in-out;
 }

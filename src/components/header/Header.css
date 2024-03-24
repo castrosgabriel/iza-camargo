@@ -4,6 +4,8 @@
     z-index: 99999;
     width: 100vw;
     justify-content: center;
+    top: 0;
+    left: 0;
 }
 
 .header {

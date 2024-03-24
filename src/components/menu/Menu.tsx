@@ -1,41 +1,46 @@
 import { SocialMedia } from '../bottom-bar/BottomBar';
 import gsap from 'gsap';
 import './Menu.css'
-import { useGSAP } from '@gsap/react';
 import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
 
 type MenuProps = {
     isShown: boolean
+    whichIsActive?: string
 }
 
 type MenuBtnProps = {
     text: string,
     link?: string,
-    active?: boolean
+    isActive?: boolean
 }
 
-const MenuBtn = ({ text, link = '', active }: MenuBtnProps) => {
+const MenuBtn = ({ text, link = '', isActive }: MenuBtnProps) => {
+
+
     return (
         <Link to={link}>
-            <h2 className={active ? 'menu-btn active' : 'menu-btn inactive'}>
+            <h2
+                className={isActive ? 'menu-btn active' : 'menu-btn inactive'}
+            >
                 {text}
             </h2>
         </Link>
     )
 }
 
-const menuArray = [
-    { text: 'Home', link: '/', active: true },
-    { text: 'Minha História', link: '/minha-historia' },
-    { text: 'Palestras', link: '/palestras' },
-    { text: 'Mentorias', link: '/mentorias' },
-    { text: 'Loja', link: ''},
-    { text: 'Contato', link: '/contato'}
-];
+const Menu = ({ isShown, whichIsActive }: MenuProps) => {
 
-const Menu = ({ isShown }: MenuProps) => {
+    const menuArray = [
+        { text: 'Home', link: '/', id: 'home' },
+        { text: 'Minha História', link: '/minha-historia', id: 'minha-historia' },
+        { text: 'Palestras', link: '/palestras', id: 'palestras' },
+        { text: 'Mentorias', link: '/mentorias', id: 'mentorias' },
+        { text: 'Loja', link: '', id: 'loja' },
+        { text: 'Contato', link: '/contato', id: 'contato' }
+    ];
 
-    useGSAP(() => {
+    useEffect(() => {
         if (isShown) {
             gsap.to('.menu-wrapper', {
                 duration: 0.6,
@@ -56,7 +61,7 @@ const Menu = ({ isShown }: MenuProps) => {
                 ease: 'circ.inOut'
             })
             gsap.to('.menu-content h2', {
-                duration: 0.2,
+                duration: 0,
                 x: 100,
                 opacity: 0,
                 stagger: 0.1,
@@ -65,7 +70,7 @@ const Menu = ({ isShown }: MenuProps) => {
         }
     }, [isShown])
 
-    const mouseEventsStyle:React.CSSProperties = {
+    const mouseEventsStyle: React.CSSProperties = {
         pointerEvents: isShown ? 'all' : 'none'
     }
 
@@ -73,7 +78,13 @@ const Menu = ({ isShown }: MenuProps) => {
         <div style={mouseEventsStyle} className='menu-container' >
             <div className='menu-wrapper'>
                 <div className='menu-content'>
-                    {menuArray.map((item, index) => <MenuBtn key={index} active={item.active} link={item.link} text={item.text} />)}
+                    {menuArray.map((item, index) =>
+                        <MenuBtn
+                            key={index}
+                            isActive={item.id === whichIsActive}
+                            link={item.link}
+                            text={item.text}
+                        />)}
                 </div>
                 <div className='social-media-wrapper'>
                     <SocialMedia />
