@@ -42,9 +42,40 @@
     gap: .5rem;
 }
 
-
-
 .social-container {
     display: flex;
     gap: 0.75rem;
+    padding: 0 .75rem;
+}
+
+.bottom-bar .title-page-bar {
+    display: flex;
+    color: var(--c-white, #FFF);
+    font-family: Museo-Slab-Rounded;
+    font-size: 1.875rem;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-align: center;
+    padding: 0 1.5rem;
+    align-items: center;
+    min-width: max-content;
+}
+
+.bottom-bar .quote-page-bar {
+    color: var(--c-white, #FFF);
+    font-family: Museo-Slab-Rounded;
+    font-size: 2.5rem;
+    font-style: italic;
+    font-weight: 600;
+    line-height: normal;
+    padding: 0 1.5rem;
+    display: flex;
+    align-items: center;
+}
+
+.bottom-bar {
+    svg {
+        width: 0.1rem;
+    }
 }

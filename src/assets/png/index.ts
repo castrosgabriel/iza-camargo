@@ -23,8 +23,20 @@ import PngIzaOverHero from './iza-over-hero.png';
 import PngShadowCards from './shadow-cards.png';
 import PngShadowLiving from './shadow-living.png';
 import PngShadowStore from './shadow-store.png';
+import PngMinhaHistoriaHero from './minha-historia-hero.png';
+import PngIzaAbout from './iza-about.png';
+import PngGalery1 from './galery-1.png';
+import PngGalery2 from './galery-2.png';
+import PngGalery3 from './galery-3.png';
+import PngGalery4 from './galery-4.png';
 
 export {
+    PngGalery1,
+    PngGalery2,
+    PngGalery3,
+    PngGalery4,
+    PngIzaAbout,
+    PngMinhaHistoriaHero,
     PngShadowStore,
     PngShadowLiving,
     PngShadowCards,

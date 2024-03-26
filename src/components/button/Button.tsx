@@ -18,7 +18,8 @@ const Button = ({
     color = 'var(--c-primary)',
     hoverColor = 'var(--c-support)',
     onMouseEnter,
-    onMouseLeave }: ButtonProps) => {
+    onMouseLeave
+}: ButtonProps) => {
 
     return (
         <Link to={link}>

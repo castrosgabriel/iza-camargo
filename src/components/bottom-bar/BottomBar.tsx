@@ -4,7 +4,6 @@ import { forwardRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 
-
 type BigNumberProps = {
     number: string;
     description: string;
@@ -24,7 +23,6 @@ const BigNumber = ({ number, description }: BigNumberProps) => {
     )
 }
 
-
 export const SocialMedia = () =>
     <div className='social-container'>
         <img src={SvgInstagram} alt='instagram' />
@@ -34,10 +32,15 @@ export const SocialMedia = () =>
         <img src={SvgLinkedin} alt='linkedin' />
     </div>
 
-const BottomBar = forwardRef<HTMLDivElement>((props, ref) => {
+type BottomBarProps = {
+    internal?: boolean;
+    pageName?: string;
+    quote?: string;
+}
+
+const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false, pageName, quote }, ref) => {
 
     useGSAP(() => {
-        props
         gsap.from('.bottom-container', {
             y: '+=100%',
             duration: 1,
@@ -73,13 +76,23 @@ const BottomBar = forwardRef<HTMLDivElement>((props, ref) => {
         <div className='bottom-container' ref={ref}>
             <div className="bottom-bar">
                 <Spacer />
-                <BigNumber number="10k" description="lorem ipsum" />
-                <Spacer />
-                <BigNumber number="1M" description="lorem ipsum" />
-                <Spacer />
-                <BigNumber number="120" description="lorem ipsum" />
-                <Spacer />
-                <BigNumber number="5k" description="lorem ipsum" />
+                {internal ? 
+                    <>
+                        <div className='title-page-bar'>{pageName}</div>
+                        <Spacer />
+                        <div className='quote-page-bar'>{`"${quote}"`}</div>
+                    </> :
+                    <>
+                        <BigNumber number="10k" description="lorem ipsum" />
+                        <Spacer />
+                        <BigNumber number="1M" description="lorem ipsum" />
+                        <Spacer />
+                        <BigNumber number="120" description="lorem ipsum" />
+                        <Spacer />
+                        <BigNumber number="5k" description="lorem ipsum" />
+                    </>
+                }
+
                 <Spacer />
                 <SocialMedia />
                 <Spacer />
