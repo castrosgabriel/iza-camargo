@@ -1,0 +1,102 @@
+import image1 from './1.png';
+import image2 from './2.png';
+import image3 from './3.png';
+import image4 from './4.png';
+import image5 from './5.png';
+import image6 from './6.png';
+import image7 from './7.png';
+import image8 from './8.png';
+import image9 from './9.png';
+import image11 from './11.png';
+import image12 from './12.png';
+import image13 from './13.png';
+import image14 from './14.png';
+import image15 from './15.png';
+import image16 from './16.png';
+import image17 from './17.png';
+import image18 from './18.png';
+import image19 from './19.png';
+import image20 from './20.png';
+import image21 from './21.png';
+import image22 from './22.png';
+import image23 from './23.png';
+import image24 from './24.png';
+import image25 from './25.png';
+import image26 from './26.png';
+import image27 from './27.png';
+import image28 from './28.png';
+import image29 from './29.png';
+import image30 from './30.png';
+import image31 from './31.png';
+import image32 from './32.png';
+import image33 from './33.png';
+import image34 from './34.png';
+import image35 from './35.png';
+import image36 from './36.png';
+import image37 from './37.png';
+import image38 from './38.png';
+import image39 from './39.png';
+import image40 from './40.png';
+import image41 from './41.png';
+import image42 from './42.png';
+import image43 from './43.png';
+import image44 from './44.png';
+import image45 from './45.png';
+import image46 from './46.png';
+import image47 from './47.png';
+import image48 from './48.png';
+import image49 from './49.png';
+
+const imagesArray =
+    [
+        { src: image1 },
+        { src: image2 },
+        { src: image3 },
+        { src: image4 },
+        { src: image5 },
+        { src: image6 },
+        { src: image7 },
+        { src: image8 },
+        { src: image9 },
+        { src: image11 },
+        { src: image12 },
+        { src: image13 },
+        { src: image14 },
+        { src: image15 },
+        { src: image16 },
+        { src: image17 },
+        { src: image18 },
+        { src: image19 },
+        { src: image20 },
+        { src: image21 },
+        { src: image22 },
+        { src: image23 },
+        { src: image24 },
+        { src: image25 },
+        { src: image26 },
+        { src: image27 },
+        { src: image28 },
+        { src: image29 },
+        { src: image30 },
+        { src: image31 },
+        { src: image32 },
+        { src: image33 },
+        { src: image34 },
+        { src: image35 },
+        { src: image36 },
+        { src: image37 },
+        { src: image38 },
+        { src: image39 },
+        { src: image40 },
+        { src: image41 },
+        { src: image42 },
+        { src: image43 },
+        { src: image44 },
+        { src: image45 },
+        { src: image46 },
+        { src: image47 },
+        { src: image48 },
+        { src: image49 },
+    ];
+
+export default imagesArray;

@@ -3,6 +3,17 @@ import './MinhaHistoria.css';
 import MenuWrapper from "../menu/MenuWrapper";
 import BottomBar from "../bottom-bar/BottomBar";
 import Galery from "../galery/Galery";
+import { PngGalery1, PngGalery2, PngGalery3, PngGalery4 } from '../../assets/png';
+
+const imgArray = [
+    { src: PngGalery1 },
+    { src: PngGalery2 },
+    { src: PngGalery3 },
+    { src: PngGalery4 },
+]
+
+import clientsArray from '../../assets/png/clients/clientsArray';
+import Footer from "../footer/Footer";
 
 const MinhaHistoria = () => {
     return (
@@ -115,7 +126,25 @@ const MinhaHistoria = () => {
                 </div>
 
             </div>
-            <Galery />
+            <Galery>
+                {
+                    imgArray.map((img, index) => {
+                        return (
+                            <img src={img.src} key={index} alt='galery' />
+                        );
+                    })
+                }
+            </Galery>
+            <Galery height='60vh' backgroundColor='var(--c-white)' titleColor='var(--c-dark)' title='Clientes'>
+                {
+                    clientsArray.map((img, index) => {
+                        return (
+                            <img src={img.src} key={index} alt='galery' />
+                        );
+                    })
+                }
+            </Galery>
+            <Footer />
         </>
     );
 }
