@@ -13,7 +13,12 @@ const Contato = () => {
                 pageName='Contato'
                 quote='Quem dorme mal, vive mal! Como anda o seu sono?'
             />
-            <FormSection />
+            <FormSection
+                title='Entre em contato'
+                text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+                Phasellus iaculis pharetra erat, non suscipit ante. 
+                Vestibulum gravida finibus dapibus.'
+            />
             <Footer />
         </>
     )
