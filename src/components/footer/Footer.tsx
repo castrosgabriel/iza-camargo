@@ -1,14 +1,15 @@
 import { SvgIso } from '../../assets/svg'
 import { SocialMedia } from '../bottom-bar/BottomBar'
 import { SmallButton } from '../button/Button'
+import { Link } from 'react-router-dom'
 import './Footer.css'
 
 const Footer = () =>
     <footer className='footer'>
         <div className='footer-content'>
-            <img src={SvgIso} />
+            <Link to='/'><img src={SvgIso} /></Link>
             <div className='pages'>
-                <p><b>Home</b></p>
+                <Link to='/'><p><b>Home</b></p></Link>
                 <p>Roda da Vida</p>
                 <p>Pesquisa</p>
                 <p>TEDx</p>
@@ -16,10 +17,10 @@ const Footer = () =>
                 <p>Interioriza</p>
             </div>
             <div className='pages'>
-                <p><b>Minha história</b></p>
-                <p><b>Palestras</b></p>
-                <p><b>Mentorias</b></p>
-                <p><b>Loja</b></p>
+                <Link to='/minha-historia'><p><b>Minha história</b></p></Link>
+                <Link to='/palestras'><p><b>Palestras</b></p></Link>
+                <Link to='/mentorias'><p><b>Mentorias</b></p></Link>
+                <Link to='http://www.google.com'><p><b>Loja</b></p></Link>
             </div>
             <div className='contact-section'>
                 <p><b>Contato</b></p>

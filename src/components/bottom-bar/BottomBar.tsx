@@ -70,13 +70,27 @@ const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false
             stagger: .1,
             opacity: 0,
         })
+        gsap.from('.title-page-bar', {
+            y: '+=100%',
+            opacity: 0,
+            duration: 1,
+            delay: .6,
+            ease: 'expo.inOut',
+        })
+        gsap.from('.quote-page-bar', {
+            y: '+=100%',
+            opacity: 0,
+            duration: 1,
+            delay: .7,
+            ease: 'expo.inOut',
+        })
     }, [])
 
     return (
         <div className='bottom-container' ref={ref}>
             <div className="bottom-bar">
                 <Spacer />
-                {internal ? 
+                {internal ?
                     <>
                         <div className='title-page-bar'>{pageName}</div>
                         <Spacer />

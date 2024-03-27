@@ -29,8 +29,10 @@ import PngGalery1 from './galery-1.png';
 import PngGalery2 from './galery-2.png';
 import PngGalery3 from './galery-3.png';
 import PngGalery4 from './galery-4.png';
+import PngPalestraHero from './palestra-hero.png';
 
 export {
+    PngPalestraHero,
     PngGalery1,
     PngGalery2,
     PngGalery3,

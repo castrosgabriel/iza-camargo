@@ -11,18 +11,26 @@ type GaleryProps = {
     titleColor?: string;
     title?: string;
     height?: string;
+    gap?: number;
 }
 
-const Galery = ({ children, height = '100vh', title = 'Galeria', backgroundColor = 'var(--c-support)', titleColor = 'var(--c-white)' }: GaleryProps) => {
+const Galery = ({ 
+    children, 
+    height = '100vh', 
+    title = 'Galeria', 
+    backgroundColor = 'var(--c-support)', 
+    gap = 2,
+    titleColor = 'var(--c-white)'}: GaleryProps) => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const galeryRef = useRef<(HTMLDivElement | null)[]>([]);
     const galeryLength = React.Children.count(children);
+    const container = useRef<HTMLDivElement>(null);
 
     const goTo = (index: number) => {
         const element = galeryRef.current[index];
         if (element) {
-            gsap.to('.galery-frame', {
+            gsap.to(container.current, {
                 scrollTo: {
                     x: element,
                 },
@@ -31,21 +39,16 @@ const Galery = ({ children, height = '100vh', title = 'Galeria', backgroundColor
             });
         }
     };
-
     const goToNext = () => {
         const nextIndex = (currentIndex + 1) % galeryLength;
         setCurrentIndex(nextIndex)
         goTo(nextIndex);
     }
-
     const goToPrevious = () => {
         let prevIndex = (currentIndex - 1 + galeryLength) % galeryLength;
         setCurrentIndex(prevIndex);
         goTo(prevIndex);
     }
-
-    console.log(currentIndex, galeryRef.current)
-
     type ArrowGaleryProps = {
         fill?: string;
         rotate?: boolean;
@@ -66,20 +69,20 @@ const Galery = ({ children, height = '100vh', title = 'Galeria', backgroundColor
     }
 
     return (
-        <div style={{ height: height, backgroundColor: backgroundColor }} className='galery-container'>
+        <div style={{ height: height, backgroundColor: backgroundColor }} className='galery-container' >
             <h2 style={{ color: titleColor }}>
                 {title}
-            </h2>
+            </h2> 
             <div className='galery'>
                 <ArrowGalery onClick={goToPrevious} rotate fill={titleColor} />
-                <div className='galery-frame'>
-                    <div className='galery-row'>
+                <div className='galery-frame' ref={container}>
+                    <div style={{gap: `${gap}rem`}} className='galery-row'>
                         {React.Children.map(children, (child, index) => {
                             return (
                                 <div ref={el => galeryRef.current[index] = el} key={index}>
                                     {child}
                                 </div>
-                            );
+                            )
                         })}
                     </div>
                 </div>

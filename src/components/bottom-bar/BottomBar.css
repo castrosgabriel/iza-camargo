@@ -52,7 +52,7 @@
     display: flex;
     color: var(--c-white, #FFF);
     font-family: Museo-Slab-Rounded;
-    font-size: 1.875rem;
+    font-size: 1.75rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -65,13 +65,14 @@
 .bottom-bar .quote-page-bar {
     color: var(--c-white, #FFF);
     font-family: Museo-Slab-Rounded;
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     font-style: italic;
     font-weight: 600;
     line-height: normal;
     padding: 0 1.5rem;
     display: flex;
     align-items: center;
+    flex: 1;
 }
 
 .bottom-bar {

@@ -1,11 +1,10 @@
 import { PngIzaAbout, PngMinhaHistoriaHero } from "../../assets/png";
 import './MinhaHistoria.css';
 import MenuWrapper from "../menu/MenuWrapper";
-import BottomBar from "../bottom-bar/BottomBar";
 import Galery from "../galery/Galery";
 import { PngGalery1, PngGalery2, PngGalery3, PngGalery4 } from '../../assets/png';
 
-const imgArray = [
+export const imgArray = [
     { src: PngGalery1 },
     { src: PngGalery2 },
     { src: PngGalery3 },
@@ -14,28 +13,23 @@ const imgArray = [
 
 import clientsArray from '../../assets/png/clients/clientsArray';
 import Footer from "../footer/Footer";
+import HeroInternal from "../hero/HeroInternal";
 
 const MinhaHistoria = () => {
     return (
         <>
             <MenuWrapper whichIsActive='minha-historia' />
-            <div className='hero-history'>
-                <img src={PngMinhaHistoriaHero} />
-            </div>
-            <div className='bottom-history'>
-                <BottomBar
-                    internal={true}
-                    pageName='Minha História'
-                    quote='O tempo é fruto das condições que você determina.' />
-            </div>
+            <HeroInternal
+                img={PngMinhaHistoriaHero}
+                pageName='Minha História'
+                quote='O tempo é fruto das condições que você  determina.'
+            />
             <div className='about-me-container'>
                 <div className='about-me-wrapper'>
                     <div className='about-me-col'>
                         <div className='iza-name-wrapper'>
                             <img src={PngIzaAbout} alt='Iza Avatar' />
-                            <h4>
-                                Izabella Camargo
-                            </h4>
+                            <h4>Izabella Camargo</h4>
                         </div>
                         <div className='tags-wrapper'>
                             <p>Jornalista</p>
@@ -57,7 +51,7 @@ const MinhaHistoria = () => {
                         </div>
                     </div>
                     <div className='about-me-txt'>
-                        <p>
+                        <p id='about-p'>
                             Paranaense, mãe, jornalista, apresentadora, palestrante
                             promotora de saúde, bem-estar no trabalho e longevidade.
                             <br /><br />
@@ -124,14 +118,13 @@ const MinhaHistoria = () => {
                         </div>
                     </div>
                 </div>
-
             </div>
             <Galery>
                 {
                     imgArray.map((img, index) => {
                         return (
                             <img src={img.src} key={index} alt='galery' />
-                        );
+                        )
                     })
                 }
             </Galery>
@@ -140,7 +133,7 @@ const MinhaHistoria = () => {
                     clientsArray.map((img, index) => {
                         return (
                             <img src={img.src} key={index} alt='galery' />
-                        );
+                        )
                     })
                 }
             </Galery>
