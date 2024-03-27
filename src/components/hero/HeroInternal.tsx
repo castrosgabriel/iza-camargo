@@ -1,3 +1,4 @@
+import { SvgArrow } from "../../assets/svg";
 import BottomBar from "../bottom-bar/BottomBar"
 import './Hero.css'
 
@@ -11,6 +12,9 @@ const HeroInternal = ({ img, pageName, quote }: HeroProps) => {
     return (
         <div className='hero-internal'>
             <img src={img} />
+            <div className='arrow-internal'>
+                <img src={SvgArrow} />
+            </div>
             <div className='bottom-internal'>
                 <BottomBar
                     internal={true}

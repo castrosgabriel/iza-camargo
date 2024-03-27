@@ -1,0 +1,73 @@
+input {
+    border: none;
+    border-bottom: 1px solid var(--c-white);
+    padding: 1rem 0;
+    color: var(--white, #FFF);
+    font-family: museo-sans, sans-serif;
+    font-size: 1.5rem;
+    font-weight: 300;
+    background-color: transparent;
+    width: 100%;
+}
+
+input:focus {
+    outline: none;
+    border-bottom: 2px solid var(--c-primary);
+}
+
+input::placeholder {
+    color: #919191;
+}
+
+.form-section {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--c-support);
+    height: 100vh;
+    width: 100vw;
+    overflow: hidden;
+}
+
+.form-section .form-section-content {
+    display: flex;
+    gap: 10rem;
+    width: 100%;
+    max-width: var(--max-width);
+    justify-content: space-between;
+    padding: 0 3rem;
+}
+
+.form-wrapper-container .form-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    flex: 1;
+}
+
+
+.form-section .form-section-content .form-wrapper-container{
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+    flex: 1;
+}
+
+.form-section .form-section-content .form-txt{
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+    max-width: 32rem;
+}
+
+.form-section .form-section-content .form-txt h3{
+    color: var(--c-white)
+}
+
+.form-section .form-section-content .form-txt p{
+    color: var(--c-white)
+}
+
+
+

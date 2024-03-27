@@ -30,8 +30,12 @@ import PngGalery2 from './galery-2.png';
 import PngGalery3 from './galery-3.png';
 import PngGalery4 from './galery-4.png';
 import PngPalestraHero from './palestra-hero.png';
+import PngMentoriaHero from './mentoria-hero.png';
+import PngContactHero from './contact-hero.png';
 
 export {
+    PngContactHero,
+    PngMentoriaHero,
     PngPalestraHero,
     PngGalery1,
     PngGalery2,

@@ -94,5 +94,11 @@
     width: 100%;
 }
 
+.arrow-internal {
+    position: absolute;
+    top: 40%;
+    right: 10%;
+}
+
 
 
