@@ -5,12 +5,15 @@ import gsap from 'gsap';
 import LogoHorizontal from './LogoHorizontal';
 import { useGSAP } from '@gsap/react';
 import { Link } from 'react-router-dom';
+import ScrollToPlugin from 'gsap/ScrollToPlugin';
 
 type headerProps = {
     menuIsShown: boolean
     toggleMenu: () => void
     hasDarkBg?: boolean
 }
+
+gsap.registerPlugin(ScrollToPlugin)
 
 const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
 
@@ -31,11 +34,19 @@ const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
         }
     })
 
+    const goToTop = () => {
+        gsap.to(window, {
+            duration: 1.8,
+            scrollTo: { y: 0, autoKill: false },
+            ease: 'power2.inOut',
+        })
+    }
+
 
     return (
         <div className='header-container'>
             <header className="header">
-                <Link to='/' className='logo-link'>
+                <Link onClick={goToTop} to='/' className='logo-link'>
                     <LogoHorizontal strokeColor={contentColor} />
                 </Link>
                 <MenuIcon strokeColor={contentColor} menuIsShown={menuIsShown} toggleMenu={toggleMenu} />

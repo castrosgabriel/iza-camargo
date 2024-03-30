@@ -1,114 +1,192 @@
-import { useEffect, useRef, useState } from 'react';
+import { useGSAP } from '@gsap/react';
 import './Palestra.css';
 import gsap from 'gsap';
+import { useRef, useState } from 'react';
+import { ArrowGalery } from '../galery/Galery';
+import { SvgBlob, SvgPointer } from './SvgPointer';
 
 type SliderPalestraProps = {
     itemsArray: Array<{
         img: string,
         name: string,
-        content: string
+        content: string,
+        color?: string
     }>
 }
 
 const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const sliderRef = useRef<HTMLDivElement>(null);
 
-    useEffect(() => {
-        const slider = sliderRef.current;
-        const sliderItems = slider?.querySelectorAll('.slider-item');
-      
-        if (slider && sliderItems) {
-          gsap.to(sliderItems, {
-            duration: 0.5,
-            x: '-100%',
-            onComplete: () => {
-              setActiveIndex(activeIndex);
-              gsap.fromTo(
-                sliderItems,
-                { x: '-100%' },
-                { duration: 0.5, x:0 , opacity: 1, stagger: 0.2 }
-              );
+    const imgRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const txtRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const [currentSlide, setCurrentSlide] = useState(0)
+    const current = itemsArray[currentSlide];
+    const currentColor = current?.color;
+
+    const animateTriangle = (reverse?: boolean) => {
+        const triangleFirst = '#pointer-first';
+        const triangleSecond = '#pointer-second';
+        const sliderItem = document.querySelector('.slider-item');
+        const sliderItemWidth = sliderItem ? sliderItem.clientWidth : 0;
+        const tl = gsap.timeline()
+        const reverseValue = reverse ? -1 : 1;
+
+        gsap.set(triangleFirst, {
+            x: (-sliderItemWidth / 2) * reverseValue,
+            rotate: -20 * reverseValue,
+            y: '100%',
+            opacity: 0,
+        })
+
+        tl.from(triangleFirst, {
+            duration: 1,
+            x: 0,
+            y: 0,
+            rotate: 0,
+        })
+            .from(triangleFirst, {
+                opacity: 1,
+                duration: .4,
+            }, 0)
+            .from(triangleSecond, {
+                duration: 1,
+                x: (sliderItemWidth / 2) * reverseValue,
+                rotate: 20 * reverseValue,
+                y: '100%',
+            }, 0)
+            .from(triangleSecond, {
+                opacity: 0,
+                duration: .5,
+            }, .5)
+    }
+
+    const animateSlide = (reverse?: boolean) => {
+        const reverseValue = reverse ? -1 : 1;
+        gsap.to('.slider-content', {
+            x: `-=${(100 / itemsArray.length) * reverseValue}%`,
+            duration: 1,
+        })
+    }
+
+        const handleNextSlide = () => {
+            if (currentSlide < itemsArray.length - 1) {
+                setCurrentSlide(currentSlide + 1)
+                animateTriangle()
+                animateSlide()
+            } else {
+                setCurrentSlide(0)
+                gsap.to('.slider-content', {
+                    x: 0,
+                    duration: 1,
+                })
             }
-          });
         }
-      }, [activeIndex]);
 
-    const getFirstItemIndex = (activeIndex: number) => {
-        if (activeIndex === 0) {
-            return itemsArray.length - 1;
+        const handlePrevSlide = () => {
+            if (currentSlide > 0) {
+                setCurrentSlide(currentSlide - 1)
+                animateTriangle(true)
+                animateSlide(true)
+            } else {
+                setCurrentSlide(itemsArray.length - 1)
+                gsap.to('.slider-content', {
+                    x: `-${(100 / itemsArray.length) * (itemsArray.length - 1)}%`,
+                    duration: 1,
+                })
+            }
         }
-        return activeIndex - 1;
-    }
-    const getLastItemIndex = (activeIndex: number) => {
-        if (activeIndex === itemsArray.length - 1) {
-            return 0;
-        }
-        return activeIndex + 1;
-    }
 
-    const goToNextSlide = () => {
-        if (activeIndex === itemsArray.length - 1) {
-            setActiveIndex(0);
-        } else {
-            setActiveIndex(activeIndex + 1);
-        }
-    }
-    const goToPrevSlide = () => {
-        if (activeIndex === 0) {
-            setActiveIndex(itemsArray.length - 1);
-        } else {
-            setActiveIndex(activeIndex - 1);
-        }
-    }
+        useGSAP(() => {
 
-    const renderFirstItem = () => {
-        return itemsArray[getFirstItemIndex(activeIndex)];
-    }
+            // const positionSlideSide = (after?: boolean) => {
+                
 
-    const renderLastItem = () => {
-        return itemsArray[getLastItemIndex(activeIndex)];
-    }
+            const beforeSlideTl = gsap.timeline()
+            if (imgRefs.current && txtRefs.current) {
+                beforeSlideTl.to(imgRefs.current.filter((_, index) => index === currentSlide - 1 || (currentSlide === 0 && index === itemsArray.length - 1)), {
+                    scale: .7,
+                    duration: 1,
+                    x: 180,
+                    filter: 'blur(5px)',
+                    y: 30,
+                    rotate: -20,
+                })
+                    .to(txtRefs.current.filter((_, index) => index === currentSlide - 1 || (currentSlide === 0 && index === itemsArray.length - 1)), {
+                        opacity: 0,
+                        duration: .2,
+                        y: 10,
+                    }, 0)
 
-    return (
-        <div className='slider-container'>
-            <button className='slider-button' onClick={goToPrevSlide}>Anterior</button>
-            <div className='slider-content' ref={sliderRef}>
-                <div className='slider-item' key={getFirstItemIndex(activeIndex)}>
-                    <img style={{filter:'blur(5px)'}} src={renderFirstItem().img} />
-                    <div style={{opacity:0.1}} className='slider-text'>
-                        <p>PALESTRA</p>
-                        <h3>{renderFirstItem().name}</h3>
-                        <p>{renderFirstItem().content}</p>
-                        <p><b>Conteúdo</b>
-                            <br />Segurança psicológica e atualização de identidade.</p>
+            }
+
+            const afterSlideTl = gsap.timeline()
+            if (imgRefs.current && txtRefs.current) {
+                afterSlideTl.to(imgRefs.current.filter((_, index) => index === currentSlide + 1 || (currentSlide === itemsArray.length - 1 && index === 0)), {
+                    scale: .7,
+                    duration: 1,
+                    x: -180,
+                    y: 30,
+                    rotate: 20,
+                    filter: 'blur(5px)',
+                })
+                    .to(txtRefs.current.filter((_, index) => index === currentSlide + 1 || (currentSlide === itemsArray.length - 1 && index === 0)), {
+                        opacity: 0,
+                        duration: .2,
+                        y: 10,
+                    }, 0)
+
+            }
+
+            const activeSlideTl = gsap.timeline()
+            if (imgRefs.current && txtRefs.current) {
+                activeSlideTl.to(imgRefs.current[currentSlide], {
+                    scale: 1,
+                    duration: 1,
+                    filter: 'blur(0px)',
+                    x: 0,
+                    y: 0,
+                    rotate: 0,
+                })
+                    .to(txtRefs.current[currentSlide], {
+                        opacity: 1,
+                        duration: .5,
+                        y: 0,
+                    }, .5)
+            }
+
+            return [beforeSlideTl, activeSlideTl]
+
+        }, [currentSlide])
+
+        return (
+            <div className='slider-screen'>
+                <ArrowGalery onClick={handlePrevSlide} rotate fill='var(--c-dark)' />
+                <div className='slider-container'>
+                    <div className='slider-frame'>
+                        <SvgPointer fill={currentColor} />
+                        <div className='slider-content'>
+                            {itemsArray.map((item, index) => (
+                                <div
+                                    className='slider-item' key={index}>
+                                    <img ref={(element) => (imgRefs.current[index] = element)} src={item.img} />
+                                    <div ref={(element) => (txtRefs.current[index] = element)} className='slider-text'>
+                                        <p>PALESTRA</p>
+                                        <h3>{item.name}</h3>
+                                        <p>{item.content}</p>
+                                        <p>
+                                            <b>Conteúdo</b>
+                                            <br />
+                                            Segurança psicológica e atualização de identidade.
+                                        </p>
+                                    </div>
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
-                <div className='slider-item' key={activeIndex}>
-                    <img src={itemsArray[activeIndex].img} />
-                    <div className='slider-text'>
-                        <p>PALESTRA</p>
-                        <h3>{itemsArray[activeIndex].name}</h3>
-                        <p>{itemsArray[activeIndex].content}</p>
-                        <p><b>Conteúdo</b>
-                            <br />Segurança psicológica e atualização de identidade.</p>
-                    </div>
-                </div>
-                <div className='slider-item' key={getLastItemIndex(activeIndex)}>
-                    <img style={{filter:'blur(5px)'}} src={renderLastItem().img} />
-                    <div style={{opacity:0.1}} className='slider-text'>
-                        <p>PALESTRA</p>
-                        <h3>{renderLastItem().name}</h3>
-                        <p>{renderLastItem().content}</p>
-                        <p><b>Conteúdo</b>
-                            <br />Segurança psicológica e atualização de identidade.</p>
-                    </div>
-                </div>
+                <ArrowGalery onClick={handleNextSlide} fill='var(--c-dark)' />
+                <SvgBlob fill={currentColor} />
             </div>
-            <button className='slider-button' onClick={goToNextSlide}>Próximo</button>
+        );
+    }
 
-        </div>
-    )
-}
-
-export default SliderPalestra
+    export default SliderPalestra

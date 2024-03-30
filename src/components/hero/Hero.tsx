@@ -70,12 +70,6 @@ const Hero = ({ mouseMove }: heroProps) => {
                     start: 'top top',
                     end: 'bottom top',
                     scrub: true,
-                    snap: {
-                        snapTo: 1,
-                        duration: { min: 0.2, max: 1 },
-                        delay: 0,
-                        ease: 'power1.inOut',
-                    }
                 }
             })
             leaveElementsTl.to('.hero-img', {
@@ -102,11 +96,9 @@ const Hero = ({ mouseMove }: heroProps) => {
         }
     }, [finishTl])
 
-    console.log(finishTl)
-
     return (
         <>
-            <div className='hero-container' onMouseMove={handleParallax}>
+            <div id='hero-home' className='hero-container' onMouseMove={handleParallax}>
                 <div style={{ height: '2.3rem' }} />
                 <div className='hero-content'>
                     <img alt='logo' src={SvgLogo} className='hero-logo' />

@@ -1,36 +1,76 @@
-.slider-container{
+.slider-screen {
     width: 100vw;
     height: 100vh;
     background-color: var(--c-white);
     align-items: center;
     justify-content: center;
     display: flex;
+    position: relative
 }
 
-.slider-container .slider-content{
+.pointer-slider {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 1;
+    transform: translate(-50%, -50%);
     display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    height: 100%;
-    max-width: var(--max-width);
+    gap: 1rem;
 }
 
-.slider-container .slider-item {
+.slider-container {
+    width: 50vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    overflow: hidden;
+    z-index: 1;
+}
+
+.blob-slider{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 0;
+    transform: translate(-50%, -100%);
+    filter: blur(110px);
+    opacity: .8;
+    transition: all 0.5s;
+}
+
+.slider-container .slider-frame {
+    /* max-width: var(--max-width); */
+    width: 30rem;
+    display: flex;
+    overflow: visible;
+    z-index: 0;
+    position: relative;
+}
+
+.slider-container .slider-frame .slider-content {
+    display: flex;
+}
+
+.slider-frame .slider-content .slider-item {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 40rem;
+    width: 30rem;
+    gap:3rem;
 }
 
-.slider-container .slider-item .slider-text{
+.slider-content .slider-item .slider-text {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding: 20px;
     text-align: center;
-    gap: 1rem
+    gap: 1rem;
+}
 
+.slider-button {
+    z-index: 999999;
 }

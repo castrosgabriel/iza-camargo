@@ -15,7 +15,7 @@ const BookSeller = () => {
                 trigger: '.book-container',
                 start: 'top bottom',
                 end: 'bottom bottom',
-                snap: 1,
+                // snap: 1,
             }
         })
 

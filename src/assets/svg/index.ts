@@ -11,8 +11,10 @@ import SvgIso from './iso.svg';
 import SvgWhatsBtn from './whats-btn.svg';
 import SvgArrowSlider from './arrow-slider.svg';
 import SvgArrowGalery from './arrow-galery.svg';
+import SvgBlob from './blob.svg';
 
 export {
+    SvgBlob,
     SvgArrowGalery,
     SvgArrowSlider,
     SvgWhatsBtn,

@@ -1,5 +1,5 @@
 import { PngPalestraHero } from "../../assets/png";
-import { PngPalestra1 } from "../../assets/png/palestras";
+import { PngPalestra1, PngPalestra2, PngPalestra3, PngPalestra4, PngPalestra5, PngPalestra6, PngPalestra7, PngPalestra8 } from "../../assets/png/palestras";
 import Footer from "../footer/Footer";
 import FormSection from "../form/FormSection";
 import Galery from "../galery/Galery";
@@ -13,28 +13,52 @@ const items = [
     {
         img: PngPalestra1,
         name: 'Palestra 1',
-        content: 'Conteúdo da palestra 1'
+        content: 'Conteúdo da palestra 1',
+        color: '#86ECBD'
     },
     {
-        img: PngPalestra1,
+        img: PngPalestra2,
         name: 'Palestra 2',
-        content: 'Conteúdo da palestra 2'
+        content: 'Conteúdo da palestra 2',
+        color: '#86CDEC'
+
     },
     {
-        img: PngPalestra1,
+        img: PngPalestra3,
         name: 'Palestra 3',
-        content: 'Conteúdo da palestra 3'
+        content: 'Conteúdo da palestra 3',
+        color: '#F5859F'
     },
     {
-        img: PngPalestra1,
+        img: PngPalestra4,
         name: 'Palestra 4',
-        content: 'Conteúdo da palestra 4'
+        content: 'Conteúdo da palestra 4',
+        color: '#FDC286'
     },
     {
-        img: PngPalestra1,
+        img: PngPalestra5,
         name: 'Palestra 5',
-        content: 'Conteúdo da palestra 5'
+        content: 'Conteúdo da palestra 5',
+        color: '#86ECE8'
     },
+    {
+        img: PngPalestra6,
+        name: 'Palestra 6',
+        content: 'Conteúdo da palestra 6',
+        color: '#CDA0FA'
+    },
+    {
+        img: PngPalestra7,
+        name: 'Palestra 7',
+        content: 'Conteúdo da palestra 7',
+        color: '#F6E78F'
+    },
+    {
+        img: PngPalestra8,
+        name: 'Palestra 8',
+        content: 'Conteúdo da palestra 8',
+        color: '#9DF68F'
+    }
 ]
 
 

@@ -21,7 +21,7 @@ type olaSectionProps = {
     mouseMove: {
         x: number
         y: number
-    }
+    },
 }
 
 const OlaSection = ({ mouseMove }: olaSectionProps) => {
@@ -96,10 +96,9 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
             scrollTrigger: {
                 trigger: '.ola-container',
                 start: 'top top',
-                end: '+=300%',
+                end: '+=100%',
                 scrub: 1,
                 pin: true,
-                snap: 1,
             }
         })
     }, [])

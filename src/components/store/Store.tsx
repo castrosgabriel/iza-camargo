@@ -29,7 +29,7 @@ const Store = ({ mouseMove }: StoreProps) => {
                 start: 'top bottom',
                 end: 'bottom bottom',
                 scrub: 1,
-                snap: 1,
+                // snap: 1,
             },
             ease: 'none'
         })

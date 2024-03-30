@@ -24,7 +24,7 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                 start: 'top bottom',
                 end: 'bottom bottom',
                 scrub: true,
-                snap: 1
+                // snap: 1
             }
         })
         tl.from('.tv', {
@@ -41,10 +41,10 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
             scrollTrigger: {
                 trigger: '.living-room',
                 start: 'top top',
-                end: '+=400%',
+                end: '+=100%',
                 scrub: 1,
                 pin: true,
-                snap: 1,
+                // snap: 1,
             },
         })
 

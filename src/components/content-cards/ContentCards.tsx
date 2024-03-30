@@ -69,13 +69,7 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                     trigger: '.card-container',
                     start: 'top bottom',
                     end: 'bottom bottom',
-                    scrub: 1,
-                    snap: {
-                        snapTo: 1,
-                        duration: { min: 0.1, max: .8 },
-                        delay: 0,
-                        ease: 'power1.inOut',
-                    },
+                    scrub: true
                 },
                 opacity: 0,
                 duration: 1,
@@ -93,13 +87,6 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                 scale: '+=0.05',
                 opacity: 1,
                 duration: 0.5,
-            })
-            gsap.to(currentRef.current.querySelector('.img-wrapper'), {
-                scale: 1.2,
-                duration: 0.4,
-                ease: 'power1.inOut',
-                delay: 0.1,
-                y: -15,
             })
         }
 
@@ -122,12 +109,6 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                     opacity: 1,
                     duration: 0.5
                 })
-                gsap.to(ref.current.querySelector('.img-wrapper'), {
-                    scale: 1,
-                    duration: 0.4,
-                    ease: 'power1.inOut',
-                    y: 0,
-                });
             }
         });
     };
