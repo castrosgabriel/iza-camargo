@@ -21,7 +21,7 @@ type ArrowGaleryProps = {
 }
 const ArrowGalery = ({ fill, rotate, onClick }: ArrowGaleryProps) => {
     return (
-        <div style={{alignSelf: 'center', cursor: 'pointer', zIndex:9999}} onClick={onClick}>
+        <div className='arrow-galery' style={{ alignSelf: 'center', cursor: 'pointer', zIndex: 9999 }} onClick={onClick}>
             <svg style={{ rotate: rotate ? '180deg' : '0' }} xmlns="http://www.w3.org/2000/svg" width="69" height="29" viewBox="0 0 69 29" fill="none">
                 <path
                     fillRule="evenodd"
@@ -33,13 +33,13 @@ const ArrowGalery = ({ fill, rotate, onClick }: ArrowGaleryProps) => {
     )
 }
 
-const Galery = ({ 
-    children, 
-    height = '100vh', 
-    title = 'Galeria', 
-    backgroundColor = 'var(--c-support)', 
+const Galery = ({
+    children,
+    height = '100vh',
+    title = 'Galeria',
+    backgroundColor = 'var(--c-support)',
     gap = 2,
-    titleColor = 'var(--c-white)'}: GaleryProps) => {
+    titleColor = 'var(--c-white)' }: GaleryProps) => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const galeryRef = useRef<(HTMLDivElement | null)[]>([]);
@@ -69,19 +69,18 @@ const Galery = ({
         goTo(prevIndex);
     }
 
-
     return (
         <div style={{ height: height, backgroundColor: backgroundColor }} className='galery-container' >
             <h2 style={{ color: titleColor }}>
                 {title}
-            </h2> 
+            </h2>
             <div className='galery'>
                 <ArrowGalery onClick={goToPrevious} rotate fill={titleColor} />
                 <div className='galery-frame' ref={container}>
-                    <div style={{gap: `${gap}rem`}} className='galery-row'>
+                    <div style={{ gap: `${gap}rem` }} className='galery-row'>
                         {React.Children.map(children, (child, index) => {
                             return (
-                                <div ref={el => galeryRef.current[index] = el} key={index}>
+                                <div className='galery-item' ref={el => galeryRef.current[index] = el} key={index}>
                                     {child}
                                 </div>
                             )

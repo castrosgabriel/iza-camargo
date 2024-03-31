@@ -57,3 +57,13 @@
 .menu-btn {
     transition: all 0.2s ease-in-out;
 }
+
+@media (max-width: 768px) {
+    .menu-wrapper .social-media-wrapper {
+        position: absolute;
+        left: 0;
+        transform: unset;
+        max-width: unset;
+        padding: 3rem;
+    }
+}

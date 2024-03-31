@@ -71,3 +71,13 @@ a{
   all: unset;
   cursor: pointer;
 }
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 3.5rem;
+  }
+
+  .full-name-logo-img{
+    display: none;
+  }
+}

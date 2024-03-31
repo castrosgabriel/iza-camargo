@@ -141,3 +141,47 @@
         gap: 1rem;
     }
 }
+
+@media (max-width: 768px) {
+    .about-me-container {
+        padding: 4rem 0;
+        gap: 4rem;
+    }
+
+    .about-me-container .about-me-wrapper {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .about-me-container .about-me-wrapper .about-me-col {
+        max-width: 100%;
+    }
+
+    .about-me-col .iza-name-wrapper {
+        img {
+            width: 4rem;
+            height: 4rem;
+        }
+    }
+
+    .about-me-col .tags-wrapper {
+        gap: .4rem;
+
+        p {
+            padding: 0.1rem 0.4rem;
+        }
+    }
+
+    .about-me-col .linkedin-btn {
+        padding: 0.5rem 0.8rem;
+    }
+
+    .about-me-wrapper .about-me-txt {
+        gap: 2rem;
+    }
+
+    .about-me-txt .txt-row {
+        flex-direction: column;
+        gap: 2rem;
+    }
+}

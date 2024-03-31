@@ -29,3 +29,32 @@
     justify-content: center;
     align-items: center;
 }
+
+@media (max-width: 768px) {
+    .arrow-galery {
+        display: none;
+    }
+
+
+    .galery-container .galery {
+        width: calc(100% - 4rem);
+    }
+
+    .galery-container .galery .galery-frame {
+        overflow: auto;
+        display: flex;
+        padding: 2rem;
+    }
+
+    .galery-container .galery-row {
+        display: flex;
+        align-items: center;
+    }
+
+    .galery-frame .galery-item {
+        width: 20rem;
+        object-fit: cover;
+        overflow: hidden;
+    }
+
+}

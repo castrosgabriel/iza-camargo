@@ -27,3 +27,27 @@
     object-position: bottom;
     height: 100vh;
 }
+
+@media (max-width: 768px) {
+
+    .mentoria-info .mentoria-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 3rem 2rem 0 2rem;
+        max-width: unset;
+        width: calc(100vw - 4rem);
+        gap: 1rem;
+        justify-content: flex-start;
+    }
+
+    .mentoria-wrapper .mentoria-txt {
+        min-width: unset;
+    }
+
+    .mentoria-info .mentoria-wrapper img {
+        object-fit: cover;
+        object-position: bottom;
+        height: auto;
+        width: calc(100vw - 4rem);
+    }
+}

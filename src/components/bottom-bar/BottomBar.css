@@ -80,3 +80,33 @@
         width: 0.1rem;
     }
 }
+
+@media (max-width: 768px) {
+    .big-number {
+        display: none;
+    }
+
+    .bottom-bar .title-page-bar {
+        display: none;
+    }
+
+    .bottom-bar .quote-page-bar {
+        display: none;
+    }
+
+    .bottom-container {
+        display: flex;
+        width: 100vw;
+        background-color: rgba(91, 83, 83, 0);
+        backdrop-filter: none;
+        justify-content: center;
+    }
+
+    .bottom-container .bottom-bar {
+        justify-content: center;
+    }
+
+    .spacer-bar {
+        display: none;
+    }
+}

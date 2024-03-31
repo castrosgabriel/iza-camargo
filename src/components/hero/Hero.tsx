@@ -6,6 +6,7 @@ import gsap from 'gsap';
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
 import ScrollTrigger from 'gsap/ScrollTrigger'
+import PngIzaHeroMobile from '../../assets/png/iza-hero-mobile.png';
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -110,6 +111,7 @@ const Hero = ({ mouseMove }: heroProps) => {
                 <BottomBar ref={bottomBarRef} />
             </div>
             <div className='hero-img-wrapper'>
+                <img src={PngIzaHeroMobile} className='img-mobile'/>
                 <div className='hero-img'>
                     <img src={PngIzaOverHero} className='img-over' />
                     <img src={PngIzaHero} className='img-bg' />

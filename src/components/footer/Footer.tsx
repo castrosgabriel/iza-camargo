@@ -7,20 +7,22 @@ import './Footer.css'
 const Footer = () =>
     <footer className='footer'>
         <div className='footer-content'>
-            <Link to='/'><img src={SvgIso} /></Link>
-            <div className='pages'>
-                <Link to='/'><p><b>Home</b></p></Link>
-                <p>Roda da Vida</p>
-                <p>Pesquisa</p>
-                <p>TEDx</p>
-                <p>Livro</p>
-                <p>Interioriza</p>
-            </div>
-            <div className='pages'>
-                <Link to='/minha-historia'><p><b>Minha história</b></p></Link>
-                <Link to='/palestras'><p><b>Palestras</b></p></Link>
-                <Link to='/mentorias'><p><b>Mentorias</b></p></Link>
-                <Link to='http://www.google.com'><p><b>Loja</b></p></Link>
+            <Link to='/'><img className='logo-footer' src={SvgIso} /></Link>
+            <div className='pages-wrapper'>
+                <div className='pages'>
+                    <Link to='/'><p><b>Home</b></p></Link>
+                    <p>Roda da Vida</p>
+                    <p>Pesquisa</p>
+                    <p>TEDx</p>
+                    <p>Livro</p>
+                    <p>Interioriza</p>
+                </div>
+                <div className='pages'>
+                    <Link to='/minha-historia'><p><b>Minha história</b></p></Link>
+                    <Link to='/palestras'><p><b>Palestras</b></p></Link>
+                    <Link to='/mentorias'><p><b>Mentorias</b></p></Link>
+                    <Link to='http://www.google.com'><p><b>Loja</b></p></Link>
+                </div>
             </div>
             <div className='contact-section'>
                 <p><b>Contato</b></p>

@@ -103,5 +103,49 @@ input::placeholder {
     margin-top: 3rem;
 }
 
+@media (max-width: 768px) {
+
+    .form-section {
+        height: auto;
+        padding: 4rem 0;
+    }
+
+    .form-section .form-section-content {
+        flex-direction: column;
+        gap: 4rem;
+    }
+
+    .form-section .form-section-content .form-wrapper-container{
+        gap: 4rem;
+    }
+
+    .form-section .form-section-content .form-txt{
+        max-width: 100%;
+    }
+
+    .form-section .form-section-content .form-txt h3{
+        font-size: 2rem;
+    }
+
+    .form-section .form-section-content .form-txt p{
+        font-size: 1.25rem;
+    }
+
+    .form-section-content .social-media-form{
+        gap: 1rem
+    }
+
+    .social-media-form .team-container {
+        gap: 1rem;
+    }
+
+    .social-media-form .team-container .team-item {
+        gap: .25rem;
+    }
+
+    .social-media-form .social-footer-form {
+        gap: 1rem;
+    }
+}
 
 
