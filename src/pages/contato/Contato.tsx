@@ -24,6 +24,8 @@ const Contato = () => {
                 text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                 Phasellus iaculis pharetra erat, non suscipit ante. 
                 Vestibulum gravida finibus dapibus.'
+                formFields={['Nome', 'Empresa', 'Telefone', 'E-mail', 'Mensagem']}
+                socialMedia
             />
             <Footer />
         </>

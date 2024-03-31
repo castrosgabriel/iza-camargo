@@ -57,8 +57,9 @@ input::placeholder {
 .form-section .form-section-content .form-txt{
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
+    gap: 1.25rem;
     max-width: 32rem;
+    margin-bottom: 3rem;
 }
 
 .form-section .form-section-content .form-txt h3{
@@ -67,6 +68,39 @@ input::placeholder {
 
 .form-section .form-section-content .form-txt p{
     color: var(--c-white)
+}
+
+.form-section-content .social-media-form{
+    display: flex;
+    flex-direction: column;
+    gap: .5rem
+}
+
+.form-section-content .social-media-form p{
+    color: var(--c-white);
+}
+
+.form-section-content .social-media-form p span{
+    color: var(--c-primary);
+}
+
+.social-media-form .team-container {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.social-media-form .team-container .team-item {
+    display: flex;
+    flex-direction: column;
+    gap: .25rem;
+}
+
+.social-media-form .social-footer-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-top: 3rem;
 }
 
 

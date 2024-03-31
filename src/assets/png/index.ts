@@ -32,8 +32,10 @@ import PngGalery4 from './galery-4.png';
 import PngPalestraHero from './palestra-hero.png';
 import PngMentoriaHero from './mentoria-hero.png';
 import PngContactHero from './contact-hero.png';
+import PngMentoriaIza from './mentoria-iza.png';
 
 export {
+    PngMentoriaIza,
     PngContactHero,
     PngMentoriaHero,
     PngPalestraHero,

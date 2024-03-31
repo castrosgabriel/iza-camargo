@@ -20,24 +20,25 @@ const App = () => {
   const [mouseY, setMouseY] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
-  useEffect(() => {
-    const handleScrollDown = () => {
-      gsap.to(window, {
-        duration: 1.8,
-        scrollTo: { y: `+=${window.innerHeight}`, autoKill: false },
-        ease: 'power2.inOut',
-        onComplete: () => setIsAnimating(false),
-      })
-    }
+  const handleScrollDown = () => {
+    gsap.to(window, {
+      duration: 1.8,
+      scrollTo: { y: `+=${window.innerHeight}`, autoKill: false },
+      ease: 'power2.inOut',
+      onComplete: () => setIsAnimating(false),
+    })
+  }
 
-    const handleScrollUp = () => {
-      gsap.to(window, {
-        duration: 1.8,
-        scrollTo: { y: `-=${window.innerHeight}`, autoKill: false },
-        ease: 'power2.inOut',
-        onComplete: () => setIsAnimating(false),
-      })
-    }
+  const handleScrollUp = () => {
+    gsap.to(window, {
+      duration: 1.8,
+      scrollTo: { y: `-=${window.innerHeight}`, autoKill: false },
+      ease: 'power2.inOut',
+      onComplete: () => setIsAnimating(false),
+    })
+  }
+
+  useEffect(() => {
 
     const observer = Observer.create({
       target: window,

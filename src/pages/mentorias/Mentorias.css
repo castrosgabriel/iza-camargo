@@ -1,0 +1,29 @@
+.mentoria-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--c-white);
+    overflow: hidden;
+}
+
+.mentoria-info .mentoria-wrapper {
+    display: flex;
+    align-items: center;
+    padding: 0 3rem;
+    max-width: var(--max-width);
+    width: 100%;
+    justify-content: space-between;
+}
+
+.mentoria-wrapper .mentoria-txt {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-width: 30rem;
+}
+
+.mentoria-info .mentoria-wrapper img {
+    object-fit: cover;
+    object-position: bottom;
+    height: 100vh;
+}
