@@ -8,10 +8,10 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
-import MinhaHistoria from './components/minha-historia/MinhaHistoria.tsx';
-import Contato from './components/contato/Contato.tsx';
-import Mentorias from './components/mentorias/Mentorias.tsx';
-import Palestras from './components/palestras/Palestras.tsx';
+import MinhaHistoria from './pages/minha-historia/MinhaHistoria.tsx';
+import Contato from './pages/contato/Contato.tsx';
+import Mentorias from './pages/mentorias/Mentorias.tsx';
+import Palestras from './pages/palestras/Palestras.tsx';
 
 const router = createBrowserRouter(
   createRoutesFromElements(

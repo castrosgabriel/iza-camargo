@@ -1,10 +1,16 @@
 import { PngContactHero } from "../../assets/png";
-import Footer from "../footer/Footer";
-import HeroInternal from "../hero/HeroInternal";
-import MenuWrapper from "../menu/MenuWrapper";
-import FormSection from "../form/FormSection";
+import Footer from "../../components/footer/Footer";
+import HeroInternal from "../../components/hero/HeroInternal";
+import MenuWrapper from "../../components/menu/MenuWrapper";
+import FormSection from "../../components/form/FormSection";
+import { useEffect } from "react";
 
 const Contato = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
             <MenuWrapper />

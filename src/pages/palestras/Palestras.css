@@ -10,7 +10,7 @@
 
 .pointer-slider {
     position: absolute;
-    top: 50%;
+    top: 26rem;
     left: 50%;
     z-index: 1;
     transform: translate(-50%, -50%);
@@ -21,7 +21,7 @@
 .slider-container {
     width: 50vw;
     height: 100vh;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     display: flex;
     overflow: hidden;
@@ -30,7 +30,7 @@
 
 .blob-slider{
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     z-index: 0;
     transform: translate(-50%, -100%);
@@ -40,8 +40,7 @@
 }
 
 .slider-container .slider-frame {
-    /* max-width: var(--max-width); */
-    width: 30rem;
+    width: 44rem;
     display: flex;
     overflow: visible;
     z-index: 0;
@@ -50,15 +49,18 @@
 
 .slider-container .slider-frame .slider-content {
     display: flex;
+    align-items: flex-start;
 }
 
 .slider-frame .slider-content .slider-item {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
-    width: 30rem;
+    width: 44rem;
     gap:3rem;
+    padding-top: 8.5rem;
+    height: 100%;
 }
 
 .slider-content .slider-item .slider-text {
@@ -66,11 +68,27 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 20px;
+    padding: 1.25rem;
     text-align: center;
     gap: 1rem;
 }
 
 .slider-button {
     z-index: 999999;
+}
+
+.slider-dots {
+    display: flex;
+    gap: .75rem;
+    align-items: center;
+    z-index: 999999;
+    position: absolute;
+    top: 3.5rem
+}
+
+.slider-dots .dot {
+    width: .75rem;
+    height: .75rem;
+    border-radius: 1rem;
+    background-color: #9F9F9F;
 }

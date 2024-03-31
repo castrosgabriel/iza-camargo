@@ -1,7 +1,7 @@
 import { PngIzaAbout, PngMinhaHistoriaHero } from "../../assets/png";
 import './MinhaHistoria.css';
-import MenuWrapper from "../menu/MenuWrapper";
-import Galery from "../galery/Galery";
+import MenuWrapper from "../../components/menu/MenuWrapper";
+import Galery from "../../components/galery/Galery";
 import { PngGalery1, PngGalery2, PngGalery3, PngGalery4 } from '../../assets/png';
 
 export const imgArray = [
@@ -12,10 +12,16 @@ export const imgArray = [
 ]
 
 import clientsArray from '../../assets/png/clients/clientsArray';
-import Footer from "../footer/Footer";
-import HeroInternal from "../hero/HeroInternal";
+import Footer from "../../components/footer/Footer";
+import HeroInternal from "../../components/hero/HeroInternal";
+import { useEffect } from "react";
 
 const MinhaHistoria = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
             <MenuWrapper whichIsActive='minha-historia' />

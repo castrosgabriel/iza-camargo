@@ -1,4 +1,4 @@
-import './Palestra.css';
+import './Palestras.css';
 import gsap from 'gsap';
 import { useLayoutEffect, useRef } from 'react';
 

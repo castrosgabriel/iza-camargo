@@ -14,14 +14,13 @@ import { Observer, ScrollTrigger } from 'gsap/all'
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger)
 
-function App() {
+const App = () => {
 
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
 
   useEffect(() => {
-
     const handleScrollDown = () => {
       gsap.to(window, {
         duration: 1.8,
@@ -30,7 +29,7 @@ function App() {
         onComplete: () => setIsAnimating(false),
       })
     }
-  
+
     const handleScrollUp = () => {
       gsap.to(window, {
         duration: 1.8,
@@ -38,7 +37,7 @@ function App() {
         ease: 'power2.inOut',
         onComplete: () => setIsAnimating(false),
       })
-    } 
+    }
 
     const observer = Observer.create({
       target: window,
@@ -69,7 +68,7 @@ function App() {
   return (
     <>
       <MenuWrapper whichIsActive='home' />
-      <div>
+      <div className='content-home'>
         <Hero mouseMove={{ x: mouseX, y: mouseY }} />
         <OlaSection mouseMove={{ x: mouseX, y: mouseY }} />
         <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />

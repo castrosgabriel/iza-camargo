@@ -1,11 +1,17 @@
 import { PngMentoriaHero } from "../../assets/png";
-import Footer from "../footer/Footer";
-import GaleryTestimonal from "../galery/GaleryTestimonal";
-import HeroInternal from "../hero/HeroInternal";
-import MenuWrapper from "../menu/MenuWrapper";
-import FormSection from "../form/FormSection";
+import Footer from "../../components/footer/Footer";
+import GaleryTestimonal from "../../components/galery/GaleryTestimonal";
+import HeroInternal from "../../components/hero/HeroInternal";
+import MenuWrapper from "../../components/menu/MenuWrapper";
+import FormSection from "../../components/form/FormSection";
+import { useEffect } from "react";
 
 const Mentorias = () => {
+
+    useEffect(() => {
+        window.scrollTo(0, 0)
+    }, [])
+
     return (
         <>
             <MenuWrapper whichIsActive='mentorias' />

@@ -1,9 +1,10 @@
 import { useGSAP } from '@gsap/react';
-import './Palestra.css';
+import './Palestras.css';
 import gsap from 'gsap';
 import { useEffect, useRef, useState } from 'react';
-import { ArrowGalery } from '../galery/Galery';
+import { ArrowGalery } from '../../components/galery/Galery';
 import { SvgBlob, SvgPointer } from './SvgPointer';
+import SliderDots from './SliderDots';
 
 type SliderPalestraProps = {
     itemsArray: Array<{
@@ -25,37 +26,35 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
     const contentRef = useRef<HTMLDivElement | null>(null)
 
     const animateTriangle = (reverse?: boolean) => {
-        const triangleFirst = '#pointer-first';
-        const triangleSecond = '#pointer-second';
         const sliderItem = document.querySelector('.slider-item');
         const sliderItemWidth = sliderItem ? sliderItem.clientWidth : 0;
-        const tl = gsap.timeline()
         const reverseValue = reverse ? -1 : 1;
 
-        gsap.set(triangleFirst, {
+        gsap.set('#pointer-first', {
             x: (-sliderItemWidth / 2) * reverseValue,
             rotate: -20 * reverseValue,
-            y: '100%',
+            y: '90%',
             opacity: 0,
         })
 
-        tl.from(triangleFirst, {
+        const triangleTL = gsap.timeline()
+        triangleTL.from('#pointer-first', {
             duration: 1,
             x: 0,
             y: 0,
             rotate: 0,
         })
-            .from(triangleFirst, {
+            .from('#pointer-first', {
                 opacity: 1,
-                duration: .4,
+                duration: .25,
             }, 0)
-            .from(triangleSecond, {
+            .from('#pointer-second', {
                 duration: 1,
                 x: (sliderItemWidth / 2) * reverseValue,
                 rotate: 20 * reverseValue,
-                y: '100%',
+                y: '90%',
             }, 0)
-            .from(triangleSecond, {
+            .from('#pointer-second', {
                 opacity: 0,
                 duration: .5,
             }, .5)
@@ -73,28 +72,22 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
     }
 
     const handleNextSlide = () => {
-        if (!animating) {
-            if (currentSlide < itemsArray.length - 1) {
-                setAnimating(true)
-                setCurrentSlide(currentSlide + 1)
-                animateTriangle()
-                animateSlide()
-            } else {
-                return
-            }
+        if (animating) return
+        if (currentSlide < itemsArray.length - 1) {
+            setAnimating(true)
+            setCurrentSlide(currentSlide + 1)
+            animateTriangle()
+            animateSlide()
         }
     }
 
     const handlePrevSlide = () => {
-        if (!animating) {
-            if (currentSlide > 0) {
-                setAnimating(true)
-                setCurrentSlide(currentSlide - 1)
-                animateTriangle(true)
-                animateSlide(true)
-            } else {
-                return
-            }
+        if (animating) return
+        if (currentSlide > 0) {
+            setAnimating(true)
+            setCurrentSlide(currentSlide - 1)
+            animateTriangle(true)
+            animateSlide(true)
         }
     }
 
@@ -102,15 +95,26 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
         if (currentSlide === 0) {
             gsap.set(imgRefs.current.filter((_, index) => index > currentSlide), {
                 scale: .7,
-                x: -180,
-                y: 30,
+                x: -400,
+                y: 50,
                 rotate: 20,
                 filter: 'blur(5px)',
+                opacity: .7
             })
             gsap.set(txtRefs.current.filter((_, index) => index > currentSlide), {
                 opacity: 0,
                 duration: .2,
                 y: 10,
+            })
+
+            gsap.set(imgRefs.current[currentSlide], {
+                scale: 1,
+                duration: 1,
+                filter: 'blur(0px)',
+                x: 0,
+                y: -30,
+                rotate: 0,
+                opacity: 1,
             })
         }
     }, [])
@@ -120,15 +124,15 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
         beforeSlideTl.to(imgRefs.current.filter((_, index) => index < currentSlide), {
             scale: .7,
             duration: 1,
-            x: 180,
+            x: 400,
             filter: 'blur(5px)',
-            y: 30,
+            y: 50,
             rotate: -20,
+            opacity: .7
         })
             .to(txtRefs.current.filter((_, index) => index < currentSlide), {
                 opacity: 0,
                 duration: .2,
-                y: 10,
             }, 0)
 
 
@@ -136,15 +140,16 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
         afterSlideTl.to(imgRefs.current.filter((_, index) => index > currentSlide), {
             scale: .7,
             duration: 1,
-            x: -180,
-            y: 30,
+            x: -400,
+            y: 50,
             rotate: 20,
             filter: 'blur(5px)',
+            opacity: .7
+
         })
             .to(txtRefs.current.filter((_, index) => index > currentSlide), {
                 opacity: 0,
                 duration: .2,
-                y: 10,
             }, 0)
 
 
@@ -154,19 +159,20 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
             duration: 1,
             filter: 'blur(0px)',
             x: 0,
-            y: 0,
+            y: -30,
             rotate: 0,
+            opacity: 1,
         })
             .to(txtRefs.current[currentSlide], {
                 opacity: 1,
                 duration: .5,
-                y: 0,
             }, .8)
 
     }, [currentSlide])
 
     return (
         <div className='slider-screen'>
+            <SliderDots itemsArray={itemsArray} currentColor={currentColor} activeDot={currentSlide} />
             <ArrowGalery onClick={handlePrevSlide} rotate fill='var(--c-dark)' />
             <div className='slider-container'>
                 <div className='slider-frame'>
