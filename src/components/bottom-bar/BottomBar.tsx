@@ -3,6 +3,7 @@ import { SvgInstagram, SvgYoutube, SvgSpotify, SvgWhats, SvgLinkedin } from '../
 import { forwardRef } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import { Link } from 'react-router-dom';
 
 type BigNumberProps = {
     number: string;
@@ -25,11 +26,11 @@ const BigNumber = ({ number, description }: BigNumberProps) => {
 
 export const SocialMedia = () =>
     <div className='social-container'>
-        <img src={SvgInstagram} alt='instagram' />
-        <img src={SvgYoutube} alt='youtube' />
-        <img src={SvgSpotify} alt='spotify' />
-        <img src={SvgWhats} alt='whats' />
-        <img src={SvgLinkedin} alt='linkedin' />
+        <Link to='https://www.instagram.com/izabellacamargoreal'><img src={SvgInstagram} alt='instagram' /></Link>
+        <Link to='https://www.youtube.com/izabellacamargoreal'><img src={SvgYoutube} alt='youtube' /></Link>
+        <Link to='https://podcasters.spotify.com/pod/show/izabella-camargo3'><img src={SvgSpotify} alt='spotify' /></Link>
+        <Link to='https://wa.me/5511974987070'><img src={SvgWhats} alt='whats' /></Link>
+        <Link to='https://www.linkedin.com/in/izabellacamargoreal'><img src={SvgLinkedin} alt='linkedin' /></Link>
     </div>
 
 type BottomBarProps = {

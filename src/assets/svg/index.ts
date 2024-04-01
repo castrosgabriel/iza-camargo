@@ -12,8 +12,12 @@ import SvgWhatsBtn from './whats-btn.svg';
 import SvgArrowSlider from './arrow-slider.svg';
 import SvgArrowGalery from './arrow-galery.svg';
 import SvgBlob from './blob.svg';
+import SvgLoadingSpin from './loading-spin.svg';
+import SvgSubmitted from './submitted.svg';
 
 export {
+    SvgSubmitted,
+    SvgLoadingSpin,
     SvgBlob,
     SvgArrowGalery,
     SvgArrowSlider,

@@ -4,9 +4,10 @@ type InputFieldProps = {
     placeHolder: string;
     onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
     name: string;
+    noValue?: boolean;
 }
 
-const InputField = ({ placeHolder, onChange, name }: InputFieldProps) => {
+const InputField = ({ placeHolder, onChange, name, noValue }: InputFieldProps) => {
     return (
         <input
             name={name}
@@ -14,8 +15,28 @@ const InputField = ({ placeHolder, onChange, name }: InputFieldProps) => {
             type='text'
             className='input-field'
             placeholder={placeHolder}
+            value={noValue ? '' : undefined}
         />
     )
 }
 
-export default InputField;
+type TextAreaFieldProps = {
+    placeHolder: string;
+    onChange?: (e: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    name: string;
+    noValue?: boolean;
+}
+
+const TextAreaField = ({ placeHolder, onChange, name, noValue }: TextAreaFieldProps) => {
+    return (
+        <textarea
+            name={name}
+            onChange={onChange}
+            className='input-field'
+            placeholder={placeHolder}
+            value={noValue ? '' : undefined}
+        />
+    )
+}
+
+export { InputField, TextAreaField };

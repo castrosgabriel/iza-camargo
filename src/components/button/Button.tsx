@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom'
-import { SvgWhatsBtn } from '../../assets/svg'
+import { SvgLoadingSpin, SvgWhatsBtn } from '../../assets/svg'
 import './Button.css'
+import { CSSProperties, useEffect, useRef } from 'react'
+import gsap from 'gsap'
 
 type ButtonProps = {
     text: string
@@ -11,6 +13,8 @@ type ButtonProps = {
     onMouseLeave?: () => void
     img?: string
     type?: 'button' | 'submit'
+    loading?: boolean
+    submited?: boolean
 }
 
 const Button = ({
@@ -20,13 +24,40 @@ const Button = ({
     color = 'var(--c-primary)',
     hoverColor = 'var(--c-support)',
     onMouseEnter,
-    onMouseLeave
+    onMouseLeave,
+    loading,
 }: ButtonProps) => {
 
+    const buttonTextStyle: CSSProperties = {
+        opacity: loading ? 0 : 1,
+        pointerEvents: loading ? 'none' : 'all'
+    }
+
+    const loadingStyle: CSSProperties = {
+        position: 'absolute',
+        left: '50%',
+        top: '50%',
+        transform: 'translate(-50%, -50%)',
+        opacity: loading ? 1 : 0,
+    }
+
+    const baseButtonStyle: CSSProperties = {
+        backgroundColor: loading ? hoverColor : color,
+        pointerEvents: loading ? 'none' : 'all'
+    }
+
+    const spinnerRef = useRef<HTMLImageElement>(null)
+
+    useEffect(() => {
+        if (loading)
+            gsap.to(spinnerRef.current, { rotation: 360, duration: 1, repeat: -1, ease: 'none' })
+    }, [loading])
+
     const BaseButton = () =>
-        <button type={type} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={{ backgroundColor: color }} className='btn-wrapper'>
+        <button type={type} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={baseButtonStyle} className='btn-wrapper'>
             <div className='hover-text'>
-                <div className='col-hover'>
+                <img ref={spinnerRef} src={SvgLoadingSpin} style={loadingStyle} />
+                <div style={buttonTextStyle} className='col-hover'>
                     <span>{text}</span>
                     <span style={{ color: 'white' }}>{text}</span>
                 </div>

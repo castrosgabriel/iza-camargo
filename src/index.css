@@ -14,6 +14,8 @@ body {
   height: 100vh;
 }
 
+
+
 h1 {
   color: #FFF;
   text-align: right;
@@ -45,6 +47,11 @@ p {
 
 h2 {
   margin: 0;
+}
+
+a {
+  all: unset;
+  cursor: pointer;
 }
 
 #root {
