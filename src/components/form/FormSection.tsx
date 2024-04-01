@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { SocialMedia } from '../bottom-bar/BottomBar';
 import Button, { SmallButton } from '../button/Button';
 import InputField from './InputField';
@@ -16,6 +17,46 @@ const FormSection = ({
     formFields = ['Nome', 'Empresa', 'Telefone', 'E-mail'],
     socialMedia
 }: FormSectionProps) => {
+
+    const getPagePath = () => {
+        const urlPath = window.location.pathname;
+        const pathParts = urlPath.split('/');
+        return pathParts[pathParts.length - 1]; // Último item do array, que será a parte da URL após a última barra
+    };
+
+    const [formData, setFormData] = useState({
+        Onde: getPagePath()
+    });
+
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const { name, value } = e.target;
+        setFormData({ ...formData, [name]: value });
+    };
+
+    const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault();
+        console.log(formData);
+        fetch(
+            'https://script.google.com/macros/s/AKfycbxPnjUhSivGT959C4CrREHOz_5IwCyHTVHJPyZu7eIXLUNp7wtKxqQj7c2rGhx3YWn1/exec',
+            {
+                method: "POST",
+                body: JSON.stringify(formData)
+            }
+        )
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.text();
+            })
+            .then(data => {
+                console.log(data); 
+            })
+            .catch(error => {
+                console.error('There was a problem with the fetch operation:', error);
+            });
+    };
+
     return (
         <div className='form-section'>
             <div className='form-section-content'>
@@ -51,12 +92,14 @@ const FormSection = ({
                     }
                 </div>
                 <div className='form-wrapper-container'>
-                    <div className='form-wrapper'>
-                        {formFields.map((field, index) => (
-                            <InputField key={index} placeHolder={field} />
-                        ))}
-                    </div>
-                    <Button hoverColor='var(--c-dark)' text='Solicitar Contato' />
+                    <form className='form-wrapper-container' onSubmit={handleSubmit}>
+                        <div className='form-wrapper'>
+                            {formFields.map((field, index) => (
+                                <InputField name={field} onChange={handleChange} key={index} placeHolder={field} />
+                            ))}
+                        </div>
+                        <Button type='submit' hoverColor='var(--c-dark)' text='Solicitar Contato' />
+                    </form>
                 </div>
             </div>
         </div>

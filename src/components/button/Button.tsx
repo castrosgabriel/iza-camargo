@@ -10,9 +10,11 @@ type ButtonProps = {
     onMouseEnter?: () => void
     onMouseLeave?: () => void
     img?: string
+    type?: 'button' | 'submit'
 }
 
 const Button = ({
+    type = 'button',
     link = '',
     text,
     color = 'var(--c-primary)',
@@ -21,20 +23,31 @@ const Button = ({
     onMouseLeave
 }: ButtonProps) => {
 
-    return (
-        <Link to={link}>
-            <button onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={{ backgroundColor: color }} className='btn-wrapper'>
-                <div className='hover-text'>
-                    <div className='col-hover'>
-                        <span>{text}</span>
-                        <span style={{ color: 'white' }}>{text}</span>
-                    </div>
+    const BaseButton = () =>
+        <button type={type} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={{ backgroundColor: color }} className='btn-wrapper'>
+            <div className='hover-text'>
+                <div className='col-hover'>
+                    <span>{text}</span>
+                    <span style={{ color: 'white' }}>{text}</span>
                 </div>
-                <div className='hover-btn' style={{ backgroundColor: hoverColor }} />
-            </button>
-        </Link>
+            </div>
+            <div className='hover-btn' style={{ backgroundColor: hoverColor }} />
+        </button>
+
+    return (
+        <>
+            {type === 'button' ? (
+                <Link to={link}>
+                    <BaseButton />
+                </Link>
+            ) : (
+                < BaseButton />)
+            }
+        </>
     )
 }
+
+
 
 
 export const SmallButton = ({ img = SvgWhatsBtn, text, color = 'var(--c-primary)' }: ButtonProps) =>
