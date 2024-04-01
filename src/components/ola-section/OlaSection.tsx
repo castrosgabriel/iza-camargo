@@ -35,31 +35,34 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
     const SHADOW_MOVE_DIST = { x: 0.5, y: 0.5 }
 
     const handleParallax = () => {
-        gsap.to('.img-plant-1', {
-            x: (mouseMove.x - 50) * PLANT_1_MOVE_DIST,
-            duration: 0.3,
-        });
-        gsap.to('.img-iza-recorte', {
-            x: (mouseMove.x - 50) * IZA_MOVE_DIST,
-            duration: 0.3,
-        });
-        gsap.to('.img-light-ola', {
-            x: (mouseMove.x - 50) * LIGHT_MOVE_DIST,
-            duration: 0.3,
-        });
-        gsap.to('.img-plant-2', {
-            x: (mouseMove.x - 50) * PLANT_2_MOVE_DIST,
-            duration: 0.3,
-        });
-        gsap.to('.img-plant-3', {
-            x: (mouseMove.x - 50) * PLANT_3_MOVE_DIST,
-            duration: 0.3,
-        });
-        gsap.to('.img-shadow-ola', {
-            x: (mouseMove.x - 50) * SHADOW_MOVE_DIST.x,
-            y: (mouseMove.y - 50) * SHADOW_MOVE_DIST.y,
-            duration: .3
-        });
+        let matchMedia = gsap.matchMedia()
+        matchMedia.add("(min-width: 800px)", () => {
+            gsap.to('.img-plant-1', {
+                x: (mouseMove.x - 50) * PLANT_1_MOVE_DIST,
+                duration: 0.3,
+            });
+            gsap.to('.img-iza-recorte', {
+                x: (mouseMove.x - 50) * IZA_MOVE_DIST,
+                duration: 0.3,
+            });
+            gsap.to('.img-light-ola', {
+                x: (mouseMove.x - 50) * LIGHT_MOVE_DIST,
+                duration: 0.3,
+            });
+            gsap.to('.img-plant-2', {
+                x: (mouseMove.x - 50) * PLANT_2_MOVE_DIST,
+                duration: 0.3,
+            });
+            gsap.to('.img-plant-3', {
+                x: (mouseMove.x - 50) * PLANT_3_MOVE_DIST,
+                duration: 0.3,
+            });
+            gsap.to('.img-shadow-ola', {
+                x: (mouseMove.x - 50) * SHADOW_MOVE_DIST.x,
+                y: (mouseMove.y - 50) * SHADOW_MOVE_DIST.y,
+                duration: .3
+            });
+        })
     }
 
 
@@ -90,16 +93,20 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
             }
         })
 
+        let matchMedia = gsap.matchMedia()
+        matchMedia.add("(min-width: 800px)", () => {
 
-        gsap.to('.sections-wrapper', {
-            x: '-100vw',
-            scrollTrigger: {
-                trigger: '.ola-container',
-                start: 'top top',
-                end: '+=100%',
-                scrub: 1,
-                pin: true,
-            }
+            gsap.to('.sections-wrapper', {
+                x: '-100vw',
+                scrollTrigger: {
+                    trigger: '.ola-container',
+                    start: 'top top',
+                    end: '+=100%',
+                    scrub: 1,
+                    pin: true,
+                }
+            })
+
         })
     }, [])
 
@@ -131,7 +138,9 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                         </div>
                     </div>
                     <div className='first-img-wrapper'>
-                        <img src={PngPlan1Ola} className='img-plant-1' alt='plant' />
+                        <div className='img-plant-1'>
+                            <img src={PngPlan1Ola} alt='plant' />
+                        </div>
                         <img src={PngIzaRecorte} className='img-iza-recorte' alt='iza' />
                         <img src={PngLightOla} className='img-light-ola' alt='light' />
                         <img src={PngPlant2Ola} className='img-plant-2' alt='plant' />
@@ -141,6 +150,10 @@ const OlaSection = ({ mouseMove }: olaSectionProps) => {
                     <div className='frame-container'>
                         <img src={PngFrame1} />
                         <img src={PngFrame2} />
+                    </div>
+                    <div className='ola-mobile-txt'>
+                        <h1>Minha história</h1>
+                        <Button text='Acesse' link='/minha-historia' />
                     </div>
                     <img src={PngPlang3Ola} className='img-plant-3' alt='plant' />
                     <img src={PngSofa} className='img-sofa' alt='sofa' />

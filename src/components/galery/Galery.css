@@ -9,7 +9,7 @@
 
 .galery-container .galery {
     display: flex;
-    width: 100%;
+    width: calc(100% - 4rem);
     max-width: var(--max-width);
     gap: 2rem;
     padding: 0 2rem;
@@ -37,7 +37,8 @@
 
 
     .galery-container .galery {
-        width: calc(100% - 4rem);
+        width: 100%;
+        padding: 0;
     }
 
     .galery-container .galery .galery-frame {
@@ -52,9 +53,15 @@
     }
 
     .galery-frame .galery-item {
-        width: 20rem;
+        width: auto;
         object-fit: cover;
         overflow: hidden;
+    }
+
+    .galery-frame .galery-item img {
+        width: 20rem;
+        height: auto;
+        object-fit: cover;
     }
 
 }

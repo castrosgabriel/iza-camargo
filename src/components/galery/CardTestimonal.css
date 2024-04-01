@@ -29,3 +29,10 @@
     height: 6rem;
     border-radius: 50%;
 }
+
+@media screen and (max-width: 768px) {
+    .card-testimonal {
+        width: auto;
+        height: 100%;
+    }
+}

@@ -34,3 +34,35 @@
     transform: translateX(-50%) translateY(-7rem);
     z-index: 0;
 }
+
+@media screen and (max-width: 768px) {
+
+    .book-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: auto;
+    }
+
+    .book-content {
+        flex-direction: column-reverse;
+        justify-content: flex-start;
+        width: 100vw;
+    }
+
+    .book-content .book-content-wrapper {
+        padding: 0 3rem 3rem 3rem;
+        width: auto;
+    }
+
+    .book-img {
+        position: unset;
+        left: unset;
+        top: unset;
+        height: 50vh;
+        transform: translateX(0) translateY(0) scale(1.2);
+        overflow: visible;
+        object-fit: cover;
+    }
+}

@@ -63,3 +63,43 @@
     object-fit: cover;
     transform: scale(1.1);
 }
+
+@media screen and (max-width: 768px) {
+    .store-container {
+        height: calc(100vh - 6rem);
+        width: calc(100vw - 9rem);
+        padding: 3rem 6rem 3rem 3rem;
+    }
+
+    .store-container .container-full {
+        flex-direction: column;
+        max-width: unset;
+    }
+
+    .store-container .content-wrapper-store {
+        width: 100%;
+        padding: 4rem 2rem;
+    }
+
+    .img-plant {
+        display: none;
+    }
+
+    .img-t-front {
+        object-fit: cover;
+        width: 100vw;
+        top: unset;
+        bottom: -20rem;
+        right: -10rem;
+        z-index: 1;
+    }
+    
+    .img-t-back {
+        object-fit: cover;
+        width: 100vw;
+        top: unset;
+        bottom: -10rem;
+        right: 0;
+    }
+
+}

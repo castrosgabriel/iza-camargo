@@ -18,43 +18,48 @@ type LivingRoomProps = {
 const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
 
     useGSAP(() => {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.living-room-first',
-                start: 'top bottom',
-                end: 'bottom bottom',
-                scrub: true,
-                // snap: 1
-            }
-        })
-        tl.from('.tv', {
-            y: '30%',
-            duration: 1,
-            delay: .6,
-        })
-            .from('.rack', {
+        const mm = gsap.matchMedia();
+
+        mm.add('screen and (min-width: 768px)', () => {
+
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.living-room-first',
+                    start: 'top bottom',
+                    end: 'bottom bottom',
+                    scrub: true,
+                    // snap: 1
+                }
+            })
+            tl.from('.tv', {
                 y: '30%',
                 duration: 1,
-            }, 2)
+                delay: .6,
+            })
+                .from('.rack', {
+                    y: '30%',
+                    duration: 1,
+                }, 2)
 
-        const scrollHorTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.living-room',
-                start: 'top top',
-                end: '+=100%',
-                scrub: 1,
-                pin: true,
-                // snap: 1,
-            },
-        })
+            const scrollHorTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.living-room',
+                    start: 'top top',
+                    end: '+=100%',
+                    scrub: 1,
+                    pin: true,
+                    // snap: 1,
+                },
+            })
 
-        scrollHorTl.to('.page-wrapper', {
-            x: '-100vw',
+            scrollHorTl.to('.page-wrapper', {
+                x: '-100vw',
+            })
         })
     }, [])
 
     const handleMouseMove = () => {
-        gsap.to('.img-shadow-living', {
+        gsap.to('.shadow-living', {
             x: (mouseMove.x - 50) * 1,
             y: (mouseMove.y - 50) * 1,
             duration: .3
@@ -64,8 +69,10 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
     return (
         <div className='living-room' onMouseMove={handleMouseMove}>
             <div className='page-wrapper'>
-                <div className='img-shadow-living'>
+                <div className='img-shadow-living shadow-living'>
                     <img src={PngShadowLiving} />
+                </div>
+                <div className='img-shadow-living-2 shadow-living'>
                     <img style={{ transform: 'scaleX(-1)' }} src={PngShadowLiving} />
                 </div>
                 <div className='living-room-first'>

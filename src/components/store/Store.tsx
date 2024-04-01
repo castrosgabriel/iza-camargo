@@ -23,39 +23,45 @@ const Store = ({ mouseMove }: StoreProps) => {
     }
 
     useGSAP(() => {
-        const enterElementsTl = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.store-container',
-                start: 'top bottom',
-                end: 'bottom bottom',
-                scrub: 1,
-                // snap: 1,
-            },
-            ease: 'none'
+        const mm = gsap.matchMedia();
+
+        mm.add('screen and (min-width: 768px)', () => {
+
+            const enterElementsTl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.store-container',
+                    start: 'top bottom',
+                    end: 'bottom bottom',
+                    scrub: 1,
+                    // snap: 1,
+                },
+                ease: 'none'
+            })
+            enterElementsTl.from('.img-plant', {
+                y: 260,
+                duration: .6
+            })
+            enterElementsTl.from('.content-wrapper-store', {
+                y: 320,
+                duration: .6
+            }, 0)
+            enterElementsTl.from('.img-t-front', {
+                y: 320,
+                duration: .6
+            }, 0)
+            enterElementsTl.from('.img-t-back', {
+                y: 600,
+                duration: .6
+            }, 0)
+
         })
-        enterElementsTl.from('.img-plant', {
-            y: 260,
-            duration: .6
-        })
-        enterElementsTl.from('.content-wrapper-store', {
-            y: 320,
-            duration: .6
-        }, 0)
-        enterElementsTl.from('.img-t-front', {
-            y: 320,
-            duration: .6
-        }, 0)
-        enterElementsTl.from('.img-t-back', {
-            y: 600,
-            duration: .6
-        }, 0)
     }, [])
 
     return (
         <div className='store-container' onMouseMove={handleMouseMove}>
             <div className='img-shadow-living'>
                 <img id='shadow-store' src={PngShadowStore} />
-            </div>  
+            </div>
             <img src={PngPlant} className='img-plant' alt='plant-store' />
             <div className='container-full'>
                 <div className='content-wrapper-store'>

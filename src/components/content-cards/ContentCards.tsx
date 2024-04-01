@@ -81,23 +81,26 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
     }, [])
 
     const handleCtaEnter = (id: number) => {
-        const currentRef = cardsRefs.current[id];
-        if (currentRef && currentRef.current) {
-            gsap.to(currentRef.current, {
-                scale: '+=0.05',
-                opacity: 1,
-                duration: 0.5,
-            })
-        }
-
-        cardsRefs.current.forEach((ref, index) => {
-            if (index !== id && ref.current) {
-                gsap.to(ref.current, {
-                    scale: '-=0.05',
-                    opacity: '-=0.6',
-                    duration: 0.5
+        const mm = gsap.matchMedia()
+        mm.add('screen and (min-width: 768px)', () => {
+            const currentRef = cardsRefs.current[id];
+            if (currentRef && currentRef.current) {
+                gsap.to(currentRef.current, {
+                    scale: '+=0.05',
+                    opacity: 1,
+                    duration: 0.5,
                 })
             }
+
+            cardsRefs.current.forEach((ref, index) => {
+                if (index !== id && ref.current) {
+                    gsap.to(ref.current, {
+                        scale: '-=0.05',
+                        opacity: '-=0.6',
+                        duration: 0.5
+                    })
+                }
+            })
         })
     }
 
@@ -115,24 +118,26 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
 
 
     return (
-        <div className='card-container'>
+        <div className='card-frame'>
             <div className='shadow-cards'>
                 <img src={PngShadowCards} />
             </div>
-            {cardData.map((card, index) => (
-                <Card
-                    onHover={handleCtaEnter}
-                    onLeave={handleCtaLeave}
-                    key={index}
-                    id={index}
-                    ref={cardsRefs.current[index] = createRef()}
-                    subtitle={card.subtitle}
-                    title={card.title}
-                    description={card.description}
-                    image={card.image}
-                    ctaText={card.ctaText}
-                />
-            ))}
+            <div className='card-container'>
+                {cardData.map((card, index) => (
+                    <Card
+                        onHover={handleCtaEnter}
+                        onLeave={handleCtaLeave}
+                        key={index}
+                        id={index}
+                        ref={cardsRefs.current[index] = createRef()}
+                        subtitle={card.subtitle}
+                        title={card.title}
+                        description={card.description}
+                        image={card.image}
+                        ctaText={card.ctaText}
+                    />
+                ))}
+            </div>
         </div>
     )
 }

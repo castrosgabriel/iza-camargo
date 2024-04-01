@@ -5,6 +5,7 @@ import { useEffect, useRef, useState } from 'react';
 import { ArrowGalery } from '../../components/galery/Galery';
 import { SvgBlob, SvgPointer } from './SvgPointer';
 import SliderDots from './SliderDots';
+import { Observer } from 'gsap/Observer';
 
 type SliderPalestraProps = {
     itemsArray: Array<{
@@ -19,11 +20,13 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
 
     const imgRefs = useRef<Array<HTMLDivElement | null>>([]);
     const txtRefs = useRef<Array<HTMLDivElement | null>>([]);
+    const contentRef = useRef<HTMLDivElement | null>(null)
+
     const [currentSlide, setCurrentSlide] = useState(0)
     const [animating, setAnimating] = useState(false)
+
     const current = itemsArray[currentSlide];
     const currentColor = current?.color;
-    const contentRef = useRef<HTMLDivElement | null>(null)
 
     const animateTriangle = (reverse?: boolean) => {
         const sliderItem = document.querySelector('.slider-item');
@@ -117,6 +120,10 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
                 opacity: 1,
             })
         }
+
+        return () => {
+            gsap.getTweensOf('.slider-item').forEach(tween => tween.kill())
+        }
     }, [])
 
     useGSAP(() => {
@@ -170,6 +177,20 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
 
     }, [currentSlide])
 
+    useEffect(() => {
+        const observerTouch = Observer.create({
+            target: '.slider-screen',
+            type: 'touch',
+            tolerance: 100,
+            onLeft: handleNextSlide,
+            onRight: handlePrevSlide,
+        })
+        return () => {
+            observerTouch.kill()
+        }
+
+    }, [currentSlide, handleNextSlide, handlePrevSlide])
+
     return (
         <div className='slider-screen'>
             <SliderDots itemsArray={itemsArray} currentColor={currentColor} activeDot={currentSlide} />
@@ -186,7 +207,7 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
                                     <p>PALESTRA</p>
                                     <h3>{item.name}</h3>
                                     <p>{item.content}</p>
-                                    <p>
+                                    <p className='conteudo'>
                                         <b>Conteúdo</b>
                                         <br />
                                         Segurança psicológica e atualização de identidade.

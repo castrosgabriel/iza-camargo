@@ -19,27 +19,67 @@ const App = () => {
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
   const [isAnimating, setIsAnimating] = useState(false)
+  const [scrollBottom, setScrollBottom] = useState(false)
+
+  const footerHeight = document.querySelector('.footer')?.clientHeight
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
 
   const handleScrollDown = () => {
-    gsap.to(window, {
-      duration: 1.8,
-      scrollTo: { y: `+=${window.innerHeight}`, autoKill: false },
-      ease: 'power2.inOut',
-      onComplete: () => setIsAnimating(false),
-    })
+    const mm = gsap.matchMedia();
+    mm.add('screen and (min-width: 768px)', () => {
+      gsap.to(window, {
+        duration: 1.8,
+        scrollTo: { y: `+=${window.innerHeight}`, autoKill: false },
+        ease: 'power2.inOut',
+        onComplete: () => setIsAnimating(false),
+      })
+    }
+    )
   }
 
   const handleScrollUp = () => {
-    gsap.to(window, {
-      duration: 1.8,
-      scrollTo: { y: `-=${window.innerHeight}`, autoKill: false },
-      ease: 'power2.inOut',
-      onComplete: () => setIsAnimating(false),
-    })
+    const mm = gsap.matchMedia();
+    mm.add('screen and (min-width: 768px)', () => {
+      if (scrollBottom) {
+        gsap.to(window, {
+          scrollTo: { y: `-=${footerHeight}`, autoKill: false },
+          ease: 'power2.inOut',
+          duration: 1.8,
+          onComplete: () => setIsAnimating(false),
+        })
+      } else {
+        gsap.to(window, {
+          duration: 1.8,
+          scrollTo: { y: `-=${window.innerHeight}`, autoKill: false },
+          ease: 'power2.inOut',
+          onComplete: () => setIsAnimating(false),
+        })
+      }
+    }
+    )
   }
 
-  useEffect(() => {
+  console.log(scrollBottom)
 
+  useEffect(() => {
+    const scrollTriggerBottom = ScrollTrigger.create({
+      trigger: '.footer',
+      start: 'center bottom',
+      end: 'bottom bottom',
+      onEnter: () => setScrollBottom(true),
+      onLeaveBack: () => setScrollBottom(false),
+    })
+    scrollTriggerBottom.enable()
+    return () => {
+      scrollTriggerBottom.kill()
+    }
+  }, [])
+
+
+  useEffect(() => {
     const observer = Observer.create({
       target: window,
       type: 'wheel',
@@ -49,6 +89,11 @@ const App = () => {
       onWheel: () => setIsAnimating(true),
       onStop: () => setIsAnimating(false),
       onStopDelay: 0,
+    })
+
+    const mm = gsap.matchMedia();
+    mm.add('screen and (max-width: 768px)', () => {
+      observer.disable()
     })
 
     return () => {

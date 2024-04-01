@@ -9,11 +9,19 @@ type HeroProps = {
 }
 
 const HeroInternal = ({ img, pageName, quote }: HeroProps) => {
+
+    const handleScrollDown = () => {
+        window.scrollTo({
+            top: window.innerHeight,
+            behavior: 'smooth'
+        })
+    }
+
     return (
         <div className='hero-internal'>
             <img src={img} />
             <h1 className='page-name-internal'>{pageName}</h1>
-            <div className='arrow-internal'>
+            <div style={{cursor: 'pointer'}} onClick={handleScrollDown} className='arrow-internal'>
                 <img src={SvgArrow} />
             </div>
             <div className='bottom-internal'>

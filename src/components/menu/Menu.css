@@ -36,9 +36,9 @@
     bottom: 0;
     left: 50%;
     transform: translateX(-50%);
-    width: 100%;
+    width: calc(100% - 8rem);
     max-width: var(--max-width);
-    padding: 4rem;
+    padding: 3rem;
 }
 
 .menu-btn.inactive:hover {

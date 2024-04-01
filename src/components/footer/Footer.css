@@ -100,4 +100,14 @@
     .contact-content {
         flex-direction: column;
     }
+    
+    .footer-content .logo-footer {
+        width: auto;
+        height: auto;
+    }
+
+    .contact-section .contact-content{
+        align-items: flex-start;
+    }
+
 }

@@ -90,7 +90,7 @@ const CarouselTv = () => {
             <div className='side-options'>
                 <img src={SvgArrowSlider} onClick={goToPrevious} />
                 <Paginator length={carouselLength} indexActive={currentIndex} />
-                <img style={{ transform: 'rotate(180deg)' }} src={SvgArrowSlider} onClick={goToNext} />
+                <img src={SvgArrowSlider} onClick={goToNext} />
             </div>
             <div className='container-carousel'>
                 <div className='corousel-wrapper'>

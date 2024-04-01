@@ -20,6 +20,7 @@ button {
     overflow: hidden;
     cursor: pointer;
     transition: all .5s cubic-bezier(.6, 0, 0, .8);
+    z-index: 1;
 }
 
 .hover-text {
