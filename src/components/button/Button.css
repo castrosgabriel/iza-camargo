@@ -19,7 +19,7 @@ button {
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    transition: all .5s cubic-bezier(.6, 0, 0, .8);
+    transition: transform .5s cubic-bezier(.6, 0, 0, .8);
     z-index: 1;
 }
 
@@ -38,7 +38,7 @@ button {
     gap: .5rem;
     z-index: 1;
     justify-content: start;
-    transition: all .5s cubic-bezier(.6, 0, 0, .8);
+    transition: transform .5s cubic-bezier(.6, 0, 0, .8);
 }
 
 .btn-wrapper>span {
@@ -64,7 +64,7 @@ button {
     border-radius: 6rem;
     z-index: 0;
     transform: translateX(-100%);
-    transition: all .5s cubic-bezier(.6, 0, 0, .8);
+    transition: transform .5s cubic-bezier(.6, 0, 0, .8);
 }
 
 .btn-wrapper:hover .hover-btn {
@@ -73,10 +73,4 @@ button {
 
 .btn-wrapper:hover .col-hover {
     transform: translateY(-2.5rem);
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
 }

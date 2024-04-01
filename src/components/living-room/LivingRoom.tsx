@@ -87,8 +87,8 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                         <h2>Já conhece o Podcast Interioriza?</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, massa id maximus efficitur, mi nulla molestie velit, efficitur dapibus leo arcu aliquam lectus. Vivamus tempor mauris eu neque tincidunt maximus. </p>
                         <Button link='https://podcasters.spotify.com/pod/show/izabella-camargo3' text='Ouvir agora' hoverColor='#2B3836' />
+                        <img className='cellphone' src={PngCellphone} />
                     </div>
-                    <img className='cellphone' src={PngCellphone} />
                 </div>
             </div>
         </div >

@@ -70,7 +70,7 @@
     gap: 1.25rem;
     padding: 4rem;
     z-index: 1;
-    width: 100%;
+    width: calc(100% - 8rem);
     max-width: var(--max-width);
     position: relative;
 
@@ -146,27 +146,27 @@
         top: unset;
         height: 30vh;
         width: 100vw;
-        object-fit: contain; 
-        object-position: left center;       
+        object-fit: contain;
+        object-position: left center;
         transform: scale(1.5) translateY(10%);
     }
 
     .living-room-first .rack {
         width: 200vw;
     }
-    
+
     .living-room-first .tv {
         position: absolute;
         top: 35%;
         left: 50%;
         transform: translate(-50%, -50%);
     }
-    
+
     .tv.screen {
         width: 81.5vw;
         height: 45.5vw;
     }
-    
+
     .tv.tv-content {
         z-index: 99;
     }

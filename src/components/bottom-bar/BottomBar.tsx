@@ -63,14 +63,29 @@ const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false
             ease: 'expo.inOut',
             stagger: .15,
         })
-        gsap.from('.social-container img', {
-            y: '+=100%',
-            duration: 1,
-            delay: .5,
-            ease: 'expo.inOut',
-            stagger: .1,
-            opacity: 0,
+
+        const mm = gsap.matchMedia();
+        mm.add('screen and (min-width: 768px)', () => {
+            gsap.from('.social-container img', {
+                y: '+=100%',
+                duration: 1,
+                delay: .5,
+                ease: 'expo.inOut',
+                stagger: .1,
+                opacity: 0,
+            })
         })
+        mm.add('screen and (max-width: 768px)', () => {
+            gsap.from('.social-container img', {
+                y: '+=100%',
+                duration: 1,
+                delay: 0,
+                ease: 'expo.inOut',
+                stagger: .1,
+                opacity: 0,
+            })
+        })
+
         gsap.from('.title-page-bar', {
             y: '+=100%',
             opacity: 0,

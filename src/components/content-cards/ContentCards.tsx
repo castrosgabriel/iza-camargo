@@ -21,27 +21,19 @@ gsap.registerPlugin(ScrollTrigger)
 
 const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, image, ctaText, subtitle, onHover, onLeave }, ref) => {
     return (
-        <div ref={ref} className="card-info">
+        <div onMouseLeave={() => onLeave(id)} onMouseEnter={() => onHover(id)} ref={ref} className="card-info">
             <div className="content-wrapper">
                 <div className='subtitle'>{subtitle}</div>
                 <h3>{title}</h3>
                 <p>{description}</p>
             </div>
-            <Button onMouseEnter={() => onHover(id)} onMouseLeave={() => onLeave(id)} text={ctaText} />
+            <Button text={ctaText} />
             <img className='img-wrapper' src={image} alt="placeholder" />
         </div>
     )
 })
 
-type contentCardsProps = {
-    mouseMove: {
-        x: number
-        y: number
-    }
-}
-
-const ContentCards = ({ mouseMove }: contentCardsProps) => {
-    mouseMove
+const ContentCards = () => {
     const cardData = [
         {
             subtitle: 'Como está seu tempo?',
@@ -71,7 +63,7 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
                     end: 'bottom bottom',
                     scrub: true
                 },
-                opacity: 0,
+                opacity: 1,
                 duration: 1,
                 stagger: 0.4,
                 delay: 1,
@@ -86,7 +78,7 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
             const currentRef = cardsRefs.current[id];
             if (currentRef && currentRef.current) {
                 gsap.to(currentRef.current, {
-                    scale: '+=0.05',
+                    scale: 1.05,
                     opacity: 1,
                     duration: 0.5,
                 })
@@ -95,8 +87,8 @@ const ContentCards = ({ mouseMove }: contentCardsProps) => {
             cardsRefs.current.forEach((ref, index) => {
                 if (index !== id && ref.current) {
                     gsap.to(ref.current, {
-                        scale: '-=0.05',
-                        opacity: '-=0.6',
+                        scale: .95,
+                        opacity: .5,
                         duration: 0.5
                     })
                 }

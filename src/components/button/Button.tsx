@@ -9,8 +9,6 @@ type ButtonProps = {
     color?: string
     hoverColor?: string
     link?: string
-    onMouseEnter?: () => void
-    onMouseLeave?: () => void
     img?: string
     type?: 'button' | 'submit'
     loading?: boolean
@@ -23,9 +21,7 @@ const Button = ({
     text,
     color = 'var(--c-primary)',
     hoverColor = 'var(--c-support)',
-    onMouseEnter,
-    onMouseLeave,
-    loading,
+    loading = false,
 }: ButtonProps) => {
 
     const buttonTextStyle: CSSProperties = {
@@ -54,7 +50,7 @@ const Button = ({
     }, [loading])
 
     const BaseButton = () =>
-        <button type={type} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave} style={baseButtonStyle} className='btn-wrapper'>
+        <button type={type} style={baseButtonStyle} className='btn-wrapper'>
             <div className='hover-text'>
                 <img ref={spinnerRef} src={SvgLoadingSpin} style={loadingStyle} />
                 <div style={buttonTextStyle} className='col-hover'>

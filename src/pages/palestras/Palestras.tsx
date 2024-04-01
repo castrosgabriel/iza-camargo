@@ -22,7 +22,6 @@ const palestras = [
         name: 'Saúde Mental e Inteligência Emocional',
         content: 'Queremos um mundo sustentável, mas estamos trabalhando de forma saudável? É possível equilibrar objetivos pessoais e profissionais com informações e decisões coerentes, garantindo a sustentabilidade dos negócios.',
         color: '#86CDEC'
-
     },
     {
         img: PngPalestra3,
@@ -59,7 +58,7 @@ const palestras = [
         name: 'Atualização de identidade',
         content: 'Queremos um mundo sustentável, mas estamos trabalhando de forma saudável? É possível equilibrar objetivos pessoais e profissionais com informações e decisões coerentes, garantindo a sustentabilidade dos negócios.',
         color: '#9DF68F'
-    }
+    },
 ]
 
 const Palestras = () => {

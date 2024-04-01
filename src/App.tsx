@@ -117,7 +117,7 @@ const App = () => {
       <div className='content-home'>
         <Hero mouseMove={{ x: mouseX, y: mouseY }} />
         <OlaSection mouseMove={{ x: mouseX, y: mouseY }} />
-        <ContentCards mouseMove={{ x: mouseX, y: mouseY }} />
+        <ContentCards />
         <BookSeller />
         <LivingRoom mouseMove={{ x: mouseX, y: mouseY }} />
         <Store mouseMove={{ x: mouseX, y: mouseY }} />
