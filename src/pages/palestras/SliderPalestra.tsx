@@ -192,7 +192,7 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
     }, [currentSlide, handleNextSlide, handlePrevSlide])
 
     return (
-        <div className='slider-screen'>
+        <div className='slider-screen snap-item'>
             <SliderDots itemsArray={itemsArray} currentColor={currentColor} activeDot={currentSlide} />
             <ArrowGalery onClick={handlePrevSlide} rotate fill='var(--c-dark)' />
             <div className='slider-container'>
@@ -205,7 +205,7 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
                                 <img ref={(element) => (imgRefs.current[index] = element)} src={item.img} />
                                 <div ref={(element) => (txtRefs.current[index] = element)} className='slider-text'>
                                     <p>PALESTRA</p>
-                                    <h3>{item.name}</h3>
+                                    <h2>{item.name}</h2>
                                     <p>{item.content}</p>
                                     <p className='conteudo'>
                                         <b>Conteúdo</b>

@@ -18,8 +18,10 @@ import { useEffect, useState } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-
 const OlaSection = () => {
+
+    const [mouseMove, setMouseMove] = useState({ x: 50, y: 50 })
+    const [dontMove, setDontMove] = useState(true)
 
     //parallax move controls
     const PLANT_1_MOVE_DIST = 0.15
@@ -29,9 +31,34 @@ const OlaSection = () => {
     const LIGHT_MOVE_DIST = 0.2
     const SHADOW_MOVE_DIST = { x: 0.5, y: 0.5 }
 
-    const [mouseMove, setMouseMove] = useState({ x: 50, y: 50 })
-
     useEffect(() => {
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: '.ola-container',
+                start: 'top bottom',
+                end: 'bottom bottom',
+                scrub: true,
+            },
+            onStart: () => setDontMove(true),
+            onComplete: () => setDontMove(false),
+            onUpdate: () => setDontMove(true),
+        })
+        tl.from('.ola-content', {
+            y: '10%',
+            ease: 'ease.inOut',
+            opacity: 0,
+            delay: .3,
+            stagger: .1,
+        })
+            .from('.ola-first img', {
+                y: '24%',
+                ease: 'ease.inOut',
+                stagger: .2,
+            }, 0)
+    }, [])
+    //mousemove listener
+    useEffect(() => {
+
         const handleMouseMove = (e: any) => {
             setMouseMove({ x: e.clientX / window.innerWidth * 100, y: e.clientY / window.innerHeight * 100 })
         }
@@ -42,8 +69,9 @@ const OlaSection = () => {
             window.removeEventListener('mousemove', handleMouseMove)
         }
     }, [])
-
+    //parallax effect
     useEffect(() => {
+        if (dontMove) return
         const handleParallax = () => {
             const matchMedia = gsap.matchMedia()
             matchMedia.add("(min-width: 800px)", () => {
@@ -68,7 +96,6 @@ const OlaSection = () => {
                 });
             })
         }
-
         handleParallax()
 
         return () => {
@@ -79,35 +106,7 @@ const OlaSection = () => {
             gsap.getTweensOf('.img-plant-3').forEach(tween => tween.kill())
         }
 
-    }, [mouseMove])
-
-    useGSAP(() => {
-        //when mounting
-        gsap.from('.ola-content', {
-            y: '10%',
-            duration: 1,
-            ease: 'ease.inOut',
-            opacity: 0,
-            delay: .3,
-            stagger: .1,
-            scrollTrigger: {
-                trigger: '.ola-first',
-                start: 'top center',
-            },
-        })
-        gsap.from('.ola-first img', {
-            y: '+=24%',
-            duration: 1,
-            ease: 'none',
-            stagger: .2,
-            scrollTrigger: {
-                trigger: '.ola-first',
-                start: 'top bottom',
-                end: 'bottom bottom',
-                scrub: true,
-            }
-        })
-    }, [])
+    }, [mouseMove, dontMove])
 
     useGSAP(() => {
         let matchMedia = gsap.matchMedia()
@@ -129,22 +128,15 @@ const OlaSection = () => {
         })
     }, [])
 
-    const olaContainerSecondStyle = {
-        scrollSnapAlign: 'start',
-        width: '100vw',
-        height: '100vh',
-        backgroundColor: '#E6EADF'
-    }
-
     return (
         <>
-            <div id='ola-section-first' className='ola-container'>
+            <div id='ola-section-first' className='ola-container snap-item'>
                 <div className='sections-wrapper'>
                     <div className='img-shadow-ola'>
                         <img src={PngShadowOla} alt='shadow' />
                         <img src={PngShadowOla} alt='shadow' />
                     </div>
-                    <div  className='ola-first'>
+                    <div className='ola-first'>
                         <div className='max-width'>
                             <div className='ola-content'>
                                 <h2>
@@ -187,7 +179,7 @@ const OlaSection = () => {
                     </div>
                 </div>
             </div>
-            <div id='ola-section-second' style={olaContainerSecondStyle} className='ola-container-second' />
+            <div id='ola-section-second' className='ola-container-second snap-item' />
         </>
     )
 }

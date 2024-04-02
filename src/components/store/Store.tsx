@@ -58,7 +58,7 @@ const Store = ({ mouseMove }: StoreProps) => {
     }, [])
 
     return (
-        <div id='store' className='store-container' onMouseMove={handleMouseMove}>
+        <div id='store' className='store-container snap-item' onMouseMove={handleMouseMove}>
             <div className='img-shadow-living'>
                 <img id='shadow-store' src={PngShadowStore} />
             </div>

@@ -18,7 +18,7 @@ const HeroInternal = ({ img, pageName, quote }: HeroProps) => {
     }
 
     return (
-        <div className='hero-internal'>
+        <div className='hero-internal snap-item'>
             <img src={img} />
             <h1 className='page-name-internal'>{pageName}</h1>
             <div style={{cursor: 'pointer'}} onClick={handleScrollDown} className='arrow-internal'>

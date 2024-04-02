@@ -54,22 +54,25 @@ const ContentCards = () => {
     const cardsRefs = useRef<RefObject<HTMLDivElement>[]>(cardData.map(() => createRef()));
 
     useGSAP(() => {
-        gsap.from(
-            '.card-info',
-            {
-                scrollTrigger: {
-                    trigger: '.card-container',
-                    start: 'top bottom',
-                    end: 'bottom bottom',
-                    scrub: true
-                },
-                opacity: 1,
-                duration: 1,
-                stagger: 0.4,
-                delay: 1,
-                y: '10rem',
-            }
-        )
+        const mm = gsap.matchMedia()
+        mm.add('screen and (min-width: 768px)', () => {
+            gsap.from(
+                '.card-info',
+                {
+                    scrollTrigger: {
+                        trigger: '.card-container',
+                        start: 'top bottom',
+                        end: 'bottom bottom',
+                        scrub: true
+                    },
+                    opacity: 1,
+                    duration: 1,
+                    stagger: 0.4,
+                    delay: 1,
+                    y: '10rem',
+                }
+            )
+        })
     }, [])
 
     const handleCtaEnter = (id: number) => {
@@ -79,7 +82,6 @@ const ContentCards = () => {
             if (currentRef && currentRef.current) {
                 gsap.to(currentRef.current, {
                     scale: 1.05,
-                    opacity: 1,
                     duration: 0.5,
                 })
             }
@@ -88,7 +90,6 @@ const ContentCards = () => {
                 if (index !== id && ref.current) {
                     gsap.to(ref.current, {
                         scale: .95,
-                        opacity: .5,
                         duration: 0.5
                     })
                 }
@@ -97,15 +98,17 @@ const ContentCards = () => {
     }
 
     const handleCtaLeave = () => {
-        cardsRefs.current.forEach((ref) => {
-            if (ref.current) {
-                gsap.to(ref.current, {
-                    scale: 1,
-                    opacity: 1,
-                    duration: 0.5
-                })
-            }
-        });
+        const mm = gsap.matchMedia()
+        mm.add('screen and (min-width: 768px)', () => {
+            cardsRefs.current.forEach((ref) => {
+                if (ref.current) {
+                    gsap.to(ref.current, {
+                        scale: 1,
+                        duration: 0.5
+                    })
+                }
+            });
+        })
     };
 
 
@@ -114,7 +117,7 @@ const ContentCards = () => {
             <div className='shadow-cards'>
                 <img src={PngShadowCards} />
             </div>
-            <div className='card-container'>
+            <div className='card-container snap-item'>
                 {cardData.map((card, index) => (
                     <Card
                         onHover={handleCtaEnter}

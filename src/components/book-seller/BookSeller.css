@@ -6,7 +6,6 @@
     overflow: hidden;
     height: 100vh;
     background-color: #ffffff;
-    scroll-snap-align: start;
 }
 
 .book-container .book-content {
@@ -31,7 +30,8 @@
 .book-img {
     position: absolute;
     left: 50%;
-    transform: translateX(-50%) translateY(-7rem);
+    top: 0;
+    transform: translateX(-50%);
     z-index: 0;
 }
 

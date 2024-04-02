@@ -3,77 +3,42 @@ import { PngBook } from '../../assets/png';
 import './BookSeller.css'
 import gsap from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
-import { useGSAP } from '@gsap/react';
+import { useEffect } from 'react';
 
 gsap.registerEffect(ScrollToPlugin)
 
 const BookSeller = () => {
 
-    useGSAP(() => {
+    useEffect(() => {
         const mm = gsap.matchMedia();
-
         mm.add('screen and (min-width: 768px)', () => {
-
-            const enterElementsTl = gsap.timeline({
+            gsap.from('.book-item', {
+                opacity: 0,
+                duration: 1,
+                stagger: 0.2,
+                y: '10rem',
+                scale: .95,
                 scrollTrigger: {
                     trigger: '.book-container',
                     start: 'top bottom',
-                    end: 'bottom bottom',
-                    // snap: 1,
-                }
-            })
-
-            enterElementsTl.from('.book-content', {
-                y: 100,
-                opacity: 0,
-                duration: 1,
-            })
-                .from('.book-img', {
-                    y: 100,
-                    opacity: 0,
-                    duration: 1,
-                }, 0)
-                .from('.book-content h2', {
-                    y: 100,
-                    opacity: 0,
-                    duration: 1,
-                }, 0.3)
-                .from('.book-content p', {
-                    y: 100,
-                    opacity: 0,
-                    duration: 1,
-                }, 0.15)
-
-            const leaveElementsTl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.book-container',
-                    start: 'top top',
-                    end: 'bottom top',
+                    end: '+=100%',
                     scrub: 1,
                 }
             })
-
-            leaveElementsTl.to('.book-img', {
-                y: '-=10%',
-                duration: 1,
-            })
-                .to('.book-content', {
-                    y: '-=20%',
-                    duration: 1,
-                }
-                )
         })
     }, [])
 
     return (
-        <div id='book-seller' className='book-container'>
-            <div className='book-content'>
-                <div className='book-content-wrapper'>
-                    <h2>Dá um tempo!</h2>
-                    <p>é um convite à busca por limite em um mundo sem limites.</p>
-                    <Button hoverColor='#CA7925' text='Comprar livro' color='var(--c-secondary)' />
+        <div id='book-seller' className='book-container snap-item'>
+            <div className='book-content '>
+                <div className='book-content-wrapper '>
+                    <h2 className='book-item'>Dá um tempo!</h2>
+                    <p className='book-item'>é um convite à busca por limite em um mundo sem limites.</p>
+                    <div className='book-item'>
+                        <Button hoverColor='#CA7925' text='Comprar livro' color='var(--c-secondary)' />
+                    </div>
                 </div>
-                <img className='book-img' src={PngBook} alt="placeholder" />
+                <img className='book-img book-item' src={PngBook} alt="placeholder" />
             </div>
         </div>
     )

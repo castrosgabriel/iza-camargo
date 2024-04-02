@@ -70,7 +70,7 @@ const Galery = ({
     }
 
     return (
-        <div style={{ height: height, backgroundColor: backgroundColor }} className='galery-container' >
+        <div style={{ height: height, backgroundColor: backgroundColor }} className='galery-container snap-item' >
             <h2 style={{ color: titleColor }}>
                 {title}
             </h2>

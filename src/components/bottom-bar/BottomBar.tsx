@@ -44,32 +44,32 @@ const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false
     useGSAP(() => {
         gsap.from('.bottom-container', {
             y: '+=100%',
-            duration: 1,
-            delay: .2,
+            duration: .8,
+            delay: .1,
             ease: 'expo.inOut',
         })
         gsap.from('.big-number', {
             y: '+=150%',
-            duration: 1,
-            delay: .4,
+            duration: .8,
+            delay: .2,
             ease: 'expo.inOut',
             stagger: .1,
             opacity: 0,
         })
         gsap.from('.spacer-bar', {
             scaleY: 0,
-            duration: 1,
-            delay: .5,
+            duration: .7,
+            delay: .3,
             ease: 'expo.inOut',
-            stagger: .15,
+            stagger: .1,
         })
 
         const mm = gsap.matchMedia();
         mm.add('screen and (min-width: 768px)', () => {
             gsap.from('.social-container img', {
-                y: '+=100%',
-                duration: 1,
-                delay: .5,
+                y: '+100%',
+                duration: .7,
+                delay: .1,
                 ease: 'expo.inOut',
                 stagger: .1,
                 opacity: 0,
@@ -77,8 +77,8 @@ const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false
         })
         mm.add('screen and (max-width: 768px)', () => {
             gsap.from('.social-container img', {
-                y: '+=100%',
-                duration: 1,
+                y: '+100%',
+                duration: .8,
                 delay: 0,
                 ease: 'expo.inOut',
                 stagger: .1,
@@ -87,17 +87,17 @@ const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false
         })
 
         gsap.from('.title-page-bar', {
-            y: '+=100%',
+            y: '+100%',
             opacity: 0,
-            duration: 1,
-            delay: .6,
+            duration: .8,
+            delay: .4,
             ease: 'expo.inOut',
         })
         gsap.from('.quote-page-bar', {
-            y: '+=100%',
+            y: '+100%',
             opacity: 0,
-            duration: 1,
-            delay: .7,
+            duration: .8,
+            delay: .5,
             ease: 'expo.inOut',
         })
     }, [])

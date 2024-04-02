@@ -31,7 +31,7 @@ const MinhaHistoria = () => {
                 pageName='Minha História'
                 quote='O tempo é fruto das condições que você  determina.'
             />
-            <div className='about-me-container'>
+            <div className='about-me-container snap-item'>
                 <div className='about-me-wrapper'>
                     <div className='about-me-col'>
                         <div className='iza-name-wrapper'>

@@ -71,7 +71,7 @@ const FormSection = ({
 
 
     return (
-        <div className='form-section'>
+        <div className='form-section snap-item'>
             <div className='form-section-content'>
                 <div>
                     <div className='form-txt'>

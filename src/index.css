@@ -4,7 +4,6 @@ html {
   font-family: "museo-slab", sans-serif;
   font-size: max(14px, min(16px, 1vw));
   scroll-snap-type: y mandatory;
-  scroll-behavior: smooth;
 }
 
 body {
@@ -55,6 +54,11 @@ h2 {
 a {
   all: unset;
   cursor: pointer;
+}
+
+.snap-item {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
 }
 
 #root {

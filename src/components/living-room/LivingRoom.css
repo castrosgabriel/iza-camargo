@@ -1,9 +1,14 @@
 .living-room {
-    scroll-snap-align: start;
     background-color: #435A54;
     height: 100vh;
     width: 100vw;
     position: relative;
+}
+
+.living-room-container-second {
+    background-color: #435A54;
+    width: 100vw;
+    height: 100vh;
 }
 
 .living-room .page-wrapper {
@@ -90,10 +95,14 @@
     width: 100vw;
     height: 100vh;
     z-index: 9999;
-    transform: scale(1.2);
-    display: flex;
     pointer-events: none;
-    mix-blend-mode: multiply;
+    overflow: hidden;
+
+    img {
+        transform: scale(1.2);
+        width: 100%;
+        height: 100%;
+    }
 }
 
 .page-wrapper .img-shadow-living-2 {
@@ -103,10 +112,14 @@
     width: 100vw;
     height: 100vh;
     z-index: 9999;
-    transform: scale(1.2);
-    display: flex;
     pointer-events: none;
-    mix-blend-mode: multiply;
+    overflow: hidden;
+
+    img {
+        transform: scale(-1.2);
+        width: 100%;
+        height: 100%;
+    }
 }
 
 @media screen and (max-width: 768px) {

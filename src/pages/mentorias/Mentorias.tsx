@@ -22,7 +22,7 @@ const Mentorias = () => {
                 pageName='Mentorias'
                 quote='O quanto você está se incluindo nas suas 35 mil escolhas diárias?'
             />
-            <div className='mentoria-info'>
+            <div className='mentoria-info snap-item'>
                 <div className='mentoria-wrapper'>
                     <div className='mentoria-txt'>
                         <h3>Sua jornada <br /> de mudança</h3>

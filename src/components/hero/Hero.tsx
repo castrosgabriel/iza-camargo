@@ -51,7 +51,7 @@ const Hero = ({ mouseMove }: heroProps) => {
             .from('.title', {
                 y: '-=30',
                 opacity: 0,
-                duration: .5,
+                duration: .3,
                 stagger: .1,
                 ease: 'expo.inOut',
             }, .4)
@@ -99,7 +99,7 @@ const Hero = ({ mouseMove }: heroProps) => {
 
     return (
         <>
-            <div id='hero-home' className='hero-container' onMouseMove={handleParallax}>
+            <div id='hero-home' className='hero-container snap-item' onMouseMove={handleParallax}>
                 <div style={{ height: '2.3rem' }} />
                 <div className='hero-content'>
                     <img alt='logo' src={SvgLogo} className='hero-logo' />
