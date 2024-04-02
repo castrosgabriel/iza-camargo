@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import { SvgLoadingSpin, SvgWhatsBtn } from '../../assets/svg'
 import './Button.css'
-import { CSSProperties, useEffect, useRef } from 'react'
+import { CSSProperties, memo, useEffect, useRef } from 'react'
 import gsap from 'gsap'
 
 type ButtonProps = {
@@ -15,7 +15,7 @@ type ButtonProps = {
     submited?: boolean
 }
 
-const Button = ({
+const Button = memo(({
     type = 'button',
     link = '',
     text,
@@ -72,10 +72,7 @@ const Button = ({
             }
         </>
     )
-}
-
-
-
+})
 
 export const SmallButton = ({ img = SvgWhatsBtn, text, color = 'var(--c-primary)' }: ButtonProps) =>
     <button style={{ backgroundColor: color }} className='btn-wrapper small'>

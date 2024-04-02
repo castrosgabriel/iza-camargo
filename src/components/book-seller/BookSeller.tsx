@@ -66,7 +66,7 @@ const BookSeller = () => {
     }, [])
 
     return (
-        <div className='book-container'>
+        <div id='book-seller' className='book-container'>
             <div className='book-content'>
                 <div className='book-content-wrapper'>
                     <h2>Dá um tempo!</h2>

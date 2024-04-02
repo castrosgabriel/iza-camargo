@@ -45,15 +45,16 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                 scrollTrigger: {
                     trigger: '.living-room',
                     start: 'top top',
-                    end: '+=100%',
-                    scrub: 1,
-                    pin: true,
+                    end: 'bottom top',
+                    scrub: true,
                     // snap: 1,
                 },
             })
 
             scrollHorTl.to('.page-wrapper', {
+                ease: 'none',
                 x: '-100vw',
+                y: '100vh',
             })
         })
     }, [])
@@ -66,32 +67,44 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
         })
     }
 
+    const livingRoomContainerSecond = {
+        scrollSnapAlign: 'start',
+        backgroundColor: '#435A54',
+        width: '100vw',
+        height: '100vh',
+    }
+
     return (
-        <div className='living-room' onMouseMove={handleMouseMove}>
-            <div className='page-wrapper'>
-                <div className='img-shadow-living shadow-living'>
-                    <img src={PngShadowLiving} />
-                </div>
-                <div className='img-shadow-living-2 shadow-living'>
-                    <img style={{ transform: 'scaleX(-1)' }} src={PngShadowLiving} />
-                </div>
-                <div className='living-room-first'>
-                    <img className='rack' src={PngRack} />
-                    <div className='tv tv-content'>
-                        <CarouselTv />
+        <>
+            <div id='living-room-first' className='living-room' onMouseMove={handleMouseMove}>
+                <div className='page-wrapper'>
+                    <div className='img-shadow-living shadow-living'>
+                        <img src={PngShadowLiving} />
                     </div>
-                    <img className='tv screen' src={PngTv} />
-                </div>
-                <div className='living-room-second'>
-                    <div className='content-wrapper'>
-                        <h2>Já conhece o Podcast Interioriza?</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, massa id maximus efficitur, mi nulla molestie velit, efficitur dapibus leo arcu aliquam lectus. Vivamus tempor mauris eu neque tincidunt maximus. </p>
-                        <Button link='https://podcasters.spotify.com/pod/show/izabella-camargo3' text='Ouvir agora' hoverColor='#2B3836' />
-                        <img className='cellphone' src={PngCellphone} />
+                    <div className='img-shadow-living-2 shadow-living'>
+                        <img style={{ transform: 'scaleX(-1)' }} src={PngShadowLiving} />
+                    </div>
+                    <div  className='living-room-first'>
+                        <img className='rack' src={PngRack} />
+                        <div className='tv tv-content'>
+                            <CarouselTv />
+                        </div>
+                        <img className='tv screen' src={PngTv} />
+                    </div>
+                    <div className='living-room-second'>
+                        <div className='content-wrapper'>
+                            <h2>Já conhece o Podcast Interioriza?</h2>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, massa id maximus efficitur, mi nulla molestie velit, efficitur dapibus leo arcu aliquam lectus. Vivamus tempor mauris eu neque tincidunt maximus. </p>
+                            <Button link='https://podcasters.spotify.com/pod/show/izabella-camargo3' text='Ouvir agora' hoverColor='#2B3836' />
+                            <img className='cellphone' src={PngCellphone} />
+                        </div>
                     </div>
                 </div>
-            </div>
-        </div >
+                <div  style={{ width: '100vw', height: '100vh' }} />
+            </div >
+            <div id='living-room-second' style={livingRoomContainerSecond}/>
+        </>
+
     )
 }
 

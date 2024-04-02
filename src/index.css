@@ -3,6 +3,8 @@
 html {
   font-family: "museo-slab", sans-serif;
   font-size: max(14px, min(16px, 1vw));
+  scroll-snap-type: y mandatory;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -12,6 +14,7 @@ body {
   background-color: #07332C;
   width: 100vw;
   height: 100vh;
+  overflow-x: hidden;
 }
 
 

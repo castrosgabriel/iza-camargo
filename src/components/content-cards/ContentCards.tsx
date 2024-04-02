@@ -110,7 +110,7 @@ const ContentCards = () => {
 
 
     return (
-        <div className='card-frame'>
+        <div id='content-cards' className='card-frame'>
             <div className='shadow-cards'>
                 <img src={PngShadowCards} />
             </div>
