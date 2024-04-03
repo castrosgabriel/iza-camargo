@@ -12,19 +12,21 @@ type StoreProps = {
 }
 
 const Store = ({ mouseMove }: StoreProps) => {
-
     const { x, y } = mouseMove
-    const handleMouseMove = () => {
-        gsap.to('#shadow-store', {
-            x: x - 50,
-            y: y - 50,
-            duration: .2
-        })
-    }
 
     useGSAP(() => {
         const mm = gsap.matchMedia();
+        mm.add('screen and (min-width: 768px)', () => {
+            gsap.set('#shadow-store', {
+                x: x - 50,
+                y: y - 50,
+                duration: .2
+            })
+        })
+    }, [mouseMove])
 
+    useGSAP(() => {
+        const mm = gsap.matchMedia();
         mm.add('screen and (min-width: 768px)', () => {
 
             const enterElementsTl = gsap.timeline({
@@ -58,7 +60,7 @@ const Store = ({ mouseMove }: StoreProps) => {
     }, [])
 
     return (
-        <div id='store' className='store-container snap-item' onMouseMove={handleMouseMove}>
+        <div id='store' className='store-container snap-item'>
             <div className='img-shadow-living'>
                 <img id='shadow-store' src={PngShadowStore} />
             </div>

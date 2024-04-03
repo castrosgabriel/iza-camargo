@@ -9,14 +9,15 @@ import Footer from './components/footer/Footer'
 import { useEffect, useState } from 'react'
 import MenuWrapper from './components/menu/MenuWrapper'
 import gsap from 'gsap'
-import ScrollToPlugin from 'gsap/ScrollToPlugin'
+import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
-gsap.registerPlugin(ScrollToPlugin)
+gsap.registerPlugin(ScrollTrigger)
 
 const App = () => {
 
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
+  const [firstScroll, setFirstScroll] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -31,10 +32,33 @@ const App = () => {
 
   }, [])
 
+  useEffect(() => {
+    ScrollTrigger.create({
+      trigger: '#hero-home',
+      start: '30% top',
+      end: '70% top',
+      toggleClass: 'active',
+      onEnter: () => setFirstScroll(true),
+      onEnterBack: () => setFirstScroll(false),
+    })
+    
+    const htmlElement = document.querySelector('html');
+    if (!htmlElement) return
+    const htmlStyle = htmlElement.style;
+    htmlStyle.scrollSnapType = 'y mandatory';
+
+    return () => {
+      htmlStyle.scrollSnapType = 'none';
+    }
+    
+  }, [])
 
   return (
     <>
-      <MenuWrapper whichIsActive='home' />
+      <MenuWrapper
+        darkBg={!firstScroll}
+        whichIsActive='home'
+      />
       <div className='content-home'>
         <Hero mouseMove={{ x: mouseX, y: mouseY }} />
         <OlaSection />

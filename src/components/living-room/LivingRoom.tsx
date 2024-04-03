@@ -20,7 +20,6 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
 
     useGSAP(() => {
         const mm = gsap.matchMedia();
-
         mm.add('screen and (min-width: 768px)', () => {
             const tl = gsap.timeline({
                 scrollTrigger: {
@@ -58,14 +57,15 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
     }, [])
 
     useEffect(() => {
-        gsap.set('.shadow-living', {
-            x: (mouseMove.x - 50) * 1,
-            y: (mouseMove.y - 50) * 1,
-            duration: .3
+        const mm = gsap.matchMedia();
+        mm.add('screen and (min-width: 768px)', () => {
+            gsap.set('.shadow-living', {
+                x: (mouseMove.x - 50) * 1,
+                y: (mouseMove.y - 50) * 1,
+                duration: .3
+            })
         })
     }, [mouseMove])
-
-
 
     return (
         <>
@@ -86,21 +86,19 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                             <img src={PngShadowLiving} className='shadow-living' />
                         </div>
                         <div className='content-wrapper'>
+                            <img className='cellphone' src={PngCellphone} />
                             <h2>Já conhece o Podcast Interioriza?</h2>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
                                 Donec porttitor, massa id maximus efficitur, mi nulla molestie velit,
-                                efficitur dapibus leo arcu aliquam lectus. Vivamus tempor mauris eu
-                                neque tincidunt maximus. </p>
+                                efficitur. </p>
                             <Button
                                 link='https://podcasters.spotify.com/pod/show/izabella-camargo3'
                                 text='Ouvir agora'
                                 hoverColor='#2B3836'
                             />
-                            <img className='cellphone' src={PngCellphone} />
                         </div>
                     </div>
                 </div>
-                <div style={{ width: '100vw', height: '100vh' }} />
             </div >
             <div id='living-room-second' className='living-room-container-second snap-item' />
         </>

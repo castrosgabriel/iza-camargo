@@ -1,5 +1,4 @@
 import './Header.css';
-import { useEffect, useState } from 'react';
 import MenuIcon from './MenuIcon';
 import gsap from 'gsap';
 import LogoHorizontal from './LogoHorizontal';
@@ -17,8 +16,6 @@ gsap.registerPlugin(ScrollToPlugin)
 
 const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
 
-    const [contentColor, setContentColor] = useState('var(--c-white)')
-
     useGSAP(() => {
         gsap.from('.header', {
             y: '-=100%',
@@ -27,12 +24,6 @@ const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
             ease: 'expo.inOut',
         })
     }, [])
-
-    useEffect(() => {
-        if (!hasDarkBg) {
-            setContentColor('var(--c-dark)')
-        }
-    })
 
     const goToTop = () => {
         gsap.to(window, {
@@ -47,9 +38,9 @@ const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
         <div className='header-container'>
             <header className="header">
                 <Link onClick={goToTop} to='/' className='logo-link'>
-                    <LogoHorizontal strokeColor={contentColor} />
+                    <LogoHorizontal onlyLogo={!hasDarkBg}/>
                 </Link>
-                <MenuIcon strokeColor={contentColor} menuIsShown={menuIsShown} toggleMenu={toggleMenu} />
+                <MenuIcon contrastBackground={!hasDarkBg} menuIsShown={menuIsShown} toggleMenu={toggleMenu} />
             </header>
             <div className='background-header' />
         </div>

@@ -74,6 +74,7 @@
     .container-carousel {
         width: 80vw;
         height: 44vw;
+        display: none;
     }
 
     .container-carousel .corousel-wrapper .carousel-item {
@@ -90,6 +91,7 @@
         top: unset;
         bottom: -6rem;
         transform: translateX(-50%);
+        display: none;
     }
 
     .side-options img {

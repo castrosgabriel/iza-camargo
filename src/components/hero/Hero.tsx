@@ -108,10 +108,12 @@ const Hero = ({ mouseMove }: heroProps) => {
                         <img className='title' src={SvgArrow} alt='arrow' />
                     </div>
                 </div>
-                <BottomBar ref={bottomBarRef} />
+                <div className='bottom-hero'>
+                    <BottomBar ref={bottomBarRef} />
+                </div>
             </div>
             <div className='hero-img-wrapper'>
-                <img src={PngIzaHeroMobile} className='img-mobile'/>
+                <img src={PngIzaHeroMobile} className='img-mobile' />
                 <div className='hero-img'>
                     <img src={PngIzaOverHero} className='img-over' />
                     <img src={PngIzaHero} className='img-bg' />

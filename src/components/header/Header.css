@@ -16,8 +16,8 @@
     max-width: var(--max-width);
     width: 100%;
 }
-
-/* .background-header {
+/* 
+.background-header {
     position: absolute;
     top: 0;
     left: 0;
@@ -25,5 +25,4 @@
     height: 100%;
     z-index: -1;
     backdrop-filter: blur(30px);
-    mask-image: linear-gradient(to bottom, white, black);
 } */
