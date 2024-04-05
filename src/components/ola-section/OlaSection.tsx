@@ -8,13 +8,15 @@ import {
     PngSofa,
     PngFrame1,
     PngFrame2,
-    PngShadowOla
+    PngShadowOla,
+    PngFrame3
 } from '../../assets/png'
 import './OlaSection.css'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useGSAP } from '@gsap/react'
 import { useEffect, useState } from 'react'
+import { useGSAP } from '@gsap/react'
+import { Link } from 'react-router-dom'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -29,48 +31,86 @@ const OlaSection = () => {
     const PLANT_3_MOVE_DIST = 0.15
     const IZA_MOVE_DIST = 0.3
     const LIGHT_MOVE_DIST = 0.2
-    const SHADOW_MOVE_DIST = { x: 0.5, y: 0.5 }
+    // const SHADOW_MOVE_DIST = { x: 0.5, y: 0.5 }
 
     useEffect(() => {
-        const tl = gsap.timeline({
-            scrollTrigger: {
-                trigger: '.ola-container',
-                start: 'top bottom',
-                end: 'bottom bottom',
-                scrub: true,
-            },
-            onStart: () => setDontMove(true),
-            onComplete: () => setDontMove(false),
-            onUpdate: () => setDontMove(true),
-        })
-        tl.from('.ola-content', {
-            y: '10%',
-            ease: 'ease.inOut',
-            opacity: 0,
-            delay: .3,
-            stagger: .1,
-        })
-            .from('.ola-first img', {
-                y: '24%',
+        const mm = gsap.matchMedia()
+        mm.add("(min-width: 768px)", () => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.ola-container',
+                    start: 'top bottom',
+                    end: 'bottom bottom',
+                    scrub: true,
+                },
+                onStart: () => setDontMove(true),
+                onComplete: () => setDontMove(false),
+                onUpdate: () => setDontMove(true),
+            })
+            tl.from('.ola-content', {
+                y: '10%',
                 ease: 'ease.inOut',
-                stagger: .2,
-            }, 0)
-    }, [])
-    //mousemove listener
-    useEffect(() => {
+                opacity: 0,
+                delay: .3,
+                stagger: .1,
+            })
+                .from('.ola-first img', {
+                    y: '24%',
+                    ease: 'ease.inOut',
+                    stagger: .2,
+                }, 0)
 
-        const handleMouseMove = (e: any) => {
-            setMouseMove({ x: e.clientX / window.innerWidth * 100, y: e.clientY / window.innerHeight * 100 })
-        }
+            const scrollHor = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.ola-container',
+                    start: 'top top',
+                    end: 'bottom top',
+                    scrub: true,
+                }
+            })
 
+            scrollHor.to('.sections-wrapper', {
+                x: '-100vw',
+                y: '100vh',
+                ease: 'none',
+            })
+                .to('.img-shadow-ola', {
+                    x: '70vw',
+                    ease: 'none',
+                }, 0)
+        })
+
+        mm.add("(max-width: 767px)", () => {
+            const tl = gsap.timeline({
+                scrollTrigger: {
+                    trigger: '.ola-container',
+                    start: '50% bottom',
+                    end: 'bottom bottom',
+                    scrub: 2,
+                },
+            })
+            tl.from('.ola-mobile-txt', {
+                y: '20%',
+                ease: 'ease.inOut',
+                opacity: 0,
+                delay: 0.4,
+            })
+                .from('.frame-container', {
+                    y: '10%',
+                    opacity: 0,
+                }, 0)
+        })
+
+        const handleMouseMove = (e: any) => { setMouseMove({ x: e.clientX / window.innerWidth * 100, y: e.clientY / window.innerHeight * 100 }) }
         window.addEventListener('mousemove', handleMouseMove)
 
         return () => {
             window.removeEventListener('mousemove', handleMouseMove)
         }
     }, [])
+
     //parallax effect
-    useEffect(() => {
+    useGSAP(() => {
         if (dontMove) return
         const handleParallax = () => {
             const matchMedia = gsap.matchMedia()
@@ -90,10 +130,6 @@ const OlaSection = () => {
                 gsap.set('.img-plant-3', {
                     x: (mouseMove.x - 50) * PLANT_3_MOVE_DIST,
                 });
-                gsap.set('.img-shadow-ola', {
-                    x: (mouseMove.x - 50) * SHADOW_MOVE_DIST.x,
-                    y: (mouseMove.y - 50) * SHADOW_MOVE_DIST.y,
-                });
             })
         }
         handleParallax()
@@ -109,22 +145,99 @@ const OlaSection = () => {
     }, [mouseMove, dontMove])
 
     useGSAP(() => {
-        let matchMedia = gsap.matchMedia()
-        matchMedia.add("(min-width: 800px)", () => {
-            const tl = gsap.timeline({
-                scrollTrigger: {
-                    trigger: '.ola-container',
-                    start: 'top top',
-                    end: 'bottom top',
-                    scrub: true,
-                },
+        const mm = gsap.matchMedia()
+        mm.add("(max-width: 768px)", () => {
 
+            gsap.set('.item-2 h2', {
+                opacity: 0,
+                x: 100,
             })
-            tl.to('.sections-wrapper', {
-                x: '-100vw',
-                y: '100vh',
-                ease: 'none',
+            gsap.set('.item-2 button', {
+                opacity: 0,
+                x: 100,
             })
+            gsap.set('.item-3 h2', {
+                opacity: 0,
+                x: 100,
+            })
+
+            gsap.set('.item-3 button', {
+                opacity: 0,
+                x: 100,
+            })
+
+            const slideTl = gsap.timeline({
+                scrollTrigger: {
+                    scroller: '.frame-container',
+                    horizontal: true,
+                    trigger: '.item-1',
+                    start: 'left left',
+                    scrub: true,
+                    end: 'right left',
+                }
+            })
+            slideTl.from('.item-2 img', {
+                x: '-100',
+            })
+                .to('.item-2 h2', {
+                    opacity: 1,
+                    duration: 0.2,
+                    x: 0,
+                }, 0.8)
+                .to('.item-2 button', {
+                    opacity: 1,
+                    duration: 0.2,
+                    x: 0,
+                }, 0.8)
+                .to('.item-1 h2', {
+                    opacity: 0,
+                    duration: 0.2,
+                }, 0)
+                .to('.item-1 button', {
+                    opacity: 0,
+                    duration: 0.2,
+                }, 0)
+                .to('.item-1 img', {
+                    x: '100',
+                }, 0)
+                .to('.item-3 img', {
+                    x: '-100',
+                }, 0)
+
+            const slideTl2 = gsap.timeline({
+                scrollTrigger: {
+                    scroller: '.frame-container',
+                    horizontal: true,
+                    trigger: '.item-2',
+                    start: 'left left',
+                    scrub: true,
+                    end: 'right left',
+                }
+            })
+            slideTl2.from('.item-3 img', {
+                x: '-100',
+            })
+                .to('.item-3 h2', {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.2,
+                }, 0.8)
+                .to('.item-3 button', {
+                    opacity: 1,
+                    x: 0,
+                    duration: 0.2,
+                }, 0.8)
+                .to('.item-2 h2', {
+                    opacity: 0,
+                    duration: 0.2,
+                }, 0)
+                .to('.item-2 button', {
+                    opacity: 0,
+                    duration: 0.2,
+                }, 0)
+                .to('.item-2 img', {
+                    x: '100',
+                }, 0)
         })
     }, [])
 
@@ -133,7 +246,6 @@ const OlaSection = () => {
             <div id='ola-section-first' className='ola-container snap-item'>
                 <div className='sections-wrapper'>
                     <div className='img-shadow-ola'>
-                        <img src={PngShadowOla} alt='shadow' />
                         <img src={PngShadowOla} alt='shadow' />
                     </div>
                     <div className='ola-first'>
@@ -167,12 +279,27 @@ const OlaSection = () => {
                     </div>
                     <div className='ola-second'>
                         <div className='frame-container'>
-                            <img src={PngFrame1} />
-                            <img src={PngFrame2} />
-                        </div>
-                        <div className='ola-mobile-txt'>
-                            <h1>Minha história</h1>
-                            <Button text='Acesse' link='/minha-historia' />
+                            <Link to='/minha-historia'>
+                                <div className='frame-item item-1'>
+                                    <Button text='Acesse' link='/minha-historia' />
+                                    <h2>Minha história</h2>
+                                    <img src={PngFrame3} />
+                                </div>
+                            </Link>
+                            <Link to='/palestras'>
+                                <div className='frame-item item-2'>
+                                    <Button text='Acesse' link='/palestras' />
+                                    <h2>Palestras</h2>
+                                    <img src={PngFrame1} />
+                                </div>
+                            </Link>
+                            <Link to='/mentorias'>
+                                <div className='frame-item item-3'>
+                                    <Button text='Acesse' link='/mentorias' />
+                                    <h2>Mentorias</h2>
+                                    <img src={PngFrame2} />
+                                </div>
+                            </Link>
                         </div>
                         <img src={PngPlang3Ola} className='img-plant-3' alt='plant' />
                         <img src={PngSofa} className='img-sofa' alt='sofa' />

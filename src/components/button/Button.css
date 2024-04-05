@@ -88,4 +88,8 @@ button {
     .hover-btn {
         display: none;
     }
+
+    .btn-wrapper {
+        transition: unset;
+    }
 }

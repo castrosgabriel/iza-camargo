@@ -5,10 +5,11 @@ import { PngIzaHero, PngIzaOverHero } from '../../assets/png';
 import gsap from 'gsap';
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
-import ScrollTrigger from 'gsap/ScrollTrigger'
+import ScrollTrigger from 'gsap/ScrollTrigger';
 import PngIzaHeroMobile from '../../assets/png/iza-hero-mobile.png';
+import { ScrollToPlugin } from 'gsap/all';
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 type heroProps = {
     mouseMove: {
@@ -61,6 +62,8 @@ const Hero = ({ mouseMove }: heroProps) => {
                 scale: 1.2,
                 ease: 'expo.inOut',
             }, 0)
+
+        return () => enterElementsTl.kill()
     }, [])
 
     useGSAP(() => {
@@ -105,7 +108,7 @@ const Hero = ({ mouseMove }: heroProps) => {
                     <img alt='logo' src={SvgLogo} className='hero-logo' />
                     <div className='hero-title'>
                         <h1 className='title'>Que bom que <br /> você está aqui.</h1>
-                        <img className='title' src={SvgArrow} alt='arrow' />
+                        <img style={{ cursor: 'pointer' }} className='title' src={SvgArrow} alt='arrow' />
                     </div>
                 </div>
                 <div className='bottom-hero'>

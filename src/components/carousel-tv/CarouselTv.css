@@ -14,6 +14,13 @@
 .container-carousel .corousel-wrapper .carousel-item {
     width: 56rem;
     height: 31.5rem;
+    opacity: 1;
+    transition: all 0.5s ease-in-out;
+}
+
+.container-carousel .corousel-wrapper .carousel-item:hover {
+    opacity: .8;
+    transform: scale(1.02);
 }
 
 .container-carousel .corousel-wrapper .carousel-item img {

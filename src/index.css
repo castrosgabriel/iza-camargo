@@ -1,7 +1,7 @@
 @import url("https://use.typekit.net/rwx3mzt.css");
 
 html {
-  font-family: "museo-slab", sans-serif;
+  font-family: museo-slab, sans-serif;
   font-size: max(14px, min(16px, 1vw));
   scroll-snap-type: y mandatory;
 }

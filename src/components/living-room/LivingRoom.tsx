@@ -5,18 +5,10 @@ import { PngCellphone, PngRack, PngShadowLiving, PngTv } from '../../assets/png'
 import Button from '../button/Button'
 import './LivingRoom.css'
 import { useGSAP } from '@gsap/react'
-import { useEffect } from 'react'
 
 gsap.registerPlugin(ScrollTrigger)
 
-type LivingRoomProps = {
-    mouseMove: {
-        x: number,
-        y: number
-    }
-}
-
-const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
+const LivingRoom = () => {
 
     useGSAP(() => {
         const mm = gsap.matchMedia();
@@ -53,19 +45,12 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                 x: '-100vw',
                 y: '100vh',
             })
+                .to('.img-shadow-living', {
+                    x: '+=120vh',
+                    ease: 'none',
+                }, 0)
         })
     }, [])
-
-    useEffect(() => {
-        const mm = gsap.matchMedia();
-        mm.add('screen and (min-width: 768px)', () => {
-            gsap.set('.shadow-living', {
-                x: (mouseMove.x - 50) * 1,
-                y: (mouseMove.y - 50) * 1,
-                duration: .3
-            })
-        })
-    }, [mouseMove])
 
     return (
         <>
@@ -82,9 +67,6 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                         <img className='tv screen' src={PngTv} />
                     </div>
                     <div className='living-room-second'>
-                        <div className='img-shadow-living-2'>
-                            <img src={PngShadowLiving} className='shadow-living' />
-                        </div>
                         <div className='content-wrapper'>
                             <img className='cellphone' src={PngCellphone} />
                             <h2>Já conhece o Podcast Interioriza?</h2>
@@ -92,6 +74,7 @@ const LivingRoom = ({ mouseMove }: LivingRoomProps) => {
                                 Donec porttitor, massa id maximus efficitur, mi nulla molestie velit,
                                 efficitur. </p>
                             <Button
+                                newTab
                                 link='https://podcasters.spotify.com/pod/show/izabella-camargo3'
                                 text='Ouvir agora'
                                 hoverColor='#2B3836'

@@ -27,7 +27,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, im
                 <h3>{title}</h3>
                 <p>{description}</p>
             </div>
-            <Button text={ctaText} />
+            <Button newTab text={ctaText} />
             <img className='img-wrapper' src={image} alt="placeholder" />
         </div>
     )
@@ -56,22 +56,32 @@ const ContentCards = () => {
     useGSAP(() => {
         const mm = gsap.matchMedia()
         mm.add('screen and (min-width: 768px)', () => {
-            gsap.from(
-                '.card-info',
-                {
-                    scrollTrigger: {
-                        trigger: '.card-container',
-                        start: 'top bottom',
-                        end: 'bottom bottom',
-                        scrub: true
-                    },
-                    opacity: 1,
-                    duration: 1,
-                    stagger: 0.4,
-                    delay: 1,
-                    y: '10rem',
-                }
-            )
+            gsap.from('.card-info', {
+                scrollTrigger: {
+                    trigger: '.card-container',
+                    start: 'top bottom',
+                    end: 'bottom bottom',
+                    scrub: true
+                },
+                opacity: 1,
+                duration: 1,
+                stagger: 0.4,
+                delay: 1,
+                y: '10rem',
+            })
+        })
+        mm.add('screen and (max-width: 768px)', () => {
+            gsap.from('.card-info', {
+                opacity: 0,
+                stagger: 0.4,
+                y: '20%',
+                scrollTrigger: {
+                    trigger: '.card-container',
+                    start: '40% bottom',
+                    end: '90% bottom',
+                    scrub: 2,
+                },
+            })
         })
     }, [])
 

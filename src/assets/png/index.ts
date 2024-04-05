@@ -13,6 +13,7 @@ import PngPlang3Ola from './plant-3-ola.png';
 import PngSofa from './sofa-ola.png';
 import PngFrame1 from './frame-1.png';
 import PngFrame2 from './frame-2.png';
+import PngFrame3 from './frame-3.png';
 import PngRack from './rack.png';
 import PngCellphone from './cellphone.png';
 import PngTv from './tv.png';
@@ -34,8 +35,14 @@ import PngMentoriaHero from './mentoria-hero.png';
 import PngContactHero from './contact-hero.png';
 import PngMentoriaIza from './mentoria-iza.png';
 import PngIzaHeroMobile from './iza-hero-mobile.png';
+import PngTv1 from './tv-1.png';
+import PngTv2 from './tv-2.png';
+import PngTv3 from './tv-3.png';
 
 export {
+    PngTv3,
+    PngTv2,
+    PngTv1,
     PngIzaHeroMobile,
     PngMentoriaIza,
     PngContactHero,
@@ -71,5 +78,6 @@ export {
     PngPlang3Ola,
     PngSofa,
     PngFrame1,
-    PngFrame2
+    PngFrame2,
+    PngFrame3
 };

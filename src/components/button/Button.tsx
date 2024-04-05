@@ -13,6 +13,7 @@ type ButtonProps = {
     type?: 'button' | 'submit'
     loading?: boolean
     submited?: boolean
+    newTab?: boolean
 }
 
 const Button = memo(({
@@ -22,6 +23,7 @@ const Button = memo(({
     color = 'var(--c-primary)',
     hoverColor = 'var(--c-support)',
     loading = false,
+    newTab = false
 }: ButtonProps) => {
 
     const buttonTextStyle: CSSProperties = {
@@ -64,7 +66,7 @@ const Button = memo(({
     return (
         <>
             {type === 'button' ? (
-                <Link to={link}>
+                <Link target={newTab ? '_blank' : undefined} to={link}>
                     <BaseButton />
                 </Link>
             ) : (

@@ -34,8 +34,9 @@ const BookSeller = () => {
                 <div className='book-content-wrapper '>
                     <h2 className='book-item'>Dá um tempo!</h2>
                     <p className='book-item'>é um convite à busca por limite em um mundo sem limites.</p>
+                    <p className='book-item' style={{fontSize:'1.4rem'}}>R$ 49,90</p>
                     <div className='book-item'>
-                        <Button hoverColor='#CA7925' text='Comprar livro' color='var(--c-secondary)' />
+                        <Button newTab hoverColor='#CA7925' text='Comprar livro' color='var(--c-secondary)' />
                     </div>
                 </div>
                 <img className='book-img book-item' src={PngBook} alt="placeholder" />

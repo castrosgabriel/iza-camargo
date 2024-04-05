@@ -26,11 +26,11 @@ const BigNumber = ({ number, description }: BigNumberProps) => {
 
 export const SocialMedia = () =>
     <div className='social-container'>
-        <Link to='https://www.instagram.com/izabellacamargoreal'><img src={SvgInstagram} alt='instagram' /></Link>
-        <Link to='https://www.youtube.com/izabellacamargoreal'><img src={SvgYoutube} alt='youtube' /></Link>
-        <Link to='https://podcasters.spotify.com/pod/show/izabella-camargo3'><img src={SvgSpotify} alt='spotify' /></Link>
-        <Link to='https://wa.me/5511974987070'><img src={SvgWhats} alt='whats' /></Link>
-        <Link to='https://www.linkedin.com/in/izabellacamargoreal'><img src={SvgLinkedin} alt='linkedin' /></Link>
+        <Link target='_blank' to='https://www.instagram.com/izabellacamargoreal'><img src={SvgInstagram} alt='instagram' /></Link>
+        <Link target='_blank' to='https://www.youtube.com/izabellacamargoreal'><img src={SvgYoutube} alt='youtube' /></Link>
+        <Link target='_blank' to='https://podcasters.spotify.com/pod/show/izabella-camargo3'><img src={SvgSpotify} alt='spotify' /></Link>
+        <Link target='_blank' to='https://wa.me/5511974987070'><img src={SvgWhats} alt='whats' /></Link>
+        <Link target='_blank' to='https://www.linkedin.com/in/izabellacamargoreal'><img src={SvgLinkedin} alt='linkedin' /></Link>
     </div>
 
 type BottomBarProps = {

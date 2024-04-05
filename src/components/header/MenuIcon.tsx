@@ -95,7 +95,7 @@ const MenuIcon = ({ contrastBackground, strokeColor = 'white', menuIsShown, togg
     }, [menuIsShown])
 
     const svgStyle: CSSProperties = {
-        background: contrastBackground ? '#435a5492' : 'transparent',
+        background: contrastBackground ? '#2b38368b' : 'transparent',
         padding: '.75rem',
         borderRadius: '50%',
         cursor: 'pointer',

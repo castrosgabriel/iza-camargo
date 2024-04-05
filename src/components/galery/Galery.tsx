@@ -2,8 +2,9 @@ import React, { useRef, useState } from 'react';
 import './Galery.css'
 import gsap from 'gsap';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
-gsap.registerPlugin(ScrollToPlugin);
+gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
 type GaleryProps = {
     children: React.ReactNode;
@@ -68,6 +69,7 @@ const Galery = ({
         setCurrentIndex(prevIndex);
         goTo(prevIndex);
     }
+
 
     return (
         <div style={{ height: height, backgroundColor: backgroundColor }} className='galery-container snap-item' >

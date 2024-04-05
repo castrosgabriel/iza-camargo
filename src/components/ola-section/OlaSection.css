@@ -5,7 +5,7 @@
     position: relative;
 }
 
-.ola-container-second{
+.ola-container-second {
     width: 100vw;
     height: 100vh;
     background-color: #E6EADF;
@@ -43,19 +43,38 @@
 
 .ola-second .frame-container {
     display: flex;
-    padding-top: 7rem;
-    gap: 2rem;
+    padding-top: 5rem;
+    gap: 1rem;
+    justify-content: center;
 }
 
-.frame-container>img {
+.frame-container .frame-item {
+    transform: scale(.89);
+    object-fit: cover;
     transition: transform 0.3s;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 
+    button {
+        display: none;
+    }
+
+    h2 {
+        opacity: 0;
+        color: var(--c-support);
+        transition: all 0.3s ease-in-out;
+    }
 }
 
-.frame-container>img:hover {
-    transform: scale(1.05);
+.frame-container .frame-item:hover {
+    transform: scale(.95);
 
+    h2 {
+        opacity: 1;
+        transform: scale(1.05) translateY(-1rem);
+    }
 }
 
 .ola-first .max-width {
@@ -157,6 +176,12 @@
     display: none;
 }
 
+@media (min-width: 768px) {
+    .frame-item.item-1 {
+        display: none;
+    }
+}
+
 @media (max-width: 768px) {
 
     .ola-container {
@@ -179,43 +204,11 @@
         display: none;
     }
 
-    .ola-container .ola-second{
+    .ola-container .ola-second {
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: flex-start;
-    }
-
-    .ola-container .ola-second .frame-container {
-        display: flex;
-        justify-content: flex-start;
-        width: 100%;
-        overflow-x: auto;
-        gap: 1.5rem;
-        padding-top: 3rem;
-        scrollbar-width: none;
-
-        &::-webkit-scrollbar {
-            display: none;
-        }
-    }
-
-    .ola-container .ola-second .frame-container img {
-        width: 22rem;
-        height: auto;
-        object-fit: cover;
-    }
-
-    .frame-container>img:hover {
-        transform: none;
-    }
-
-    .ola-container .ola-second .frame-container img:first-child {
-        margin-left: 4rem;
-    }
-
-    .ola-container .ola-second .frame-container img:last-child {
-        margin-right: 4rem;
     }
 
     .ola-container .ola-second .ola-mobile-txt {
@@ -227,7 +220,7 @@
         margin-bottom: 3rem;
         padding: 3rem;
 
-        h1{
+        h1 {
             color: #515151;
             text-align: center;
         }
@@ -242,5 +235,59 @@
         object-fit: cover;
         object-position: bottom;
         width: 80rem;
+    }
+
+    .ola-container .ola-second .frame-container {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        width: 100%;
+        height: 70%;
+        overflow-x: auto;
+        gap: 0;
+        padding-top: 3rem;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
+    }
+
+    .ola-container .ola-second .frame-container img {
+        width: 22rem;
+        height: auto;
+        object-fit: cover;
+    }
+
+    .frame-container .frame-item {
+        flex-direction: column-reverse;
+        width: 100vw;
+        gap: 1.5rem;
+        margin: 0;
+        padding: 0;
+        scroll-snap-align: start;
+        scroll-snap-stop: always;
+        transform: unset;
+        transition: unset;
+
+        button {
+            display: unset;
+        }
+
+        h2 {
+            opacity: 1;
+            transition: unset;
+        }
+    }
+
+
+    .frame-container .frame-item:hover {
+        transform: unset;
+
+        h2 {
+            opacity: unset;
+            transform: unset;
+        }
     }
 }

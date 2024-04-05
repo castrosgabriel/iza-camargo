@@ -1,9 +1,10 @@
 import { useRef, useState } from 'react';
-import { PngTvContent } from '../../assets/png';
+import { PngTv1, PngTv2, PngTv3 } from '../../assets/png';
 import { SvgArrowSlider } from '../../assets/svg';
 import './CarouselTv.css';
 import gsap from 'gsap';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
+import { Link } from 'react-router-dom';
 
 gsap.registerPlugin(ScrollToPlugin);
 
@@ -16,15 +17,18 @@ type PaginatorProps = {
 const carouselArray = [
     {
         id: 1,
-        img: PngTvContent
+        img: PngTv1,
+        link: 'https://www.youtube.com/watch?v=UJeSe18J1m0&ab_channel=TEDxTalks'
     },
     {
         id: 2,
-        img: PngTvContent
+        img: PngTv2,
+        link: 'https://www.youtube.com/watch?v=ZucqBl_CFvo&ab_channel=TEDxTalks'
     },
     {
         id: 3,
-        img: PngTvContent
+        img: PngTv3,
+        link: 'https://www.youtube.com/watch?v=58GGgSsNOKU&ab_channel=TEDxTalks'
     }
 ]
 
@@ -96,9 +100,11 @@ const CarouselTv = () => {
                 <div className='corousel-wrapper'>
                     {carouselArray.map((item, index) => {
                         return (
-                            <div ref={el => carouselRef.current[index] = el} key={item.id} className='carousel-item'>
-                                <img src={item.img} />
-                            </div>
+                            <Link to={item.link} target='_blank' key={item.id}>
+                                <div ref={el => carouselRef.current[index] = el} key={item.id} className='carousel-item'>
+                                    <img src={item.img} />
+                                </div>
+                            </Link>
                         )
                     })}
                 </div>

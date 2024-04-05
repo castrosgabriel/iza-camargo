@@ -8,16 +8,10 @@ import LivingRoom from './components/living-room/LivingRoom'
 import Footer from './components/footer/Footer'
 import { useEffect, useState } from 'react'
 import MenuWrapper from './components/menu/MenuWrapper'
-import gsap from 'gsap'
-import { ScrollTrigger } from 'gsap/ScrollTrigger'
-
-gsap.registerPlugin(ScrollTrigger)
 
 const App = () => {
-
   const [mouseX, setMouseX] = useState(0)
   const [mouseY, setMouseY] = useState(0)
-  const [firstScroll, setFirstScroll] = useState(false)
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -26,37 +20,22 @@ const App = () => {
       setMouseY(e.clientY / window.innerHeight * 100)
     }
 
-    window.addEventListener('mousemove', handleMouseMove)
-
-    return () => window.removeEventListener('mousemove', handleMouseMove)
-
-  }, [])
-
-  useEffect(() => {
-    ScrollTrigger.create({
-      trigger: '#hero-home',
-      start: '30% top',
-      end: '70% top',
-      toggleClass: 'active',
-      onEnter: () => setFirstScroll(true),
-      onEnterBack: () => setFirstScroll(false),
-    })
-    
     const htmlElement = document.querySelector('html');
     if (!htmlElement) return
     const htmlStyle = htmlElement.style;
     htmlStyle.scrollSnapType = 'y mandatory';
 
+    window.addEventListener('mousemove', handleMouseMove)
+
     return () => {
       htmlStyle.scrollSnapType = 'none';
+      window.removeEventListener('mousemove', handleMouseMove)
     }
-    
   }, [])
 
   return (
     <>
       <MenuWrapper
-        darkBg={!firstScroll}
         whichIsActive='home'
       />
       <div className='content-home'>
@@ -64,7 +43,7 @@ const App = () => {
         <OlaSection />
         <ContentCards />
         <BookSeller />
-        <LivingRoom mouseMove={{ x: mouseX, y: mouseY }} />
+        <LivingRoom />
         <Store mouseMove={{ x: mouseX, y: mouseY }} />
         <Footer />
       </div>
