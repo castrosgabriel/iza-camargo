@@ -163,13 +163,12 @@
         top: unset;
         object-fit: cover;
         object-position: unset;
-        height: 45vh;
+        height: 42vh;
         width: auto;
         transform: unset;
         transform: scale(1.4) translateX(0%) translateY(0%);
         z-index: -1;
     }
-
 
     .living-room-first {
         position: relative;

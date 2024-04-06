@@ -66,7 +66,7 @@ const LivingRoom = () => {
                         </div>
                         <img className='tv screen' src={PngTv} />
                     </div>
-                    <div className='living-room-second'>
+                    <div id='living-room-second' className='living-room-second'>
                         <div className='content-wrapper'>
                             <img className='cellphone' src={PngCellphone} />
                             <h2>Já conhece o Podcast Interioriza?</h2>

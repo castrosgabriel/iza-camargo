@@ -148,95 +148,51 @@ const OlaSection = () => {
         const mm = gsap.matchMedia()
         mm.add("(max-width: 768px)", () => {
 
-            gsap.set('.item-2 h2', {
-                opacity: 0,
-                x: 100,
-            })
-            gsap.set('.item-2 button', {
-                opacity: 0,
-                x: 100,
-            })
-            gsap.set('.item-3 h2', {
-                opacity: 0,
-                x: 100,
-            })
-
-            gsap.set('.item-3 button', {
-                opacity: 0,
-                x: 100,
-            })
-
             const slideTl = gsap.timeline({
                 scrollTrigger: {
                     scroller: '.frame-container',
                     horizontal: true,
-                    trigger: '.item-1',
-                    start: 'left left',
+                    trigger: '.item-2',
                     scrub: true,
-                    end: 'right left',
+                    start: 'left 5%',
+                    end: 'right 30%',
                 }
             })
-            slideTl.from('.item-2 img', {
-                x: '-100',
+            slideTl.from('.item-3 h2', {
+                opacity: 0,
             })
+                .from('.item-3 button', {
+                    opacity: 0,
+                }, 0)
                 .to('.item-2 h2', {
-                    opacity: 1,
-                    duration: 0.2,
-                    x: 0,
-                }, 0.8)
+                    opacity: 0,
+                }, 0)
                 .to('.item-2 button', {
-                    opacity: 1,
-                    duration: 0.2,
-                    x: 0,
-                }, 0.8)
-                .to('.item-1 h2', {
                     opacity: 0,
-                    duration: 0.2,
-                }, 0)
-                .to('.item-1 button', {
-                    opacity: 0,
-                    duration: 0.2,
-                }, 0)
-                .to('.item-1 img', {
-                    x: '100',
-                }, 0)
-                .to('.item-3 img', {
-                    x: '-100',
                 }, 0)
 
             const slideTl2 = gsap.timeline({
                 scrollTrigger: {
                     scroller: '.frame-container',
                     horizontal: true,
-                    trigger: '.item-2',
-                    start: 'left left',
+                    trigger: '.item-1',
                     scrub: true,
-                    end: 'right left',
+                    start: 'left 5%',
+                    end: 'right 30%',
                 }
             })
-            slideTl2.from('.item-3 img', {
-                x: '-100',
+
+            slideTl2.to('.item-1 h2', {
+                opacity: 0,
             })
-                .to('.item-3 h2', {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.2,
-                }, 0.8)
-                .to('.item-3 button', {
-                    opacity: 1,
-                    x: 0,
-                    duration: 0.2,
-                }, 0.8)
-                .to('.item-2 h2', {
-                    opacity: 0,
-                    duration: 0.2,
+            .to('.item-1 button', {
+                opacity: 0,
                 }, 0)
-                .to('.item-2 button', {
+                .from('.item-2 h2', {
                     opacity: 0,
-                    duration: 0.2,
                 }, 0)
-                .to('.item-2 img', {
-                    x: '100',
+                .from('.item-2 button', {
+                    opacity: 0,
                 }, 0)
         })
     }, [])
@@ -277,7 +233,7 @@ const OlaSection = () => {
                             <img src={PngPlant2Ola} className='img-plant-2' alt='plant' />
                         </div>
                     </div>
-                    <div className='ola-second'>
+                    <div id='ola-second' className='ola-second'>
                         <div className='frame-container'>
                             <Link to='/minha-historia'>
                                 <div className='frame-item item-1'>

@@ -3,6 +3,7 @@ import './Galery.css'
 import gsap from 'gsap';
 import ScrollToPlugin from 'gsap/ScrollToPlugin';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { useGSAP } from '@gsap/react';
 
 gsap.registerPlugin(ScrollToPlugin, ScrollTrigger);
 
@@ -43,6 +44,7 @@ const Galery = ({
     titleColor = 'var(--c-white)' }: GaleryProps) => {
 
     const [currentIndex, setCurrentIndex] = useState(0);
+    const [finishScroll, setFinishScroll] = useState(false);
     const galeryRef = useRef<(HTMLDivElement | null)[]>([]);
     const galeryLength = React.Children.count(children);
     const container = useRef<HTMLDivElement>(null);
@@ -61,14 +63,38 @@ const Galery = ({
     };
     const goToNext = () => {
         const nextIndex = (currentIndex + 1) % galeryLength;
-        setCurrentIndex(nextIndex)
-        goTo(nextIndex);
+        if (finishScroll) {
+            setCurrentIndex(0)
+            goTo(0)
+        }
+        else {
+            setCurrentIndex(nextIndex)
+            goTo(nextIndex);
+        }
     }
     const goToPrevious = () => {
         let prevIndex = (currentIndex - 1 + galeryLength) % galeryLength;
         setCurrentIndex(prevIndex);
         goTo(prevIndex);
     }
+
+    useGSAP(() => {
+        ScrollTrigger.create({
+            trigger: '.galery-row',
+            start: 'top top',
+            horizontal: true,
+            end: 'bottom bottom',
+            scroller: '.galery-frame',
+            onLeave: () => {
+                setFinishScroll(true)
+            },
+            onEnterBack: () => {
+                setFinishScroll(false)
+            }
+        })
+    }, [])
+
+    console.log(finishScroll)
 
 
     return (

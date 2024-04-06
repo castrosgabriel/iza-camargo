@@ -7,14 +7,19 @@ import './form.css';
 type FormSectionProps = {
     title: string,
     text: string
-    formFields?: string[]
+    formFields?: Array<{ field: string, required?: boolean, type?:string }>,
     socialMedia?: boolean
 }
 
 const FormSection = ({
     title,
     text,
-    formFields = ['Nome', 'Empresa', 'Telefone', 'E-mail'],
+    formFields = [
+        { field: 'Nome', required: true },
+        { field: 'Empresa' },
+        { field: 'Telefone', type: 'tel'},
+        { field: 'E-mail', type: 'email' },
+    ],
     socialMedia
 }: FormSectionProps) => {
 
@@ -108,15 +113,35 @@ const FormSection = ({
                     <form className='form-wrapper-container' onSubmit={handleSubmit}>
                         <div className='form-wrapper'>
                             {formFields.map((field, index) => {
-                                if (field !== 'Mensagem') {
-                                    return <InputField name={field} noValue={formSent} onChange={handleChange} key={index} placeHolder={field} />;
+                                if (field.field !== 'Mensagem') {
+                                    return <InputField
+                                        name={field.field}
+                                        required={field.required}
+                                        noValue={formSent}
+                                        onChange={handleChange}
+                                        key={index}
+                                        placeHolder={field.field}
+                                        type={field.type || 'text'}
+                                    />;
                                 } else {
-                                    return <TextAreaField name={field} noValue={formSent} onChange={handleChange} key={index} placeHolder={field} />;
+                                    return <TextAreaField
+                                        name={field.field}
+                                        noValue={formSent}
+                                        required={field.required}
+                                        onChange={handleChange}
+                                        key={index}
+                                        placeHolder={field.field}
+                                    />;
                                 }
                             })}
                         </div>
                         <div style={{ display: 'flex', gap: '2rem', alignItems: 'center' }}>
-                            <Button loading={loading} type='submit' hoverColor='var(--c-dark)' text='Solicitar Contato' />
+                            <Button
+                                loading={loading}
+                                type='submit'
+                                hoverColor='var(--c-dark)'
+                                text='Solicitar Contato'
+                            />
                             {formSent && <p style={{ color: 'white' }}>Mensagem Enviada!</p>}
                         </div>
                     </form>
