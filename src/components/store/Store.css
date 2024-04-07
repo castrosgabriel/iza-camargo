@@ -8,6 +8,10 @@
     justify-content: center;
 }
 
+.store-container img{
+    pointer-events: none;
+}
+
 .store-container .container-full {
     display: flex;
     justify-content: flex-start;

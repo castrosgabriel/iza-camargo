@@ -6,8 +6,24 @@ import './Footer.css'
 import { ReactNode } from 'react'
 
 type ScrollToProps = {
-    to: string
+    to: string,
     children?: ReactNode
+}
+
+type ScrollToTopProps = {
+    children?: ReactNode
+}
+
+export const ScrollToTop = ({ children }: ScrollToTopProps) => {
+    const handleClick = () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    return (
+        <div style={{ cursor: 'pointer' }} onClick={handleClick}>
+            {children}
+        </div>
+    )
 }
 
 export const ScrollTo = ({ to, children }: ScrollToProps) => {
@@ -30,10 +46,10 @@ const Footer = () => {
     return (
         <footer id='footer' className='footer'>
             <div className='footer-content'>
-                <Link to='/'><ScrollTo to='#hero-home'><img className='logo-footer' src={SvgIso} /></ScrollTo></Link>
+                <Link to='/'><ScrollToTop><img className='logo-footer' src={SvgIso} /></ScrollToTop></Link>
                 <div className='pages-wrapper'>
                     <div className='pages'>
-                        <Link to='/'><ScrollTo to='#hero-home'><p><b>Home</b></p></ScrollTo></Link>
+                        <Link to='/'><ScrollToTop><p><b>Home</b></p></ScrollToTop></Link>
                         <ScrollTo to='#content-cards'><p>Roda da Vida</p></ScrollTo>
                         <ScrollTo to='#content-cards'><p>Pesquisa</p></ScrollTo>
                         <ScrollTo to='#living-room-first'><p>TEDx</p></ScrollTo>

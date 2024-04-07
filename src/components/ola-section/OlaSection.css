@@ -102,18 +102,21 @@
     overflow: visible;
     display: flex;
     justify-content: flex-end;
+    pointer-events: none;
 }
 
 .img-plant-1 img {
     height: 100%;
     object-fit: cover;
     object-position: right;
+    pointer-events: none;
 }
 
 .img-plant-2 {
     position: absolute;
     right: -20rem;
     bottom: 0;
+    pointer-events: none;
 }
 
 .img-iza-recorte {
@@ -123,6 +126,7 @@
     z-index: 0;
     width: 48rem;
     object-fit: cover;
+    pointer-events: none;
 }
 
 .img-light-ola {
@@ -132,6 +136,7 @@
     right: 0;
     bottom: 0;
     z-index: 0;
+    pointer-events: none;
 }
 
 .img-plant-3 {
@@ -139,6 +144,7 @@
     right: 0;
     bottom: 0;
     z-index: 0;
+    pointer-events: none;
 }
 
 .img-sofa {
@@ -150,6 +156,7 @@
     object-fit: cover;
     object-position: bottom;
     width: 90%;
+    pointer-events: none;
 }
 
 .img-shadow-ola {

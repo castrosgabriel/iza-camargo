@@ -30,6 +30,7 @@
     object-fit: cover;
     left: 50%;
     transform: translateX(-50%);
+    pointer-events: none;
 }
 
 .living-room-first .tv {
@@ -41,6 +42,7 @@
 
 .tv.screen {
     width: 57.31rem;
+    pointer-events: none;
     height: 32.75rem;
 }
 
@@ -66,6 +68,7 @@
     right: -20%;
     top: 50%;
     transform: translateY(-50%);
+    pointer-events: none;
 }
 
 .living-room-second .content-wrapper {
