@@ -1,7 +1,7 @@
 import './Hero.css';
 import BottomBar from '../bottom-bar/BottomBar';
 import { SvgLogo, SvgArrow } from '../../assets/svg';
-import { PngIzaHero, PngIzaOverHero } from '../../assets/png';
+import { JPGIzaHero, PngIzaOverHero } from '../../assets/png';
 import gsap from 'gsap';
 import { useRef, useState } from 'react';
 import { useGSAP } from '@gsap/react';
@@ -15,7 +15,7 @@ type heroProps = {
     mouseMove: {
         x: number
         y: number
-    }
+    },
 }
 
 const Hero = ({ mouseMove }: heroProps) => {
@@ -119,7 +119,7 @@ const Hero = ({ mouseMove }: heroProps) => {
                 <img src={PngIzaHeroMobile} className='img-mobile' />
                 <div className='hero-img'>
                     <img src={PngIzaOverHero} className='img-over' />
-                    <img src={PngIzaHero} className='img-bg' />
+                    <img src={JPGIzaHero} className='img-bg'/>
                 </div>
             </div>
         </>

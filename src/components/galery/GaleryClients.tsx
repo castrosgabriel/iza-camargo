@@ -16,8 +16,14 @@ const GaleryClients = () => {
         );
     }
 
+    const getHeight = () => {
+        const width = window.innerWidth;
+        if (width <= 768) return '90vh';
+        return '70vh';
+    }
+
     return (
-        <Galery height='60vh' backgroundColor='var(--c-white)' titleColor='var(--c-dark)' title='Clientes'>
+        <Galery height={getHeight()} backgroundColor='var(--c-white)' titleColor='var(--c-dark)' title='Clientes'>
             {
                 newClientsArray.map((item, index) => (
                     <div key={index} className='galery-row'>

@@ -1,4 +1,3 @@
-import PngHero from './hero.png';
 import PngRodaVida from './roda-vida.png';
 import PngIzaCard from './img-iza-card.png';
 import PngBook from './book-img.png'
@@ -38,8 +37,16 @@ import PngIzaHeroMobile from './iza-hero-mobile.png';
 import PngTv1 from './tv-1.png';
 import PngTv2 from './tv-2.png';
 import PngTv3 from './tv-3.png';
+import PngTedX1 from './ted-1.png';
+import PngTedX2 from './ted-2.png';
+import PngTedX3 from './ted-3.png';
+import JPGIzaHero from './iza-hero.jpg';
 
 export {
+    JPGIzaHero,
+    PngTedX3,
+    PngTedX2,
+    PngTedX1,
     PngTv3,
     PngTv2,
     PngTv1,
@@ -64,7 +71,6 @@ export {
     PngTv,
     PngCellphone,
     PngRack,
-    PngHero,
     PngRodaVida,
     PngIzaCard,
     PngBook,

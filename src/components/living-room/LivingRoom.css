@@ -100,7 +100,7 @@
     z-index: 9999;
     pointer-events: none;
     overflow: hidden;
-/* 
+    /* 
     img {
         transform: scale(1.2);
         width: 100%;
@@ -123,6 +123,14 @@
         width: 100%;
         height: 100%;
     }
+}
+
+.tv-col-mobile {
+    display: none;
+}
+
+.living-room-container-second .rack-mobile {
+    display: none;
 }
 
 @media screen and (max-width: 768px) {
@@ -208,6 +216,44 @@
     }
 
     .living-room-container-second {
-        display: none;
+        position: relative;
+        overflow: hidden;
     }
+
+    .living-room-container-second .rack-mobile {
+        bottom: 0;
+        left: 50%;
+        height: 30vh;
+        transform: translateX(-50%);
+        position: absolute;
+        display: block;
+    }
+
+    .living-room-container-second .tv-col-mobile {
+        display: flex;
+        flex-direction: column;
+        gap: .5rem;
+        padding: 2.25rem 1.5rem;
+    }
+
+    .tv-col-mobile a {
+        transition: all .1s;
+        user-select: none;
+    }
+
+    .tv-col-mobile a .tv-mobile {
+        user-select: none;
+    }
+
+
+    .tv-col-mobile a:active {
+        opacity: .8;
+        transform: scale(.95);
+    }
+
+    .living-room-container-second {
+        display: flex;
+        justify-content: center;
+    }
+
 }

@@ -31,8 +31,8 @@ const MenuWrapper = ({ whichIsActive }: MenuWrapperProps) => {
 
     return (
         <>
-            <Header hasDarkBg={hasDarkBg} menuIsShown={showMenu} toggleMenu={() => setShowMenu(!showMenu)} />
-            <Menu whichIsActive={whichIsActive} isShown={showMenu} />
+            <Header hasDarkBg={hasDarkBg} logoClick={()=> setShowMenu(false)} menuIsShown={showMenu} toggleMenu={() => setShowMenu(!showMenu)} />
+            <Menu whichIsActive={whichIsActive} isShown={showMenu} btnClick={() => setShowMenu(false)}/>
         </>
     )
 }

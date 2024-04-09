@@ -54,6 +54,15 @@
     height: 2.5rem;
 }
 
+.social-container .social-item {
+    transition: all 0.2s ease-in-out;
+}
+
+.social-container .social-item:hover {
+    transform: translateY(-.5rem);
+    opacity: 0.6;
+}
+
 .bottom-bar .title-page-bar {
     display: flex;
     color: var(--c-white, #FFF);

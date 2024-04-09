@@ -10,11 +10,12 @@ type headerProps = {
     menuIsShown: boolean
     toggleMenu: () => void
     hasDarkBg?: boolean
+    logoClick?: () => void
 }
 
 gsap.registerPlugin(ScrollToPlugin)
 
-const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
+const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu, logoClick }: headerProps) => {
 
     useGSAP(() => {
         gsap.from('.header', {
@@ -25,19 +26,19 @@ const Header = ({ menuIsShown, hasDarkBg = true, toggleMenu }: headerProps) => {
         })
     }, [])
 
-    const goToTop = () => {
+    const handleLogoClick = () => {
         gsap.to(window, {
             duration: 1.8,
             scrollTo: { y: 0, autoKill: false },
             ease: 'power2.inOut',
         })
+        if (logoClick) logoClick()
     }
-
 
     return (
         <div className='header-container'>
             <header className="header">
-                <Link onClick={goToTop} to='/' className='logo-link'>
+                <Link onClick={handleLogoClick} to='/' className='logo-link'>
                     <LogoHorizontal onlyLogo={!hasDarkBg}/>
                 </Link>
                 <MenuIcon contrastBackground={!hasDarkBg} menuIsShown={menuIsShown} toggleMenu={toggleMenu} />

@@ -12,8 +12,7 @@ const GaleryTestimonal = () => {
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Phasellus iaculis pharetra erat, non suscipit ante. Vestibulum gravida 
                                 finibus dapibus. Etiam congue augue non rutrum sagittis. Aliquam a ornare 
-                                augue, in scelerisque magna. Sed vitae nisi et ligula semper ullamcorper 
-                                tempus efficitur magna. Phasellus justo lectus, tempus'
+                                augue, in scelerisque magna.'
                 />
                 <CardTestimonal
                     image={PngIzaAbout}
@@ -21,8 +20,7 @@ const GaleryTestimonal = () => {
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Phasellus iaculis pharetra erat, non suscipit ante. Vestibulum gravida 
                                 finibus dapibus. Etiam congue augue non rutrum sagittis. Aliquam a ornare 
-                                augue, in scelerisque magna. Sed vitae nisi et ligula semper ullamcorper 
-                                tempus efficitur magna. Phasellus justo lectus, tempus'
+                                augue, in scelerisque magna.'
                 />
                 <CardTestimonal
                     image={PngIzaAbout}
@@ -30,8 +28,7 @@ const GaleryTestimonal = () => {
                     description='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
                                 Phasellus iaculis pharetra erat, non suscipit ante. Vestibulum gravida 
                                 finibus dapibus. Etiam congue augue non rutrum sagittis. Aliquam a ornare 
-                                augue, in scelerisque magna. Sed vitae nisi et ligula semper ullamcorper 
-                                tempus efficitur magna. Phasellus justo lectus, tempus'
+                                augue, in scelerisque.'
                 />
             </Galery>
         </>

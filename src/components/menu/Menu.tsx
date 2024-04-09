@@ -7,19 +7,21 @@ import { useEffect } from 'react';
 type MenuProps = {
     isShown: boolean
     whichIsActive?: string
+    btnClick?: () => void
 }
 
 type MenuBtnProps = {
     text: string,
     link?: string,
     isActive?: boolean
+    onClick?: () => void
 }
 
-const MenuBtn = ({ text, link = '', isActive }: MenuBtnProps) => {
+const MenuBtn = ({ text, link = '', isActive, onClick }: MenuBtnProps) => {
 
 
     return (
-        <Link to={link}>
+        <Link to={link} onClick={onClick}>
             <h2
                 className={isActive ? 'menu-btn active' : 'menu-btn inactive'}
             >
@@ -29,7 +31,7 @@ const MenuBtn = ({ text, link = '', isActive }: MenuBtnProps) => {
     )
 }
 
-const Menu = ({ isShown, whichIsActive }: MenuProps) => {
+const Menu = ({ isShown, whichIsActive, btnClick }: MenuProps) => {
 
     const menuArray = [
         { text: 'Home', link: '/', id: 'home' },
@@ -80,6 +82,7 @@ const Menu = ({ isShown, whichIsActive }: MenuProps) => {
                 <div className='menu-content'>
                     {menuArray.map((item, index) =>
                         <MenuBtn
+                            onClick={btnClick}
                             key={index}
                             isActive={item.id === whichIsActive}
                             link={item.link}
