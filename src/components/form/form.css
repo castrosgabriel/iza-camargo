@@ -10,7 +10,7 @@ input {
     width: 100%;
 }
 
-textarea{
+textarea {
     border: none;
     border-bottom: 1px solid var(--c-white);
     padding: 1rem 0;
@@ -24,12 +24,14 @@ textarea{
     resize: none;
 }
 
-input:focus, textarea:focus {
+input:focus,
+textarea:focus {
     outline: none;
     border-bottom: 2px solid var(--c-primary);
 }
 
-input::placeholder, textarea::placeholder {
+input::placeholder,
+textarea::placeholder {
     color: #919191;
 }
 
@@ -45,6 +47,43 @@ input::placeholder {
     height: 100vh;
     width: 100vw;
     overflow: hidden;
+}
+
+.title-fields {
+    color: var(--c-white);
+}
+
+.inner-content-form {
+    width: 100vw;
+    position: relative;
+    background-color: var(--c-support);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 7rem 0;
+    gap: 3rem;
+    overflow: hidden;
+}
+
+.inner-content-form h3 {
+    color: white;
+    text-align: center;
+    z-index: 1;
+}
+
+.inner-content-form .shadow-content-cta {
+    left: 0;
+    top: 0;
+    z-index: 0;
+    position: absolute;
+}
+
+.inner-content-form p {
+    color: white;
+    text-align: center;
+    max-width: calc(var(--max-width) - 16rem);
+    z-index: 1;
 }
 
 .form-section .form-section-content {
@@ -65,14 +104,14 @@ input::placeholder {
 }
 
 
-.form-section .form-section-content .form-wrapper-container{
+.form-section .form-section-content .form-wrapper-container {
     display: flex;
     flex-direction: column;
-    gap: 4rem;
+    gap: 3rem;
     flex: 1;
 }
 
-.form-section .form-section-content .form-txt{
+.form-section .form-section-content .form-txt {
     display: flex;
     flex-direction: column;
     gap: 1.25rem;
@@ -80,38 +119,37 @@ input::placeholder {
     margin-bottom: 3rem;
 }
 
-.form-section .form-section-content .form-txt h3{
+.form-section .form-section-content .form-txt h3 {
     color: var(--c-white)
 }
 
-.form-section .form-section-content .form-txt p{
-    color: var(--c-white)
+.form-section .form-section-content .form-txt p {
+    color: var(--c-primary);
 }
 
-.form-section-content .social-media-form{
+.form-section-content .social-media-form {
     display: flex;
     flex-direction: column;
     gap: .5rem
 }
 
-.form-section-content .social-media-form p{
-    color: var(--c-white);
+.form-section-content .social-media-form p {
+    color: #969D9C;
 }
 
-.form-section-content .social-media-form p span{
-    color: var(--c-primary);
+.form-section-content .social-media-form p span {
+    color: var(--c-white);
 }
 
 .social-media-form .team-container {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 3.25rem;
 }
 
 .social-media-form .team-container .team-item {
     display: flex;
     flex-direction: column;
-    gap: .25rem;
 }
 
 .social-media-form .social-footer-form {
@@ -133,23 +171,23 @@ input::placeholder {
         gap: 4rem;
     }
 
-    .form-section .form-section-content .form-wrapper-container{
+    .form-section .form-section-content .form-wrapper-container {
         gap: 4rem;
     }
 
-    .form-section .form-section-content .form-txt{
+    .form-section .form-section-content .form-txt {
         max-width: 100%;
     }
 
-    .form-section .form-section-content .form-txt h3{
+    .form-section .form-section-content .form-txt h3 {
         font-size: 2rem;
     }
 
-    .form-section .form-section-content .form-txt p{
+    .form-section .form-section-content .form-txt p {
         font-size: 1.1rem;
     }
 
-    .form-section-content .social-media-form{
+    .form-section-content .social-media-form {
         gap: 1rem
     }
 
@@ -165,5 +203,3 @@ input::placeholder {
         gap: 1rem;
     }
 }
-
-

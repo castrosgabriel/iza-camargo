@@ -7,9 +7,11 @@ import {
     PngLightOla,
     PngSofa,
     PngFrame1,
-    PngFrame2,
     PngShadowOla,
-    PngFrame3
+    PngFrame3,
+    PngLetramentoFrame,
+    PngMestreFrame,
+    PngCampanhasFrame
 } from '../../assets/png'
 import './OlaSection.css'
 import gsap from 'gsap'
@@ -19,6 +21,24 @@ import { useGSAP } from '@gsap/react'
 import { Link } from 'react-router-dom'
 
 gsap.registerPlugin(ScrollTrigger)
+
+type FrameItemProps = {
+    title: string;
+    link: string;
+    img: string;
+}
+
+const FrameItem = ({ title, link, img }: FrameItemProps) => {
+    return (
+        <Link to={link}>
+            <div className='frame-item'>
+                <Button text='Acesse' link={link} />
+                <h2>{title}</h2>
+                <img src={img} />
+            </div>
+        </Link>
+    )
+}
 
 const OlaSection = () => {
 
@@ -31,7 +51,6 @@ const OlaSection = () => {
     const PLANT_3_MOVE_DIST = 0.15
     const IZA_MOVE_DIST = 0.3
     const LIGHT_MOVE_DIST = 0.2
-    // const SHADOW_MOVE_DIST = { x: 0.5, y: 0.5 }
 
     useEffect(() => {
         const mm = gsap.matchMedia()
@@ -185,8 +204,8 @@ const OlaSection = () => {
             slideTl2.to('.item-1 h2', {
                 opacity: 0,
             })
-            .to('.item-1 button', {
-                opacity: 0,
+                .to('.item-1 button', {
+                    opacity: 0,
                 }, 0)
                 .from('.item-2 h2', {
                     opacity: 0,
@@ -213,14 +232,14 @@ const OlaSection = () => {
                                 <p>
                                     <b>Fico muito feliz em saber que você chegou até aqui!</b>
                                     <br /><br />
-                                    Neste site você vai encontrar informações oficiais da jornalista Izabella Camargo
-                                    e do movimento da Produtividade Sustentável.
+                                    Aqui você irá encontrar informações oficiais sobre mim e do movimento da Produtividade
+                                    Sustentável.
                                     <br /><br />
-                                    Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais
-                                    e profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
+                                    Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais e
+                                    profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
                                 </p>
                                 <div>
-                                    <Button text='Minha história' link='/minha-historia' color='var(--c-primary-interaction)' />
+                                    <Button text='Sobre mim' link='/minha-historia' color='var(--c-primary-interaction)' />
                                 </div>
                             </div>
                         </div>
@@ -235,27 +254,34 @@ const OlaSection = () => {
                     </div>
                     <div id='ola-second' className='ola-second'>
                         <div className='frame-container'>
-                            <Link to='/minha-historia'>
-                                <div className='frame-item item-1'>
-                                    <Button text='Acesse' link='/minha-historia' />
-                                    <h2>Minha história</h2>
-                                    <img src={PngFrame3} />
-                                </div>
-                            </Link>
-                            <Link to='/palestras'>
-                                <div className='frame-item item-2'>
-                                    <Button text='Acesse' link='/palestras' />
-                                    <h2>Palestras</h2>
-                                    <img src={PngFrame1} />
-                                </div>
-                            </Link>
-                            <Link to='/mentorias'>
-                                <div className='frame-item item-3'>
-                                    <Button text='Acesse' link='/mentorias' />
-                                    <h2>Mentorias</h2>
-                                    <img src={PngFrame2} />
-                                </div>
-                            </Link>
+                            <div className='mobile-only'>
+                                <FrameItem
+                                    title='Sobre mim'
+                                    link='/minha-historia'
+                                    img={PngFrame3}
+                                />
+                            </div>
+                            <FrameItem
+                                title='Palestras'
+                                link='/palestras'
+                                img={PngFrame1}
+                            />
+
+                            <FrameItem
+                                title='Letramento'
+                                link='/mentorias'
+                                img={PngLetramentoFrame}
+                            />
+                            <FrameItem
+                                title='Mestre de Cerimônias'
+                                link='/mestre'
+                                img={PngMestreFrame}
+                            />
+                            <FrameItem
+                                title='Campanhas e Ações'
+                                link='/campanhas'
+                                img={PngCampanhasFrame}
+                            />
                         </div>
                         <img src={PngPlang3Ola} className='img-plant-3' alt='plant' />
                         <img src={PngSofa} className='img-sofa' alt='sofa' />

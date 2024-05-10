@@ -12,13 +12,14 @@
 
 .hero-logo {
     pointer-events: none;
+    display: none;
 }
 
 
 .hero-container .hero-content {
     display: flex;
     max-width: var(--max-width);
-    justify-content: space-between;
+    justify-content: flex-end;
     width: calc(100% - 4rem);
     align-items: flex-start;
     padding: 2rem;
@@ -120,6 +121,7 @@
 
     .hero-container .hero-content {
         flex-direction: column-reverse;
+        justify-content: space-between;
         align-items: center;
         height: 100%;
         padding: 4rem 0;
@@ -131,6 +133,7 @@
 
     .hero-container .hero-content .hero-logo {
         width: 13rem;
+        display: unset;
     }
 
 

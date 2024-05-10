@@ -81,14 +81,14 @@
     width: calc(100% - 8rem);
     max-width: var(--max-width);
     position: relative;
+}
 
-    h2 {
-        width: 14rem;
-    }
+.living-room-second .content-wrapper h2 {
+    width: 14rem;
+}
 
-    p {
-        width: 20rem;
-    }
+.living-room-second .content-wrapper p {
+    width: 20rem;
 }
 
 .page-wrapper .img-shadow-living {
@@ -117,13 +117,14 @@
     z-index: 9999;
     pointer-events: none;
     overflow: hidden;
-
-    img {
-        transform: scale(-1.2);
-        width: 100%;
-        height: 100%;
-    }
 }
+
+.page-wrapper .img-shadow-living-2 img {
+    transform: scale(-1.2);
+    width: 100%;
+    height: 100%;
+}
+
 
 .tv-col-mobile {
     display: none;
@@ -147,11 +148,12 @@
         flex-direction: column-reverse;
         width: 100vw;
         height: 100%;
-
-        p {
-            line-height: 200%;
-        }
     }
+
+    .living-room .page-wrapper p {
+        line-height: 200%;
+    }
+
 
     .living-room-second {
         flex-direction: column;

@@ -59,7 +59,9 @@ const Footer = () => {
                     <div className='pages'>
                         <Link to='/minha-historia'><p><b>Minha história</b></p></Link>
                         <Link to='/palestras'><p><b>Palestras</b></p></Link>
-                        <Link to='/mentorias'><p><b>Mentorias</b></p></Link>
+                        <Link to='/mentorias'><p><b>Letramento</b></p></Link>
+                        <Link to='/mestre'><p><b>Mestre de Cerimônias</b></p></Link>
+                        <Link to='/campanhas'><p><b>Campanhas e Ações</b></p></Link>
                         <Link to='http://www.google.com'><p><b>Loja</b></p></Link>
                     </div>
                 </div>
@@ -67,7 +69,7 @@ const Footer = () => {
                     <p><b>Contato</b></p>
                     <div className='contact-content'>
                         <div>
-                            <p><span>Contratar Palestras e Mentorias</span></p>
+                            <p><span>Contratar Palestras e Letramento</span></p>
                             <p>Maira Delamor</p>
                             <div>
                                 <SmallButton text='+55 11 98281.4747' />

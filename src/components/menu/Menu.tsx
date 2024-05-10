@@ -35,11 +35,13 @@ const Menu = ({ isShown, whichIsActive, btnClick }: MenuProps) => {
 
     const menuArray = [
         { text: 'Home', link: '/', id: 'home' },
-        { text: 'Minha História', link: '/minha-historia', id: 'minha-historia' },
+        { text: 'Sobre mim', link: '/minha-historia', id: 'minha-historia' },
         { text: 'Palestras', link: '/palestras', id: 'palestras' },
-        { text: 'Mentorias', link: '/mentorias', id: 'mentorias' },
+        { text: 'Letramento', link: '/mentorias', id: 'mentorias' },
+        { text: 'Mestre de Cerimonia', link: '/mestre', id: 'mestre'},
+        { text: 'Campanhas e Ações', link: '/campanhas', id: 'campanhas'},
         { text: 'Loja', link: '', id: 'loja' },
-        { text: 'Contato', link: '/contato', id: 'contato' }
+        { text: 'Contato', link: '/contato', id: 'contato' },
     ];
 
     useEffect(() => {

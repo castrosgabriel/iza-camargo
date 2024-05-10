@@ -2,13 +2,10 @@ import { useEffect } from "react";
 import { PngPalestraHero } from "../../assets/png";
 import { PngPalestra1, PngPalestra2, PngPalestra3, PngPalestra4, PngPalestra5, PngPalestra6, PngPalestra7, PngPalestra8 } from "../../assets/png/palestras";
 import Footer from "../../components/footer/Footer";
-import FormSection from "../../components/form/FormSection";
-import GaleryTestimonal from "../../components/galery/GaleryTestimonal";
 import HeroInternal from "../../components/hero/HeroInternal";
 import MenuWrapper from "../../components/menu/MenuWrapper";
-import { imgArray } from "../minha-historia/MinhaHistoria";
 import SliderPalestra from "./SliderPalestra";
-import GaleryImg from "../../components/galery/GaleryImg";
+import ContactCTA from "../../components/form/ContactCTA";
 
 const palestras = [
     {
@@ -76,16 +73,7 @@ const Palestras = () => {
                 quote='Não há uma vida pessoal e outra profissional'
             />
             <SliderPalestra itemsArray={palestras} />
-            <GaleryImg imgArray={imgArray} />
-            <FormSection
-                title='Invista na saúde mental de sua empresa.'
-                text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Phasellus iaculis pharetra erat, non suscipit ante. Vestibulum 
-                gravida finibus dapibus. Etiam congue augue non rutrum sagittis. 
-                Aliquam a ornare augue, in scelerisque magna. Sed vitae nisi et 
-                ligula semper ullamcorper tempus efficitur magna. Phasellus justo 
-                lectus, tempus pulvinar lacus a, tincidunt sagittis odio. ' />
-            <GaleryTestimonal />
+            <ContactCTA />
             <Footer />
         </>
     );

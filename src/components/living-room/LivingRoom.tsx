@@ -94,9 +94,6 @@ const LivingRoom = () => {
                         <div className='content-wrapper'>
                             <img className='cellphone' src={PngCellphone} />
                             <h2>Já conhece o Podcast Interioriza?</h2>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                                Donec porttitor, massa id maximus efficitur, mi nulla molestie velit,
-                                efficitur. </p>
                             <Button
                                 newTab
                                 link='https://podcasters.spotify.com/pod/show/izabella-camargo3'

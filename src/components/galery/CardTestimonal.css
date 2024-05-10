@@ -13,21 +13,34 @@
 
 .card-testimonal .client-name {
     display: flex;
-    gap: 2rem;
+    gap: 1.25rem;
     align-items: center;
 }
 
-.card-testimonal .client-name h3 {
-    font-size: 2rem;
-    font-weight: 600;
-    line-height: 2.5rem;
-    color: var(--c-dark, #272727);
+.card-testimonal .client-name img {
+    width: 6rem !important;
+    height: 6rem !important;
+    border-radius: 50%;
 }
 
-.card-testimonal .client-name img {
-    width: 6rem;
-    height: 6rem;
-    border-radius: 50%;
+.testimonal-title {
+    h2 {
+        color: var(--c-dark, #272727);
+        font-size: 1.875rem;
+        font-style: normal;
+        font-weight: 600;
+        line-height: 1.75rem;
+        width: 80%;
+    }
+
+    p {
+        font-family: museo-slab-rounded, sans-serif;
+        font-size: 1.3125rem;
+        font-style: normal;
+        font-weight: 300;
+        line-height: 2.375rem;
+
+    }
 }
 
 @media screen and (max-width: 768px) {

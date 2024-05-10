@@ -1,12 +1,25 @@
-import { PngMentoriaHero } from "../../assets/png";
+import { PngIzaLetramento, PngMentoriaHero } from "../../assets/png";
 import Footer from "../../components/footer/Footer";
-import GaleryTestimonal from "../../components/galery/GaleryTestimonal";
 import HeroInternal from "../../components/hero/HeroInternal";
 import MenuWrapper from "../../components/menu/MenuWrapper";
-import FormSection from "../../components/form/FormSection";
-import { PngMentoriaIza } from "../../assets/png";
 import { useEffect } from "react";
 import './Mentorias.css';
+import ContactCTA from "../../components/form/ContactCTA";
+import Donut from "../../components/Donut";
+
+type ItemProps = {
+    number: string;
+    text: string;
+}
+
+const Item = ({ number, text }: ItemProps) => {
+    return (
+        <div className='mentoria-item'>
+            <h1>{number}</h1>
+            <p>{text}</p>
+        </div>
+    );
+}
 
 const Mentorias = () => {
 
@@ -17,43 +30,28 @@ const Mentorias = () => {
     return (
         <>
             <MenuWrapper whichIsActive='mentorias' />
-            <HeroInternal
-                img={PngMentoriaHero}
-                pageName='Mentorias'
-                quote='O quanto você está se incluindo nas suas 35 mil escolhas diárias?'
-            />
+            <HeroInternal img={PngMentoriaHero} pageName='Letramento' quote='Para evoluir você vai ter que se despedir.' />
             <div className='mentoria-info snap-item'>
                 <div className='mentoria-wrapper'>
                     <div className='mentoria-txt'>
-                        <h3>Sua jornada <br /> de mudança</h3>
-                        <p>
-                            Em alguns momentos da vida precisamos de alguém que nos ajude a “sair da ilha para ver a ilha”, como já escreveu José Saramago.
-                            <br /><br />
-                            Depois de me especializar em gerenciamento do estresse e segurança psicológica de times, além de comunicação, estou abrindo alguns horários na agenda para te ajudar a passar por alguma transição.
-                            <br /><br />
-                            Já que a única certeza que temos é a incerteza, saber como lidar com os imprevistos e oportunidades é uma habilidade que podemos e devemos treinar.
-                            <br /><br />
-                            <b>Conteúdo:</b> alinhado exclusivamente.
-                            <br /><br />
-                            <b>5 horas.</b>
-                        </p>
+                        <h2>Produtividade Sustentável para alcançar os objetivos sem prejuízos pelo caminho.</h2>
+                        <div className='mentoria-list'>
+                            <Item number='01' text='Alfabetização das emoções para a preservação do tempo e energia.' />
+                            <Item number='02' text='Comunicação não violenta para a dinâmica de feedbacks.' />
+                            <Item number='03' text='Gerenciamento do Estresse para a sustentabilidade dos negócios.' />
+                            <Item number='04' text='Segurança psicológica e o letramento do assédio.' />
+                        </div>
+                        <p>*Os temas podem ser ajustados de acordo com as necessidades da empresa e das equipes.</p>
                     </div>
-                    <img src={PngMentoriaIza} alt='iza' />
+                    <div className='img-letramento'>
+                        <Donut color='#86CDEC' className='donut1' size={360} />
+                        <Donut color='#86ECBD' className='donut2' size={156} />
+                        <Donut color='#86ECE8' className='donut3' size={68} />
+                        <img src={PngIzaLetramento} className='iza-letramento' alt='iza' />
+                    </div>
                 </div>
             </div>
-            <FormSection
-                title='Agende agora a sua mentoria'
-                text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Phasellus iaculis pharetra erat, non suscipit ante. Vestibulum 
-                gravida finibus dapibus. Etiam congue augue non rutrum sagittis. 
-                Aliquam a ornare augue, in scelerisque magna. Sed vitae nisi et 
-                ligula semper ullamcorper tempus efficitur magna. Phasellus justo
-                 lectus, tempus pulvinar lacus a, tincidunt sagittis odio. Etiam
-                  congue augue non rutrum sagittis. Aliquam a ornare augue, in 
-                  scelerisque magna. Sed vitae nisi et ligula semper ullamcorper 
-                  tempus efficitur magna.'
-            />
-            <GaleryTestimonal />
+            <ContactCTA />
             <Footer />
         </>
     );

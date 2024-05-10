@@ -21,9 +21,8 @@ const Contato = () => {
             />
             <FormSection
                 title='Entre em contato'
-                text='Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
-                Phasellus iaculis pharetra erat, non suscipit ante. 
-                Vestibulum gravida finibus dapibus.'
+                text='Entre em contato para contratar palestras, mestre de cerimômia, 
+                media training, campanhas e ação em redes sociais:'
                 formFields={[
                     { field: 'Nome', required: true },
                     { field: 'Empresa' },
@@ -31,7 +30,6 @@ const Contato = () => {
                     { field: 'E-mail' },
                     { field: 'Mensagem' }
                 ]}
-                socialMedia
             />
             <Footer />
         </>

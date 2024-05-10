@@ -7,8 +7,7 @@ import './form.css';
 type FormSectionProps = {
     title: string,
     text: string
-    formFields?: Array<{ field: string, required?: boolean, type?:string }>,
-    socialMedia?: boolean
+    formFields?: Array<{ field: string, required?: boolean, type?: string }>,
 }
 
 const FormSection = ({
@@ -17,10 +16,9 @@ const FormSection = ({
     formFields = [
         { field: 'Nome', required: true },
         { field: 'Empresa' },
-        { field: 'Telefone', type: 'tel'},
+        { field: 'Telefone', type: 'tel' },
         { field: 'E-mail', type: 'email' },
     ],
-    socialMedia
 }: FormSectionProps) => {
 
     const getPagePath = () => {
@@ -83,34 +81,37 @@ const FormSection = ({
                         <h3>{title}</h3>
                         <p>{text}</p>
                     </div>
-                    {socialMedia &&
-                        <div className='social-media-form'>
-                            <p><b>Contato</b></p>
-                            <div className='team-container'>
-                                <div className='team-item'>
-                                    <p><span>Contratar Palestras e Mentorias</span></p>
-                                    <p>Maira Delamor</p>
-                                    <div>
-                                        <SmallButton text='+55 11 98281.4747' />
-                                    </div>
-                                </div>
-                                <div className='team-item'>
-                                    <p><span>Assessoria de Imprensa</span></p>
-                                    <p>Alessandra Bruno Rocha</p>
-                                    <div>
-                                        <SmallButton text='+55 11 97498-7070' />
-                                    </div>
+                    <div className='social-media-form'>
+                        <div className='team-container'>
+                            <div className='team-item'>
+                                <p><span>Contratar Palestras e Mentorias</span></p>
+                                <p>Maira Delamor</p>
+                                <div>
+                                    <SmallButton text='+55 11 98281.4747' />
                                 </div>
                             </div>
-                            <div className='social-footer-form'>
-                                <p><span>Redes Sociais</span></p>
-                                <SocialMedia />
+                            <div className='team-item'>
+                                <p style={{color: 'var(--c-primary)'}}> Para Acessoria:</p>
+                                <p><span>Assessoria de Imprensa</span></p>
+                                <p>Alessandra Bruno Rocha</p>
+                                <div>
+                                    <SmallButton text='+55 11 97498-7070' />
+                                </div>
                             </div>
                         </div>
-                    }
+                        <div className='social-footer-form'>
+                            <p><span>Redes Sociais</span></p>
+                            <SocialMedia />
+                        </div>
+                    </div>
+
                 </div>
                 <div className='form-wrapper-container'>
                     <form className='form-wrapper-container' onSubmit={handleSubmit}>
+                        <div className='title-fields'>
+                            <h3>Envie uma Mensagem</h3>
+                            <p>Caso seja contratação, favor especificar o tipo de trabalho e o que deseja.</p>
+                        </div>
                         <div className='form-wrapper'>
                             {formFields.map((field, index) => {
                                 if (field.field !== 'Mensagem') {

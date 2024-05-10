@@ -36,7 +36,6 @@ const Hero = ({ mouseMove }: heroProps) => {
     }
 
     useGSAP(() => {
-
         const enterElementsTl = gsap.timeline({
             onComplete: () => setFinishTl(true)
         })

@@ -116,13 +116,11 @@ const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false
                         <div className='quote-page-bar'>{`"${quote}"`}</div>
                     </> :
                     <>
-                        <BigNumber number="10k" description="lorem ipsum" />
+                        <BigNumber number="+ 1.7 M" description="seguidores" />
                         <Spacer />
-                        <BigNumber number="1M" description="lorem ipsum" />
+                        <BigNumber number="+ 2 mil" description="empresas atendidas" />
                         <Spacer />
-                        <BigNumber number="120" description="lorem ipsum" />
-                        <Spacer />
-                        <BigNumber number="5k" description="lorem ipsum" />
+                        <BigNumber number="+ 500 mil" description="pessoas impactadas" />
                     </>
                 }
 

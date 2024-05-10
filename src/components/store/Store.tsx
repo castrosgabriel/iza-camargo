@@ -67,7 +67,6 @@ const Store = ({ mouseMove }: StoreProps) => {
                     <h3>
                         Conheça nossa loja virtual
                     </h3>
-                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec porttitor, massa id maximus efficitur, mi nulla molestie velit, efficitur dapibus leo arcu aliquam lectus. Vivamus tempor mauris eu neque tincidunt maximus. </p>
                     <Button newTab text='Acessar loja' />
                 </div>
             </div>

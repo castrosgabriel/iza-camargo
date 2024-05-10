@@ -9,9 +9,9 @@
 
 
 
-.img-zoom {
+.galery-frame .galery-item .img-zoom {
     position: fixed;
-    background-color: rgba(0, 0, 0, 0.343);
+    background-color: rgba(0, 0, 0, 0.315);
     top: 0;
     left: 0;
     width: 100vw;
@@ -19,16 +19,30 @@
     object-fit: cover;
     z-index: 9999999;
     animation: enter-opcity .5s ease-in-out;
+}
 
-    img {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        height: 100%;
-        object-fit: cover;
-        animation: zoom-enter .5s ease-in-out;
-    }
+.galery-frame .galery-item .img-zoom img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 100%;
+    object-fit: cover;
+    animation: zoom-enter .5s ease-in-out;
+}
+
+
+.galery-frame .galery-item .client-item img {
+    width: 9rem;
+    height: auto;
+    object-fit: cover;
+
+}
+
+.galery-frame .galery-item img {
+    width: auto;
+    height: 40rem;
+    object-fit: cover;
 }
 
 @keyframes zoom-enter {
@@ -114,7 +128,7 @@
         width: 10rem;
         height: auto;
         object-fit: cover;
-    
+
     }
 
 

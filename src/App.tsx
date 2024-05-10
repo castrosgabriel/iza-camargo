@@ -8,6 +8,7 @@ import LivingRoom from './components/living-room/LivingRoom'
 import Footer from './components/footer/Footer'
 import { useEffect, useState } from 'react'
 import MenuWrapper from './components/menu/MenuWrapper'
+import GaleryTestimonal from './components/galery/GaleryTestimonal'
 
 const App = () => {
   const [mouseX, setMouseX] = useState(0)
@@ -44,6 +45,7 @@ const App = () => {
         <ContentCards />
         <BookSeller />
         <LivingRoom />
+        <GaleryTestimonal />
         <Store mouseMove={{ x: mouseX, y: mouseY }} />
         <Footer />
       </div>

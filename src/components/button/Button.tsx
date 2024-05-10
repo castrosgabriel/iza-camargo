@@ -70,7 +70,8 @@ const Button = memo(({
                     <BaseButton />
                 </Link>
             ) : (
-                < BaseButton />)
+                < BaseButton />
+            )
             }
         </>
     )

@@ -41,9 +41,55 @@ import PngTedX1 from './ted-1.png';
 import PngTedX2 from './ted-2.png';
 import PngTedX3 from './ted-3.png';
 import JPGIzaHero from './iza-hero.jpg';
+import PngShadowContentCTA from './shadow-contact-cta.png';
+import PngCampanhaHero from './campanhas-hero.png';
+import PngMestreHero from './mestre-hero.png';
+import PngAvatarArthur from './avatar-arthur.png';
+import PngAvatarGabriel from './avatar-gabriel.png';
+import PngLetramentoFrame from './letramento-frame.png';
+import PngMestreFrame from './mestre-frame.png';
+import PngCampanhasFrame from './campanhas-frame.png';
+import PngGalery01 from './galery-01.png';
+import PngGalery02 from './galery-02.png';
+import PngGalery03 from './galery-03.png';
+import PngGalery04 from './galery-04.png';
+import PngGalery05 from './galery-05.png';
+import PngGalery06 from './galery-06.png';
+import PngGalery07 from './galery-07.png';
+import PngGalery08 from './galery-08.png';
+import PngGalery09 from './galery-09.png';
+import PngIzaLetramento from './iza-letramento.png';
+import PngDonut1 from './donut1.png';
+import PngDonut2 from './donut2.png';
+import PngDonut3 from './donut3.png';
+import PngIzaMestre from './iza-mestre.png';
+import PngIzaCampanha from './iza-campanha.png';
 
 export {
+    PngIzaCampanha,
+    PngIzaMestre,
+    PngDonut1,
+    PngDonut2,
+    PngDonut3,
+    PngIzaLetramento,
+    PngGalery09,
+    PngGalery08,
+    PngGalery07,
+    PngGalery06,
+    PngGalery05,
+    PngGalery04,
+    PngGalery03,
+    PngGalery02,
+    PngGalery01,
+    PngCampanhasFrame,
+    PngMestreFrame,
+    PngLetramentoFrame,
+    PngAvatarGabriel,
+    PngAvatarArthur,
+    PngMestreHero,
+    PngCampanhaHero,
     JPGIzaHero,
+    PngShadowContentCTA,
     PngTedX3,
     PngTedX2,
     PngTedX1,

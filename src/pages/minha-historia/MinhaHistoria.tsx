@@ -1,7 +1,6 @@
-import { PngIzaAbout, PngMinhaHistoriaHero } from "../../assets/png";
+import { PngGalery01, PngGalery02, PngGalery03, PngGalery04, PngGalery05, PngGalery06, PngGalery07, PngGalery08, PngGalery09, PngIzaAbout, PngMinhaHistoriaHero } from "../../assets/png";
 import './MinhaHistoria.css';
 import MenuWrapper from "../../components/menu/MenuWrapper";
-import { PngGalery1, PngGalery2, PngGalery3, PngGalery4 } from '../../assets/png';
 import Footer from "../../components/footer/Footer";
 import HeroInternal from "../../components/hero/HeroInternal";
 import { useEffect } from "react";
@@ -10,10 +9,15 @@ import GaleryImg from "../../components/galery/GaleryImg";
 import GaleryClients from "../../components/galery/GaleryClients";
 
 export const imgArray = [
-    { src: PngGalery1 },
-    { src: PngGalery2 },
-    { src: PngGalery3 },
-    { src: PngGalery4 },
+    { src: PngGalery01 },
+    { src: PngGalery02 },
+    { src: PngGalery03 },
+    { src: PngGalery04 },
+    { src: PngGalery05 },
+    { src: PngGalery06 },
+    { src: PngGalery07 },
+    { src: PngGalery08 },
+    { src: PngGalery09 }
 ]
 
 const MinhaHistoria = () => {
@@ -59,6 +63,7 @@ const MinhaHistoria = () => {
                         </Link>
                     </div>
                     <div className='about-me-txt'>
+                        <h2>Release</h2>
                         <p id='about-p'>
                             Paranaense, mãe, jornalista, apresentadora, palestrante
                             promotora de saúde, bem-estar no trabalho e longevidade.
@@ -79,6 +84,7 @@ const MinhaHistoria = () => {
                             além de certificada pela ISMA-BR para o gerenciamento do
                             estresse e em Segurança Psicológica de Times pelo IISPT.
                         </p>
+                        <h2>Projetos e Conquistas</h2>
                         <div className='txt-row'>
                             <p>
                                 <li>

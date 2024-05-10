@@ -43,39 +43,49 @@
 
 .ola-second .frame-container {
     display: flex;
-    padding-top: 5rem;
-    gap: 1rem;
+    padding-top: 10rem;
+    gap: 2rem;
     justify-content: center;
+    align-items: flex-end;
 }
 
 .frame-container .frame-item {
-    transform: scale(.89);
-    object-fit: cover;
+    width: 16rem;
     transition: transform 0.3s;
     cursor: pointer;
     display: flex;
     align-items: center;
     flex-direction: column;
+}
 
-    button {
-        display: none;
-    }
+.frame-container .frame-item button {
+    display: none;
+}
 
-    h2 {
-        opacity: 0;
-        color: var(--c-support);
-        transition: all 0.3s ease-in-out;
-    }
+.frame-container .frame-item h2 {
+    opacity: 0;
+    color: var(--c-support);
+    transition: all 0.3s ease-in-out;
+    font-size: 1.4rem;
+    text-align: center;
+    transform: scale(.8);
+}
+
+.frame-container .frame-item img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
 }
 
 .frame-container .frame-item:hover {
-    transform: scale(.95);
-
-    h2 {
-        opacity: 1;
-        transform: scale(1.05) translateY(-1rem);
-    }
+    transform: scale(1.1);
 }
+
+.frame-container .frame-item:hover h2 {
+    opacity: 1;
+    transform: scale(1.05) translateY(-1rem);
+}
+
 
 .ola-first .max-width {
     width: 100%;
@@ -141,7 +151,7 @@
 
 .img-plant-3 {
     position: absolute;
-    right: 0;
+    right: -12rem;
     bottom: 0;
     z-index: 0;
     pointer-events: none;
@@ -184,7 +194,8 @@
 }
 
 @media (min-width: 768px) {
-    .frame-item.item-1 {
+
+    .mobile-only {
         display: none;
     }
 }
@@ -278,24 +289,26 @@
         scroll-snap-stop: always;
         transform: unset;
         transition: unset;
+    }
 
-        button {
-            display: unset;
-        }
+    .frame-container .frame-item button {
+        display: unset;
+    }
 
-        h2 {
-            opacity: 1;
-            transition: unset;
-        }
+    .frame-container .frame-item h2 {
+        opacity: 1;
+        transform: unset;
     }
 
 
     .frame-container .frame-item:hover {
         transform: unset;
-
-        h2 {
-            opacity: unset;
-            transform: unset;
-        }
     }
+
+    .frame-container .frame-item:hover h2 {
+        opacity: unset;
+        transform: unset;
+    }
+
+
 }
