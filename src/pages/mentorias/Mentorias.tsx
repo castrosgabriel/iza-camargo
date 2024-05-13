@@ -1,11 +1,11 @@
 import { PngIzaLetramento, PngMentoriaHero } from "../../assets/png";
+import { useEffect } from "react";
 import Footer from "../../components/footer/Footer";
 import HeroInternal from "../../components/hero/HeroInternal";
 import MenuWrapper from "../../components/menu/MenuWrapper";
-import { useEffect } from "react";
-import './Mentorias.css';
 import ContactCTA from "../../components/form/ContactCTA";
 import Donut from "../../components/Donut";
+import './Mentorias.css';
 
 type ItemProps = {
     number: string;

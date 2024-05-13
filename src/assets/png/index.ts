@@ -64,8 +64,12 @@ import PngDonut2 from './donut2.png';
 import PngDonut3 from './donut3.png';
 import PngIzaMestre from './iza-mestre.png';
 import PngIzaCampanha from './iza-campanha.png';
+import PngIzaMestreMobile from './iza-mestre-mobile.png';
+import PngIzaCampanhasMobile from './iza-campanhas-mobile.png';
 
 export {
+    PngIzaCampanhasMobile,
+    PngIzaMestreMobile,
     PngIzaCampanha,
     PngIzaMestre,
     PngDonut1,

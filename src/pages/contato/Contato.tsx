@@ -13,7 +13,7 @@ const Contato = () => {
 
     return (
         <>
-            <MenuWrapper />
+            <MenuWrapper whichIsActive='contato'/>
             <HeroInternal
                 img={PngContactHero}
                 pageName='Contato'

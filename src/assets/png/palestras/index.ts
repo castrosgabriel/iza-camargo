@@ -6,6 +6,8 @@ import PngPalestra5 from './palestra-5.png';
 import PngPalestra6 from './palestra-6.png';
 import PngPalestra7 from './palestra-7.png';
 import PngPalestra8 from './palestra-8.png';
+import PngPalestra9 from './palestra-9.png';
+import PngPalestra10 from './palestra-10.png';
 
 export {
     PngPalestra1,
@@ -16,5 +18,6 @@ export {
     PngPalestra6,
     PngPalestra7,
     PngPalestra8,
-    
+    PngPalestra9,
+    PngPalestra10
 }

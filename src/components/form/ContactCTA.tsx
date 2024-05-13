@@ -6,8 +6,7 @@ const ContactCTA = () => {
     return (
         <div className='inner-content-form'>
             <h3>
-                Invista na saúde mental
-                <br />
+                Invista na saúde mental <br />
                 de seus colaboradores.
             </h3>
             <p>

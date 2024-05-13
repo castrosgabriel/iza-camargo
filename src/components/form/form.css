@@ -161,6 +161,16 @@ input::placeholder {
 
 @media (max-width: 768px) {
 
+
+    .inner-content-form h3 {
+        font-size: 1.6rem;
+    }
+
+    .inner-content-form p {
+        font-size: 1rem;
+        padding: 0 3rem;
+    }
+
     .form-section {
         height: auto;
         padding: 4rem 0;

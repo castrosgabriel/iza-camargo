@@ -4,11 +4,12 @@ import './Hero.css'
 
 type HeroProps = {
     img: string;
+    mobileImg?: string;
     pageName: string;
     quote: string;
 }
 
-const HeroInternal = ({ img, pageName, quote }: HeroProps) => {
+const HeroInternal = ({ img, pageName, quote, mobileImg }: HeroProps) => {
 
     const handleScrollDown = () => {
         window.scrollTo({
@@ -19,9 +20,16 @@ const HeroInternal = ({ img, pageName, quote }: HeroProps) => {
 
     return (
         <div className='hero-internal snap-item'>
-            <img src={img} />
+
+            {mobileImg ? <>
+                <img className='mobile' src={mobileImg} />
+                <img className='hide' src={img} />
+            </> : <>
+                <img src={img} />
+            </>}
+
             <h1 className='page-name-internal'>{pageName}</h1>
-            <div style={{cursor: 'pointer'}} onClick={handleScrollDown} className='arrow-internal'>
+            <div style={{ cursor: 'pointer' }} onClick={handleScrollDown} className='arrow-internal'>
                 <img src={SvgArrow} />
             </div>
             <div className='bottom-internal'>

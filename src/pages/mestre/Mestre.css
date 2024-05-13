@@ -51,3 +51,15 @@
     transform: translateX(70%);
     filter: blur(10px);
 }
+
+@media screen and (max-width: 768px) {
+    .mestre-frame{
+        height: unset;
+        min-height: 70vh;
+    }
+
+    .mestre-frame .mestre-width .img-mestre {
+        display: none;
+    }
+    
+}
