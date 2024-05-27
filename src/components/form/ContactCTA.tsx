@@ -16,7 +16,7 @@ const ContactCTA = ({ text }: ContactCTAProps) => {
             <p>
                 {text}
             </p>
-            <SmallButton text="Entrar em contato" />
+            <SmallButton text="Entrar em contato" link="https://wa.me/+5511982814747"/>
             <img className='shadow-content-cta' src={PngShadowContentCTA} alt='shadow' />
         </div>
     )

@@ -72,14 +72,14 @@ const Footer = () => {
                             <p><span>Contratar Palestras e Letramento</span></p>
                             <p>Maira Delamor</p>
                             <div>
-                                <SmallButton text='+55 11 98281.4747' />
+                                <SmallButton text='+55 11 98281.4747' link='https://wa.me/+5511982814747'/>
                             </div>
                         </div>
                         <div>
                             <p><span>Assessoria de Imprensa</span></p>
                             <p>Alessandra Bruno Rocha</p>
                             <div>
-                                <SmallButton text='+55 11 97498-7070' />
+                                <SmallButton text='+55 11 97498-7070' link='https://wa.me/+5511974987070'/>
                             </div>
                         </div>
                     </div>

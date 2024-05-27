@@ -87,7 +87,7 @@ const FormSection = ({
                                 <p><span>Contratar Palestras e Mentorias</span></p>
                                 <p>Maira Delamor</p>
                                 <div>
-                                    <SmallButton text='+55 11 98281.4747' />
+                                    <SmallButton link='https://wa.me/+5511982814747' text='+55 11 98281.4747' />
                                 </div>
                             </div>
                             <div className='team-item'>
@@ -95,7 +95,7 @@ const FormSection = ({
                                 <p><span>Assessoria de Imprensa</span></p>
                                 <p>Alessandra Bruno Rocha</p>
                                 <div>
-                                    <SmallButton text='+55 11 97498-7070' />
+                                    <SmallButton link='https://wa.me/+5511974987070' text='+55 11 97498-7070' />
                                 </div>
                             </div>
                         </div>

@@ -64,7 +64,7 @@ const palestras = [
     },
     {
         img: PngPalestra10,
-        name: 'Mulheres, como se proteger do estresse?',
+        name: ' Segurança Psicológica',
         content: 'Iza é certificada internacional como facilitadora de Segurança Psicológica, pela ISMA. A palestra aborda os 7 pilares da segurança psicológica, o papel do líder e liderados na construção de um ambiente que lida com mudanças constantes e mesmo assim garante resultados dos times.',
         color: '#F58AD4'
     },

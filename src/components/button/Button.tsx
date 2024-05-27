@@ -77,11 +77,13 @@ const Button = memo(({
     )
 })
 
-export const SmallButton = ({ img = SvgWhatsBtn, text, color = 'var(--c-primary)' }: ButtonProps) =>
-    <button style={{ backgroundColor: color }} className='btn-wrapper small'>
-        <img src={img} />
-        {text}
-    </button>
+export const SmallButton = ({ img = SvgWhatsBtn, text, color = 'var(--c-primary)', link }: ButtonProps) =>
+    <Link target={'_blank'} to={link || ''}>
+        <button style={{ backgroundColor: color }} className='btn-wrapper small'>
+            <img src={img} />
+            {text}
+        </button>
+    </Link>
 
 
 export default Button;  
