@@ -10,7 +10,7 @@ import ContactCTA from "../../components/form/ContactCTA";
 const palestras = [
     {
         img: PngPalestra1,
-        name: 'Produtividade Sustentável',
+        name: 'Cadê os EPIs da Saúde Mental?',
         content: 'A Urgência dos EPIs de Saúde Mental no Ambiente de Trabalho. Izabella aborda os EPIs de saúde mental que precisam ser desenvolvidos pelas instituições (como a prática da segurança psicológica, por exemplo) e também reforça e estimula a autorresponsabilidade de cada funcionário para que eliminem comportamentos tóxicos e também contribuam para um ambiente com menos ou sem riscos psicossociais.',
         color: '#F48F81'
     },
@@ -85,7 +85,11 @@ const Palestras = () => {
                 quote='Não há uma vida pessoal e outra profissional'
             />
             <SliderPalestra itemsArray={palestras} />
-            <ContactCTA />
+            <ContactCTA
+                text="Explore conosco as palestras sobre saúde mental e segurança no trabalho, temas vitais para promover ambientes
+                de trabalho saudáveis e produtivos. Izabella é especializada em diversos assuntos recorrentes ao tema, e oferece
+                abordagens inovadoras e práticas, capacitando sua equipe para enfrentar os desafios com resiliência e eficácia."
+            />
             <Footer />
         </>
     );

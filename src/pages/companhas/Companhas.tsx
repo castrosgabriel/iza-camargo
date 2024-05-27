@@ -36,7 +36,11 @@ const Campanhas = () => {
                 img={PngIzaCampanha}
                 colors={['#FDC286', '#F5859F', '#F6E78F']}
             />
-            <ContactCTA />
+            <ContactCTA
+                text="Explore conosco as palestras sobre saúde mental e segurança no trabalho, temas vitais para promover ambientes
+                de trabalho saudáveis e produtivos. Izabella é especializada em diversos assuntos recorrentes ao tema, e oferece
+                abordagens inovadoras e práticas, capacitando sua equipe para enfrentar os desafios com resiliência e eficácia."
+            />
             <Footer />
         </>
     )

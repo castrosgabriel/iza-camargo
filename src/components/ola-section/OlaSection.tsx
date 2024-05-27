@@ -16,7 +16,7 @@ import {
 import './OlaSection.css'
 import gsap from 'gsap'
 import ScrollTrigger from 'gsap/ScrollTrigger'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-router-dom'
 
@@ -42,16 +42,6 @@ const FrameItem = ({ title, link, img }: FrameItemProps) => {
 
 const OlaSection = () => {
 
-    const [mouseMove, setMouseMove] = useState({ x: 50, y: 50 })
-    const [dontMove, setDontMove] = useState(true)
-
-    //parallax move controls
-    const PLANT_1_MOVE_DIST = 0.15
-    const PLANT_2_MOVE_DIST = 0.1
-    const PLANT_3_MOVE_DIST = 0.15
-    const IZA_MOVE_DIST = 0.3
-    const LIGHT_MOVE_DIST = 0.2
-
     useEffect(() => {
         const mm = gsap.matchMedia()
         mm.add("(min-width: 768px)", () => {
@@ -62,9 +52,6 @@ const OlaSection = () => {
                     end: 'bottom bottom',
                     scrub: true,
                 },
-                onStart: () => setDontMove(true),
-                onComplete: () => setDontMove(false),
-                onUpdate: () => setDontMove(true),
             })
             tl.from('.ola-content', {
                 y: '10%',
@@ -119,49 +106,7 @@ const OlaSection = () => {
                     opacity: 0,
                 }, 0)
         })
-
-        const handleMouseMove = (e: any) => { setMouseMove({ x: e.clientX / window.innerWidth * 100, y: e.clientY / window.innerHeight * 100 }) }
-        window.addEventListener('mousemove', handleMouseMove)
-
-        return () => {
-            window.removeEventListener('mousemove', handleMouseMove)
-        }
     }, [])
-
-    //parallax effect
-    useGSAP(() => {
-        if (dontMove) return
-        const handleParallax = () => {
-            const matchMedia = gsap.matchMedia()
-            matchMedia.add("(min-width: 800px)", () => {
-                gsap.set('.img-plant-1', {
-                    x: (mouseMove.x - 50) * PLANT_1_MOVE_DIST,
-                });
-                gsap.set('.img-iza-recorte', {
-                    x: (mouseMove.x - 50) * IZA_MOVE_DIST,
-                });
-                gsap.set('.img-light-ola', {
-                    x: (mouseMove.x - 50) * LIGHT_MOVE_DIST,
-                });
-                gsap.set('.img-plant-2', {
-                    x: (mouseMove.x - 50) * PLANT_2_MOVE_DIST,
-                });
-                gsap.set('.img-plant-3', {
-                    x: (mouseMove.x - 50) * PLANT_3_MOVE_DIST,
-                });
-            })
-        }
-        handleParallax()
-
-        return () => {
-            gsap.getTweensOf('.img-plant-1').forEach(tween => tween.kill())
-            gsap.getTweensOf('.img-iza-recorte').forEach(tween => tween.kill())
-            gsap.getTweensOf('.img-light-ola').forEach(tween => tween.kill())
-            gsap.getTweensOf('.img-plant-2').forEach(tween => tween.kill())
-            gsap.getTweensOf('.img-plant-3').forEach(tween => tween.kill())
-        }
-
-    }, [mouseMove, dontMove])
 
     useGSAP(() => {
         const mm = gsap.matchMedia()

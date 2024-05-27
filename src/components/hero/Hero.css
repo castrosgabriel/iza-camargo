@@ -137,6 +137,7 @@
     .hero-container .hero-content .hero-logo {
         width: 13rem;
         display: unset;
+        opacity: 0;
     }
 
 

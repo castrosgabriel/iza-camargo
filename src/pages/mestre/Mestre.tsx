@@ -33,7 +33,9 @@ const Mestre = () => {
                 '
                 img={PngIzaMestre}
             />
-            <ContactCTA />
+            <ContactCTA
+                text="Se você está em busca de uma profissional experiente e comprometida para mediar painéis, conduzir entrevistas ou apresentar eventos, você veio ao lugar certo. Izabella Camargo está pronta para trazer sua expertise e entusiasmo para enriquecer a sua experiência. Caso tenha interesse em contar com seus serviços, não hesite em entrar em contato através do endereço abaixo. Estamos ansiosos para colaborar com você e tornar seu evento ainda mais memorável."
+            />
             <Footer />
         </>
     )
