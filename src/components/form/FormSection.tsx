@@ -48,7 +48,8 @@ const FormSection = ({
             {
                 method: "POST",
                 body: JSON.stringify(formData)
-            }
+            } 
+            
         )
             .then(response => {
                 if (!response.ok) {
