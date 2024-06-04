@@ -27,9 +27,9 @@ const router = createBrowserRouter(
       <Route path="mestre" element={<Mestre />} />
       <Route path="*" element={<div>404</div>} />
     </>
-  )
+  ),
+  { basename: '/teste' } 
 );
-
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <RouterProvider router={router} />

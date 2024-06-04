@@ -62,7 +62,7 @@ const Footer = () => {
                         <Link to='/mentorias'><p><b>Letramento</b></p></Link>
                         <Link to='/mestre'><p><b>Mestre de Cerimônias</b></p></Link>
                         <Link to='/campanhas'><p><b>Campanhas e Ações</b></p></Link>
-                        <Link to='http://www.google.com'><p><b>Loja</b></p></Link>
+                        <Link to='https://byizabellacamargo2.lojavirtualnuvem.com.br'><p><b>Loja</b></p></Link>
                     </div>
                 </div>
                 <div className='contact-section'>

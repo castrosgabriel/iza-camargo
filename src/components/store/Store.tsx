@@ -67,7 +67,7 @@ const Store = ({ mouseMove }: StoreProps) => {
                     <h3>
                         Conheça nossa loja virtual
                     </h3>
-                    <Button newTab text='Acessar loja' />
+                    <Button link='https://byizabellacamargo2.lojavirtualnuvem.com.br' newTab text='Acessar loja' />
                 </div>
             </div>
             <img src={PngTFront} className='img-t-front' alt='t-front' />

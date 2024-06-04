@@ -23,13 +23,6 @@ const Contato = () => {
                 title='Entre em contato'
                 text='Entre em contato para contratar palestras, mestre de cerimômia, 
                 media training, campanhas e ação em redes sociais:'
-                formFields={[
-                    { field: 'Nome', required: true },
-                    { field: 'Empresa' },
-                    { field: 'Telefone' },
-                    { field: 'E-mail' },
-                    { field: 'Mensagem' }
-                ]}
             />
             <Footer />
         </>

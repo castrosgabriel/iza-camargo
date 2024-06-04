@@ -18,6 +18,7 @@ const FormSection = ({
         { field: 'Empresa' },
         { field: 'Telefone', type: 'tel' },
         { field: 'E-mail', type: 'email' },
+        { field: 'Mensagem', required: true}
     ],
 }: FormSectionProps) => {
 
@@ -35,6 +36,7 @@ const FormSection = ({
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
         const { name, value } = e.target;
+        console.log(formData);
         setFormData({ ...formData, [name]: value });
     };
 
@@ -141,7 +143,7 @@ const FormSection = ({
                                 loading={loading}
                                 type='submit'
                                 hoverColor='var(--c-dark)'
-                                text='Solicitar Contato'
+                                text='Enviar'
                             />
                             {formSent && <p style={{ color: 'white' }}>Mensagem Enviada!</p>}
                         </div>

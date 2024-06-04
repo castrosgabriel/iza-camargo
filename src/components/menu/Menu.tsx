@@ -40,7 +40,7 @@ const Menu = ({ isShown, whichIsActive, btnClick }: MenuProps) => {
         { text: 'Letramento', link: '/mentorias', id: 'mentorias' },
         { text: 'Mestre de Cerimonia', link: '/mestre', id: 'mestre'},
         { text: 'Campanhas e Ações', link: '/campanhas', id: 'campanhas'},
-        { text: 'Loja', link: '', id: 'loja' },
+        { text: 'Loja', link: 'https://byizabellacamargo2.lojavirtualnuvem.com.br', id: 'loja' },
         { text: 'Contato', link: '/contato', id: 'contato' },
     ];
 
