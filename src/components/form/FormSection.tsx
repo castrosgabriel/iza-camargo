@@ -18,7 +18,7 @@ const FormSection = ({
         { field: 'Empresa' },
         { field: 'Telefone', type: 'tel' },
         { field: 'E-mail', type: 'email', required: true },
-        { field: 'Mensagem'},
+        { field: 'Mensagem',  },
     ],
 }: FormSectionProps) => {
 
@@ -63,6 +63,7 @@ const FormSection = ({
                 console.log(data);
             })
             .catch(error => {
+                setLoading(false);
                 console.error('There was a problem with the fetch operation:', error);
             });
     };
