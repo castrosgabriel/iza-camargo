@@ -17,8 +17,8 @@ const FormSection = ({
         { field: 'Nome', required: true },
         { field: 'Empresa' },
         { field: 'Telefone', type: 'tel' },
-        { field: 'E-mail', type: 'email' },
-        { field: 'Mensagem', required: true}
+        { field: 'E-mail', type: 'email', required: true },
+        { field: 'Mensagem'},
     ],
 }: FormSectionProps) => {
 
@@ -31,7 +31,8 @@ const FormSection = ({
     const [loading, setLoading] = useState(false);
     const [formSent, setFormSent] = useState(false);
     const [formData, setFormData] = useState({
-        Onde: getPagePath()
+        Onde: getPagePath(),
+        Date: new Date().toLocaleString(),
     });
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -44,12 +45,11 @@ const FormSection = ({
         e.preventDefault();
         setLoading(true);
         fetch(
-            'https://script.google.com/macros/s/AKfycbxPnjUhSivGT959C4CrREHOz_5IwCyHTVHJPyZu7eIXLUNp7wtKxqQj7c2rGhx3YWn1/exec',
+            'https://script.google.com/macros/s/AKfycbym_MoAEws0MDNUinrVF2oRp3sM_aXwW70y8dWpmAmZ7_hV28EjrMF4WEU9DabsAU7a/exec',
             {
                 method: "POST",
                 body: JSON.stringify(formData)
-            } 
-            
+            }
         )
             .then(response => {
                 if (!response.ok) {
@@ -94,7 +94,7 @@ const FormSection = ({
                                 </div>
                             </div>
                             <div className='team-item'>
-                                <p style={{color: 'var(--c-primary)'}}> Para Acessoria:</p>
+                                <p style={{ color: 'var(--c-primary)' }}> Para Acessoria:</p>
                                 <p><span>Assessoria de Imprensa</span></p>
                                 <p>Alessandra Bruno Rocha</p>
                                 <div>
