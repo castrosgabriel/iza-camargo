@@ -15,11 +15,12 @@ type CardProps = {
     subtitle: string
     onHover: (id: number) => void;
     onLeave: (id: number) => void;
+    link?: string;
 }
 
 gsap.registerPlugin(ScrollTrigger)
 
-const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, image, ctaText, subtitle, onHover, onLeave }, ref) => {
+const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, image, ctaText, subtitle, onHover, onLeave, link }, ref) => {
     return (
         <div onMouseLeave={() => onLeave(id)} onMouseEnter={() => onHover(id)} ref={ref} className="card-info">
             <div className="content-wrapper">
@@ -27,7 +28,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, im
                 <h3>{title}</h3>
                 <p>{description}</p>
             </div>
-            <Button newTab text={ctaText} />
+            <Button newTab text={ctaText} link={link} />
             <img className='img-wrapper' src={image} alt="placeholder" />
         </div>
     )
@@ -40,14 +41,16 @@ const ContentCards = () => {
             title: 'Roda da vida',
             description: 'Uma das grandes ilusões é tentar dar conta de uma agenda atual com as características que tínhamos no passado. Se você quiser ter uma fotografia do seu tempo atual, preencha essa roda da vida, do centro para as extremidades, e perceba qual área você está demais e qual área você está de menos na sua própria vida.',
             image: PngRodaVida,
-            ctaText: 'Acessar'
+            ctaText: 'Acessar',
+            link: 'https://produtividadesustentavel.com.br/roda-da-vida/',
         },
         {
             subtitle: 'Como está sua saúde mental?',
             title: 'Pesquisa',
             description: 'Selecionei algumas perguntas que vão te ajudar a organizar as ideias e alcançar as respostas que você pode estar precisando. Agradeço seu tempo e confiança. "A saúde mental afeta tudo e tudo afeta a saúde mental!"',
             image: PngIzaCard,
-            ctaText: 'Responder'
+            ctaText: 'Responder',
+            link: 'https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAG4j-rxUNEs5Rzk5SjEwNzQ5M1BVQkoyMVZDUTQ3Ri4u',
         }
     ];
 
@@ -140,6 +143,7 @@ const ContentCards = () => {
                         description={card.description}
                         image={card.image}
                         ctaText={card.ctaText}
+                        link={card.link}
                     />
                 ))}
             </div>

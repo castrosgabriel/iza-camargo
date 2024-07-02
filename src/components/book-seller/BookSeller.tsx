@@ -35,7 +35,7 @@ const BookSeller = () => {
                     <h2 className='book-item'>Dá um tempo!</h2>
                     <p className='book-item'>é um convite à busca por limite em um mundo sem limites.</p>
                     <div className='book-item'>
-                        <Button newTab hoverColor='#CA7925' text='Comprar livro' color='var(--c-secondary)' />
+                        <Button newTab hoverColor='#CA7925' link='https://byizabellacamargo2.lojavirtualnuvem.com.br/produtos/livro-autografado-da-um-tempo-como-encontrar-limite-em-um-mundo-sem-limites/' text='Comprar livro' color='var(--c-secondary)' />
                     </div>
                 </div>
                 <img className='book-img book-item' src={PngBook} alt="placeholder" />
