@@ -10,9 +10,8 @@
     justify-content: flex-end;
     padding: 0rem 6.5rem 4rem 4rem;
     position: relative;
-    width: 32rem;
+    min-width: 32rem;
     z-index: 1;
-
 }
 
 .card-info .content-wrapper {
@@ -48,19 +47,21 @@
 }
 
 .card-frame {
-    background-color: #ffffff;
+    background-color: var(--c-white);
+    overflow: hidden;
+    height: 100vh;
+    max-width: 100vw;
+    display: flex;
+    position: relative;
 }
-
 
 .card-container {
     position: relative;
     display: flex;
     gap: 1.25rem;
     align-items: center;
-    justify-content: center;
-    width: 100vw;
-    height: 100vh;
-    background-color: #ffffff;
+    justify-content: flex-start;
+    padding: 0 8rem 0 8rem;
 }
 
 .shadow-cards {
@@ -73,18 +74,40 @@
     display: none;
 }
 
+.card-arrow {
+    padding: 4rem;
+    z-index: 2;
+
+    img {
+        cursor: pointer;
+        background-color: var(--c-support);
+        width: 2rem;
+        object-fit: fit;
+        height: 2rem;
+        padding: 1.5rem;
+        border-radius: 20%;
+    }
+}
+
+
 @media screen and (max-width: 768px) {
+
+    .arrow-float {
+        display: none;
+    }
 
     .card-info {
         justify-content: space-between;
         padding: 2rem;
-        margin-top:8rem;
+        margin-top: 8rem;
         position: relative;
         width: 60vw;
         max-height: 60vh;
         z-index: 1;
+        min-width: unset;
 
-        p{
+
+        p {
             line-height: 160%;
             font-size: 1rem;
         }
@@ -113,7 +136,7 @@
     }
 
     .card-container {
-        padding-top: 6rem;
+        padding: 6rem 0 0 0;
         position: relative;
         display: flex;
         align-items: flex-start;
@@ -122,11 +145,11 @@
         height: 100%;
     }
 
-    .card-container .card-info:first-child{
+    .card-container .card-info:first-child {
         margin-left: 3rem;
     }
 
-    .card-container .card-info:last-child{
+    .card-container .card-info:last-child {
         margin-right: 3rem;
     }
 

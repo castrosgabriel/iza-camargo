@@ -5,12 +5,13 @@ import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { RefObject, createRef, forwardRef, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
+import { SvgArrow } from '../../assets/svg';
 
 type CardProps = {
     id: number;
     title: string
     description: string
-    image: string
+    image?: string
     ctaText: string
     subtitle: string
     onHover: (id: number) => void;
@@ -29,10 +30,43 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, im
                 <p>{description}</p>
             </div>
             <Button newTab text={ctaText} link={link} />
-            <img className='img-wrapper' src={image} alt="placeholder" />
+            {
+                image && <img className='img-wrapper' src={image} alt="placeholder" />
+            }
         </div>
     )
 })
+
+const RIGHT = 1;
+const LEFT = -1;
+
+import React from 'react';
+
+type ScrollHandlerProps = {
+    direction: number;
+}
+
+const ScrollHandler: React.FC<ScrollHandlerProps> = ({ direction }) => {
+
+    const handleScroll = (side: number) => {
+        gsap.to('.card-frame', {
+            scrollTo: {
+                x: `-=${side * 640}`
+            },
+            duration: 1,
+            ease: 'power3.inOut'
+        })
+    }
+
+    return (
+        <div className='card-arrow' style={{
+            position: 'absolute',
+            left: direction === RIGHT ? 0 :  'calc(100vw - 13rem)' ,
+        }}>
+            <img src={SvgArrow} style={{rotate:`${direction * 90}deg` }} onClick={() => { handleScroll(direction) }} />
+        </div>
+    )
+}
 
 const ContentCards = () => {
     const cardData = [
@@ -51,6 +85,13 @@ const ContentCards = () => {
             image: PngIzaCard,
             ctaText: 'Responder',
             link: 'https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAG4j-rxUNEs5Rzk5SjEwNzQ5M1BVQkoyMVZDUTQ3Ri4u',
+        },
+        {
+            subtitle: 'Este manifesto é um chamado à ação.',
+            title: 'Manifesto',
+            description: 'Unimos necessidades, vontades e esforços para garantir que cada membro da força de trabalho possa operar em um ambiente de trabalho seguro, saudável e que promova o bem-estar integral. Juntos, podemos transformar o ambiente de trabalho e assim avançarmos rumo à Produtividade Sustentável.',
+            ctaText: 'Assine agora!',
+            link: 'https://episdasaudemental.com.br',
         }
     ];
 
@@ -126,27 +167,36 @@ const ContentCards = () => {
 
 
     return (
-        <div id='content-cards' className='card-frame'>
-            <div className='shadow-cards'>
-                <img src={PngShadowCards} />
+        <div style={{
+            display: 'flex',
+            alignItems: 'center',
+            position: 'relative',
+        }}>
+            <ScrollHandler direction={LEFT} />
+            <div id='content-cards' className='card-frame snap-item'>
+
+                <div className='shadow-cards'>
+                    <img src={PngShadowCards} />
+                </div>
+                <div className='card-container'>
+                    {cardData.map((card, index) => (
+                        <Card
+                            onHover={handleCtaEnter}
+                            onLeave={handleCtaLeave}
+                            key={index}
+                            id={index}
+                            ref={cardsRefs.current[index] = createRef()}
+                            subtitle={card.subtitle}
+                            title={card.title}
+                            description={card.description}
+                            image={card.image}
+                            ctaText={card.ctaText}
+                            link={card.link}
+                        />
+                    ))}
+                </div>
             </div>
-            <div className='card-container snap-item'>
-                {cardData.map((card, index) => (
-                    <Card
-                        onHover={handleCtaEnter}
-                        onLeave={handleCtaLeave}
-                        key={index}
-                        id={index}
-                        ref={cardsRefs.current[index] = createRef()}
-                        subtitle={card.subtitle}
-                        title={card.title}
-                        description={card.description}
-                        image={card.image}
-                        ctaText={card.ctaText}
-                        link={card.link}
-                    />
-                ))}
-            </div>
+            <ScrollHandler direction={RIGHT} />
         </div>
     )
 }
