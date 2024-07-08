@@ -66,8 +66,12 @@ import PngIzaMestre from './iza-mestre.png';
 import PngIzaCampanha from './iza-campanha.png';
 import PngIzaMestreMobile from './iza-mestre-mobile.png';
 import PngIzaCampanhasMobile from './iza-campanhas-mobile.png';
+import PngCarlosBranco from './carlos-branco.jpeg';
+import PngDrieliDantas from './drieli-dantas.jpeg';
 
 export {
+    PngDrieliDantas,
+    PngCarlosBranco,
     PngIzaCampanhasMobile,
     PngIzaMestreMobile,
     PngIzaCampanha,

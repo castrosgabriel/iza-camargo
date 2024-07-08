@@ -87,12 +87,12 @@ const ContentCards = () => {
             link: 'https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAG4j-rxUNEs5Rzk5SjEwNzQ5M1BVQkoyMVZDUTQ3Ri4u',
         },
         {
-            subtitle: 'Este manifesto é um chamado à ação.',
+            subtitle: 'EPIS DA SAÚDE MENTAL',
             title: 'Manifesto',
             description: 'Unimos necessidades, vontades e esforços para garantir que cada membro da força de trabalho possa operar em um ambiente de trabalho seguro, saudável e que promova o bem-estar integral. Juntos, podemos transformar o ambiente de trabalho e assim avançarmos rumo à Produtividade Sustentável.',
             ctaText: 'Assine agora!',
             link: 'https://episdasaudemental.com.br',
-        }
+        },
     ];
 
     const cardsRefs = useRef<RefObject<HTMLDivElement>[]>(cardData.map(() => createRef()));
