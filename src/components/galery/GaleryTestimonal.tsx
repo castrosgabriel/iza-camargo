@@ -22,7 +22,6 @@ const testimonals = [
         description: 'A palestra foi excelente palestra, os colaboradores da Cargill só fizeram elogios à apresentação da Izabella e seguem comentando os pontos da sua fala de que eles mais gostaram. A relevância do tema e a forma como foi abordado causou um enorme impacto em todos. Muitos disseram que poderiam seguir ouvindo a Isabella por horas.'
     },
     {
-        image: PngAvatarArthur,
         name: 'Isis Santos',
         subtitle: 'Unimed Fortaleza',
         description: 'A palestra da Izabella foi maravilhosa, ela foi brilhante na fala e conseguiu segurar o público até o último momento do evento. Com uma fala leve e extremamente necessária a Izabella trouxe várias reflexões sobre o assunto "Produtividade Sustentável". Após a palestra ela fez questão de cumprimentar todos, tirou fotos.... foi uma fofa. 💚'

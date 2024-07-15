@@ -1,6 +1,6 @@
 import './ContentCards.css';
 import Button from '../button/Button';
-import { PngRodaVida, PngIzaCard, PngShadowCards } from '../../assets/png';
+import { PngRodaVida, PngIzaCard, PngShadowCards, PngAcessoRapido } from '../../assets/png';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { RefObject, createRef, forwardRef, useRef } from 'react';
@@ -31,7 +31,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, im
             </div>
             <Button newTab text={ctaText} link={link} />
             {
-                image && <img className='img-wrapper' src={image} alt="placeholder" />
+                image && <img className='img-wrapper' src={image} alt="placeholder" style={{borderRadius: '50%'}}/>
             }
         </div>
     )
@@ -90,6 +90,7 @@ const ContentCards = () => {
             subtitle: 'EPIS DA SAÚDE MENTAL',
             title: 'Manifesto',
             description: 'Unimos necessidades, vontades e esforços para garantir que cada membro da força de trabalho possa operar em um ambiente de trabalho seguro, saudável e que promova o bem-estar integral. Juntos, podemos transformar o ambiente de trabalho e assim avançarmos rumo à Produtividade Sustentável.',
+            image: PngAcessoRapido,
             ctaText: 'Assine agora!',
             link: 'https://episdasaudemental.com.br',
         },

@@ -1,7 +1,8 @@
+import { PngAvatarGeneric } from '../../assets/png';
 import './CardTestimonal.css';
 
 type CardTestimonalProps = {
-    image: string;
+    image?: string;
     name: string;
     description: string;
     subtitle?: string;
@@ -11,7 +12,9 @@ const CardTestimonal = ({ image, name, description, subtitle }: CardTestimonalPr
     return (
         <div className='card-testimonal'>
             <div className='client-name'>
-                <img src={image} alt='Client' />
+                {
+                    image ? <img src={image} alt='Client' /> : <img src={PngAvatarGeneric}/> 
+                }
                 <div className='testimonal-title'>
                     <h2>{name}</h2>
                     <p>{subtitle}</p>
@@ -19,7 +22,7 @@ const CardTestimonal = ({ image, name, description, subtitle }: CardTestimonalPr
             </div>
             <p>{`"${description}"`}</p>
         </div>
-    )
+            )
 }
 
-export default CardTestimonal;
+            export default CardTestimonal;
