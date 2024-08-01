@@ -77,7 +77,7 @@ const Footer = () => {
                         </div>
                         <div>
                             <p><span>Assessoria de Imprensa</span></p>
-                            <p>Alessandra Bruno Rocha</p>
+                            <p>Alessandra Bruno</p>
                             <div>
                                 <SmallButton text='+55 11 97498-7070' link='https://wa.me/+5511974987070'/>
                             </div>
