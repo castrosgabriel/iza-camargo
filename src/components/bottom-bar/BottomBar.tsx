@@ -1,6 +1,6 @@
 import './BottomBar.css';
 import { SvgInstagram, SvgYoutube, SvgSpotify, SvgWhats, SvgLinkedin } from '../../assets/svg';
-import { forwardRef } from 'react';
+import { forwardRef, Fragment } from 'react';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { Link } from 'react-router-dom';
@@ -40,9 +40,10 @@ type BottomBarProps = {
     internal?: boolean;
     pageName?: string;
     quote?: string;
+    bigNumbersArray?: { number: string, description: string }[];
 }
 
-const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false, pageName, quote }, ref) => {
+const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false, pageName, quote, bigNumbersArray }, ref) => {
 
     useGSAP(() => {
         gsap.from('.bottom-container', {
@@ -109,27 +110,27 @@ const BottomBar = forwardRef<HTMLDivElement, BottomBarProps>(({ internal = false
         <div className='bottom-container' ref={ref}>
             <div className="bottom-bar">
                 <Spacer />
-                {internal ?
+                {internal ? (
                     <>
                         <div className='title-page-bar'>{pageName}</div>
                         <Spacer />
                         <div className='quote-page-bar'>{`"${quote}"`}</div>
-                    </> :
-                    <>
-                        <BigNumber number="+ 1.7 M" description="seguidores" />
-                        <Spacer />
-                        <BigNumber number="+ 2 mil" description="empresas atendidas" />
-                        <Spacer />
-                        <BigNumber number="+ 500 mil" description="pessoas impactadas" />
                     </>
-                }
-
-                <Spacer />
+                ) : (
+                    <>
+                        {bigNumbersArray && bigNumbersArray.map((item, index) => (
+                            <Fragment key={index}>
+                                <BigNumber number={item.number} description={item.description} />
+                                <Spacer />
+                            </Fragment>
+                        ))}
+                    </>
+                )}
                 <SocialMedia />
                 <Spacer />
             </div>
         </div>
-    )
+    );
 });
 
 export default BottomBar;

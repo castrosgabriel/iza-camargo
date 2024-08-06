@@ -16,11 +16,14 @@ type heroProps = {
         x: number
         y: number
     },
+    title: string
+    bigNumbersArray?: { number: string, description: string }[];
 }
 
-const Hero = ({ mouseMove }: heroProps) => {
+const Hero = ({ mouseMove, title, bigNumbersArray }: heroProps) => {
     const [finishTl, setFinishTl] = useState(false)
     const bottomBarRef = useRef<HTMLDivElement>(null)
+
 
     const handleParallax = () => {
         gsap.to('.img-over', {
@@ -106,19 +109,21 @@ const Hero = ({ mouseMove }: heroProps) => {
                 <div className='hero-content'>
                     <img alt='logo' src={SvgLogo} className='hero-logo' />
                     <div className='hero-title'>
-                        <h1 className='title'>Que bom que <br /> você está aqui.</h1>
+                        <h1 className='title'>
+                            {title}
+                        </h1>
                         <img style={{ cursor: 'pointer' }} className='title' src={SvgArrow} alt='arrow' />
                     </div>
                 </div>
                 <div className='bottom-hero'>
-                    <BottomBar ref={bottomBarRef} />
+                    <BottomBar bigNumbersArray={bigNumbersArray} ref={bottomBarRef} />
                 </div>
             </div>
             <div className='hero-img-wrapper'>
                 <img src={PngIzaHeroMobile} className='img-mobile' />
                 <div className='hero-img'>
                     <img src={PngIzaOverHero} className='img-over' />
-                    <img src={JPGIzaHero} className='img-bg'/>
+                    <img src={JPGIzaHero} className='img-bg' />
                 </div>
             </div>
         </>

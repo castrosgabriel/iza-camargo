@@ -1,6 +1,6 @@
 import './ContentCards.css';
 import Button from '../button/Button';
-import { PngRodaVida, PngIzaCard, PngShadowCards, PngAcessoRapido } from '../../assets/png';
+import { PngShadowCards } from '../../assets/png';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import { RefObject, createRef, forwardRef, useRef } from 'react';
@@ -68,35 +68,20 @@ const ScrollHandler: React.FC<ScrollHandlerProps> = ({ direction }) => {
     )
 }
 
-const ContentCards = () => {
-    const cardData = [
-        {
-            subtitle: 'Como está seu tempo?',
-            title: 'Roda da vida',
-            description: 'Uma das grandes ilusões é tentar dar conta de uma agenda atual com as características que tínhamos no passado. Se você quiser ter uma fotografia do seu tempo atual, preencha essa roda da vida, do centro para as extremidades, e perceba qual área você está demais e qual área você está de menos na sua própria vida.',
-            image: PngRodaVida,
-            ctaText: 'Acessar',
-            link: 'https://produtividadesustentavel.com.br/roda-da-vida/',
-        },
-        {
-            subtitle: 'Como está sua saúde mental?',
-            title: 'Pesquisa',
-            description: 'Selecionei algumas perguntas que vão te ajudar a organizar as ideias e alcançar as respostas que você pode estar precisando. Agradeço seu tempo e confiança. "A saúde mental afeta tudo e tudo afeta a saúde mental!"',
-            image: PngIzaCard,
-            ctaText: 'Responder',
-            link: 'https://forms.office.com/pages/responsepage.aspx?id=DQSIkWdsW0yxEjajBLZtrQAAAAAAAAAAAAMAAG4j-rxUNEs5Rzk5SjEwNzQ5M1BVQkoyMVZDUTQ3Ri4u',
-        },
-        {
-            subtitle: 'EPIS DA SAÚDE MENTAL',
-            title: 'Manifesto',
-            description: 'Unimos necessidades, vontades e esforços para garantir que cada membro da força de trabalho possa operar em um ambiente de trabalho seguro, saudável e que promova o bem-estar integral. Juntos, podemos transformar o ambiente de trabalho e assim avançarmos rumo à Produtividade Sustentável.',
-            image: PngAcessoRapido,
-            ctaText: 'Assine agora!',
-            link: 'https://episdasaudemental.com.br',
-        },
-    ];
+type ContentCardsProps = {
+    cardArray: {
+        title: string
+        description: string
+        image?: string
+        ctaText: string
+        subtitle: string
+        link?: string
+    }[]
+}
 
-    const cardsRefs = useRef<RefObject<HTMLDivElement>[]>(cardData.map(() => createRef()));
+const ContentCards = ({cardArray}: ContentCardsProps) => {
+
+    const cardsRefs = useRef<RefObject<HTMLDivElement>[]>(cardArray.map(() => createRef()));
 
     useGSAP(() => {
         const mm = gsap.matchMedia()
@@ -180,7 +165,7 @@ const ContentCards = () => {
                     <img src={PngShadowCards} />
                 </div>
                 <div className='card-container'>
-                    {cardData.map((card, index) => (
+                    {cardArray.map((card, index) => (
                         <Card
                             onHover={handleCtaEnter}
                             onLeave={handleCtaLeave}

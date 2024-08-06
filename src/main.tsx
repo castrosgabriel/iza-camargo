@@ -14,6 +14,8 @@ import Mentorias from './pages/mentorias/Mentorias.tsx';
 import Palestras from './pages/palestras/Palestras.tsx';
 import Campanhas from './pages/companhas/Companhas.tsx';
 import Mestre from './pages/mestre/Mestre.tsx';
+import { PrismicProvider } from '@prismicio/react';
+import { client } from './prismic';
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -32,5 +34,7 @@ const router = createBrowserRouter(
 );
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
-  <RouterProvider router={router} />
+  <PrismicProvider client={client}>
+    <RouterProvider router={router} />
+  </PrismicProvider>
 );

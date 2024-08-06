@@ -3,7 +3,6 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-
   "scripts": {
     "dev": "vite",
     "build": "vite build --base=./",
@@ -12,6 +11,8 @@
   },
   "dependencies": {
     "@gsap/react": "^2.1.0",
+    "@prismicio/client": "^7.8.0",
+    "@prismicio/react": "^2.8.0",
     "firebase": "^10.9.0",
     "gsap": "^3.12.5",
     "react": "^18.2.0",

@@ -94,9 +94,6 @@ const Galery = ({
         })
     }, [])
 
-    console.log(finishScroll)
-
-
     return (
         <div style={{ height: height, backgroundColor: backgroundColor }} className='galery-container snap-item' >
             <h2 style={{ color: titleColor }}>

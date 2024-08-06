@@ -19,6 +19,8 @@ import ScrollTrigger from 'gsap/ScrollTrigger'
 import { useEffect } from 'react'
 import { useGSAP } from '@gsap/react'
 import { Link } from 'react-router-dom'
+import { PrismicRichText } from '@prismicio/react'
+import { RichTextField } from '@prismicio/client'
 
 gsap.registerPlugin(ScrollTrigger)
 
@@ -40,7 +42,12 @@ const FrameItem = ({ title, link, img }: FrameItemProps) => {
     )
 }
 
-const OlaSection = () => {
+type OlaSectionProps = {
+    text: RichTextField;
+    button: string;
+}
+
+const OlaSection = ({ text, button }: OlaSectionProps) => {
 
     useEffect(() => {
         const mm = gsap.matchMedia()
@@ -171,7 +178,8 @@ const OlaSection = () => {
                     <div className='ola-first'>
                         <div className='max-width'>
                             <div className='ola-content'>
-                                <h2>
+                                <PrismicRichText field={text} />
+                                {/* <h2>
                                     Olá,
                                 </h2>
                                 <p>
@@ -182,9 +190,9 @@ const OlaSection = () => {
                                     <br /><br />
                                     Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais e
                                     profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
-                                </p>
+                                </p> */}
                                 <div>
-                                    <Button text='Sobre mim' link='/minha-historia' color='var(--c-primary-interaction)' />
+                                    <Button text={button} link='/minha-historia' color='var(--c-primary-interaction)' />
                                 </div>
                             </div>
                         </div>
