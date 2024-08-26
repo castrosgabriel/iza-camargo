@@ -18,14 +18,11 @@ const App = () => {
 
   console.log(homeContent)
 
-  const testimonals = homeContent?.data.depoimentos?.map((item: any) => ({
-    image: item.depoimento_avatar.url,
-    name: item.depoimento_name[0].text,
-    subtitle: item.depoimento_company[0].text,
-    description: item.depoimento_text[0].text
-  })) ?? [];
+  const bigNumberArray = homeContent?.data.big_numbers.map((item: any) => ({
+    number: item.number[0].text,
+    description: item.description[0].text
+  }))
   
-
   const cardData = homeContent?.data.cards?.map((card: any) => ({
     subtitle: card.card_over_title[0].text,
     title: card.card_title[0].text,
@@ -35,10 +32,12 @@ const App = () => {
     link: card.card_link.url,
   })) ?? [];
 
-  const bigNumberArray = homeContent?.data.big_numbers.map((item: any) => ({
-    number: item.number[0].text,
-    description: item.description[0].text
-  }))
+  const testimonals = homeContent?.data.depoimentos?.map((item: any) => ({
+    image: item.depoimento_avatar.url,
+    name: item.depoimento_name[0].text,
+    subtitle: item.depoimento_company[0].text,
+    description: item.depoimento_text[0].text
+  })) ?? [];
 
   useEffect(() => {
     window.scrollTo(0, 0)
@@ -83,11 +82,19 @@ const App = () => {
           description={homeContent?.data.book_description[0].text}
           button={homeContent?.data.book_button[0].text}
         />
-        <LivingRoom />
+        <LivingRoom
+          podcastLink={homeContent?.data.podcast_link.url}
+          podcastTitle={homeContent?.data.podcast_title[0].text}
+          podcastButton={homeContent?.data.podcast_button[0].text}
+        />
         <GaleryTestimonal
           testimonials={testimonals}
         />
-        <Store mouseMove={{ x: mouseX, y: mouseY }} />
+        <Store
+          title={homeContent?.data.store_title[0].text}
+          button={homeContent?.data.store_button[0].text}
+          mouseMove={{ x: mouseX, y: mouseY }}
+        />
         <Footer />
       </div>
     </>

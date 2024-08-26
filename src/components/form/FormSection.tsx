@@ -95,10 +95,10 @@ const FormSection = ({
                                 </div>
                             </div>
                             <div className='team-item'>
-                                <p style={{ color: 'var(--c-primary)' }}> Para Acessoria:</p>
-                                <p><span>Assessoria de Imprensa</span></p>
+                                <p style={{ color: 'var(--c-primary)' }}> Assessoria de Imprensa:</p>
                                 <p>Alessandra Bruno Rocha</p>
-                                <div>
+                                <p><span>assessoriadeimprensa@izabellacamargo.com.br</span></p>
+                                <div style={{marginTop: "12px"}}>
                                     <SmallButton link='https://wa.me/+5511974987070' text='+55 11 97498-7070' />
                                 </div>
                             </div>

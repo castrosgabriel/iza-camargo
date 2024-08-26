@@ -8,10 +8,12 @@ type StoreProps = {
     mouseMove: {
         x: number
         y: number
-    }
+    },
+    title: string,
+    button: string
 }
 
-const Store = ({ mouseMove }: StoreProps) => {
+const Store = ({ mouseMove, title, button }: StoreProps) => {
     const { x, y } = mouseMove
 
     useGSAP(() => {
@@ -65,9 +67,9 @@ const Store = ({ mouseMove }: StoreProps) => {
             <div className='container-full'>
                 <div className='content-wrapper-store'>
                     <h3>
-                        Conheça nossa loja virtual
+                        {title}
                     </h3>
-                    <Button link='https://byizabellacamargo2.lojavirtualnuvem.com.br' newTab text='Acessar loja' />
+                    <Button link='https://byizabellacamargo2.lojavirtualnuvem.com.br' newTab text={button} />
                 </div>
             </div>
             <img src={PngTFront} className='img-t-front' alt='t-front' />

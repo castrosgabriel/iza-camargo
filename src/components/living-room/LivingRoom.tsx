@@ -9,7 +9,13 @@ import { Link } from 'react-router-dom'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const LivingRoom = () => {
+type LivingRoomProps = {
+    podcastTitle: string
+    podcastButton: string
+    podcastLink: string
+}
+
+const LivingRoom = ({podcastTitle, podcastButton, podcastLink}: LivingRoomProps) => {
 
     useGSAP(() => {
         const mm = gsap.matchMedia();
@@ -93,11 +99,11 @@ const LivingRoom = () => {
                     <div id='living-room-second' className='living-room-second'>
                         <div className='content-wrapper'>
                             <img className='cellphone' src={PngCellphone} />
-                            <h2>Já conhece o Podcast Interioriza?</h2>
+                            <h2>{podcastTitle}</h2>
                             <Button
                                 newTab
-                                link='https://podcasters.spotify.com/pod/show/izabella-camargo3'
-                                text='Ouvir agora'
+                                link={podcastLink}
+                                text={podcastButton}
                                 hoverColor='#2B3836'
                             />
                         </div>

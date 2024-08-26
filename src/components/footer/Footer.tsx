@@ -4,6 +4,7 @@ import { SmallButton } from '../button/Button'
 import { Link } from 'react-router-dom'
 import './Footer.css'
 import { ReactNode } from 'react'
+import { useSinglePrismicDocument } from '@prismicio/react'
 
 type ScrollToProps = {
     to: string,
@@ -43,6 +44,16 @@ export const ScrollTo = ({ to, children }: ScrollToProps) => {
 }
 
 const Footer = () => {
+
+    const [footerContent] = useSinglePrismicDocument('footer')
+
+    const contatoArray = footerContent?.data.contato.map((item: any) => ({
+        title: item.contato_topico[0].text,
+        name: item.contato_nome[0].text,
+        phone: item.contato_numero[0].text,
+        link: item.contato_link.url
+    })) ?? [];
+
     return (
         <footer id='footer' className='footer'>
             <div className='footer-content'>
@@ -68,20 +79,15 @@ const Footer = () => {
                 <div className='contact-section'>
                     <p><b>Contato</b></p>
                     <div className='contact-content'>
-                        <div>
-                            <p><span>Contratar Palestras e Letramento</span></p>
-                            <p>Maira Delamor</p>
-                            <div>
-                                <SmallButton text='+55 11 98281.4747' link='https://wa.me/+5511982814747'/>
+                        {contatoArray.map((contato: any, index: any) => (
+                            <div key={index}>
+                                <p><span>{contato.title}</span></p>
+                                <p>{contato.name}</p>
+                                <div>
+                                    <SmallButton text={contato.phone} link={contato.link} />
+                                </div>
                             </div>
-                        </div>
-                        <div>
-                            <p><span>Assessoria de Imprensa</span></p>
-                            <p>Alessandra Bruno</p>
-                            <div>
-                                <SmallButton text='+55 11 97498-7070' link='https://wa.me/+5511974987070'/>
-                            </div>
-                        </div>
+                        ))}
                     </div>
                     <div style={{ paddingTop: '2rem', opacity: '.3' }}>
                         <SocialMedia />
