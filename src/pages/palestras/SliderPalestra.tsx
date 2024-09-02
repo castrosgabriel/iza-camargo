@@ -46,7 +46,7 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
             duration: 1,
             x: 0,
             y: 0,
-            rotate: 0,
+            rotate: 0,  
         })
             .from('#pointer-first', {
                 opacity: 1,
