@@ -12,31 +12,14 @@ import { ScrollToPlugin } from 'gsap/all';
 gsap.registerPlugin(ScrollTrigger, ScrollToPlugin)
 
 type heroProps = {
-    mouseMove: {
-        x: number
-        y: number
-    },
     title: string
     bigNumbersArray?: { number: string, description: string }[];
 }
 
-const Hero = ({ mouseMove, title, bigNumbersArray }: heroProps) => {
+const Hero = ({ title, bigNumbersArray }: heroProps) => {
     const [finishTl, setFinishTl] = useState(false)
     const bottomBarRef = useRef<HTMLDivElement>(null)
 
-
-    const handleParallax = () => {
-        gsap.to('.img-over', {
-            y: (mouseMove.y - 50) * .3,
-            x: (mouseMove.x - 50) * .3,
-            duration: 0.3,
-        });
-        gsap.to('.img-bg', {
-            y: (mouseMove.y - 50) * .8,
-            x: (mouseMove.x - 50) * .8,
-            duration: 0.3,
-        });
-    }
 
     useGSAP(() => {
         const enterElementsTl = gsap.timeline({
@@ -104,7 +87,18 @@ const Hero = ({ mouseMove, title, bigNumbersArray }: heroProps) => {
 
     return (
         <>
-            <div id='hero-home' className='hero-container snap-item' onMouseMove={handleParallax}>
+            <div id='hero-home' className='hero-container snap-item' onMouseMove={(event) => {
+                gsap.to('.img-over', {
+                    y: ((event.nativeEvent.clientY / window.innerWidth * 100) - 50) * .3,
+                    x: ((event.nativeEvent.clientX / window.innerWidth * 100) - 50) * .3,
+                    duration: 0.3,
+                });
+                gsap.to('.img-bg', {
+                    y: ((event.nativeEvent.clientY / window.innerWidth * 100) - 50) * .8,
+                    x: ((event.nativeEvent.clientX / window.innerWidth * 100) - 50) * .8,
+                    duration: 0.3,
+                });
+            }}>
                 <div style={{ height: '2.3rem' }} />
                 <div className='hero-content'>
                     <img alt='logo' src={SvgLogo} className='hero-logo' />

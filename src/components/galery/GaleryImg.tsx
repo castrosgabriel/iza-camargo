@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import './Galery.css'
 import Galery from "./Galery"
 
@@ -20,13 +20,13 @@ const GaleryImg = ({ imgArray }: { imgArray: { src: string }[] }) => {
             {
                 imgArray.map((img, index) => {
                     return (
-                        <>
+                        <Fragment key={index}>
                             {imgZoom && renderImgZoom()}
                             <img style={{ cursor: 'pointer' }} onClick={() => {
                                 setImgZoom(true);
                                 setSelectedImg(img.src);
                             }} src={img.src} key={index} alt='galery' />
-                        </>
+                        </Fragment>
                     )
                 })
             }

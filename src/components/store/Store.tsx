@@ -5,27 +5,23 @@ import gsap from 'gsap'
 import { useGSAP } from '@gsap/react'
 
 type StoreProps = {
-    mouseMove: {
-        x: number
-        y: number
-    },
     title: string,
     button: string
 }
 
-const Store = ({ mouseMove, title, button }: StoreProps) => {
-    const { x, y } = mouseMove
+const Store = ({ title, button }: StoreProps) => {
+    // const { x, y } = mouseMove
 
-    useGSAP(() => {
-        const mm = gsap.matchMedia();
-        mm.add('screen and (min-width: 768px)', () => {
-            gsap.set('#shadow-store', {
-                x: x - 50,
-                y: y - 50,
-                duration: .2
-            })
-        })
-    }, [mouseMove])
+    // useGSAP(() => {
+    //     const mm = gsap.matchMedia();
+    //     mm.add('screen and (min-width: 768px)', () => {
+    //         gsap.set('#shadow-store', {
+    //             x: x - 50,
+    //             y: y - 50,
+    //             duration: .2
+    //         })
+    //     })
+    // }, [mouseMove])
 
     useGSAP(() => {
         const mm = gsap.matchMedia();

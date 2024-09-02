@@ -8,12 +8,12 @@ import SliderDots from './SliderDots';
 import { Observer } from 'gsap/Observer';
 
 type SliderPalestraProps = {
-    itemsArray: Array<{
-        img: string,
-        name: string,
-        content: string,
+    itemsArray: {
+        img: string
+        name: string
+        content: string
         color?: string
-    }>
+    }[]
 }
 
 const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
@@ -27,6 +27,7 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
 
     const current = itemsArray[currentSlide];
     const currentColor = current?.color;
+
 
     const animateTriangle = (reverse?: boolean) => {
         const sliderItem = document.querySelector('.slider-item');
@@ -94,23 +95,77 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
         }
     }
 
-    useEffect(() => {
-        if (currentSlide === 0) {
-            gsap.set(imgRefs.current.filter((_, index) => index > currentSlide), {
+    useGSAP(() => {
+        if (!!itemsArray?.length) {
+            if (currentSlide === 0) {
+                gsap.set(imgRefs.current.filter((_, index) => index > currentSlide), {
+                    scale: .7,
+                    x: -400,
+                    y: 50,
+                    rotate: 20,
+                    filter: 'blur(5px)',
+                    opacity: .7
+                })
+                gsap.set(txtRefs.current.filter((_, index) => index > currentSlide), {
+                    opacity: 0,
+                    duration: .2,
+                    y: 10,
+                })
+
+                gsap.set(imgRefs.current[currentSlide], {
+                    scale: 1,
+                    duration: 1,
+                    filter: 'blur(0px)',
+                    x: 0,
+                    y: -30,
+                    rotate: 0,
+                    opacity: 1,
+                })
+            }
+        }
+
+        return () => {
+            gsap.getTweensOf('.slider-item').forEach(tween => tween.kill())
+        }
+    }, [itemsArray])
+
+    useGSAP(() => {
+        if (!!itemsArray?.length) {
+            const beforeSlideTl = gsap.timeline()
+            beforeSlideTl.to(imgRefs.current.filter((_, index) => index < currentSlide), {
                 scale: .7,
+                duration: 1,
+                x: 400,
+                filter: 'blur(5px)',
+                y: 50,
+                rotate: -20,
+                opacity: .7
+            })
+                .to(txtRefs.current.filter((_, index) => index < currentSlide), {
+                    opacity: 0,
+                    duration: .2,
+                }, 0)
+
+
+            const afterSlideTl = gsap.timeline()
+            afterSlideTl.to(imgRefs.current.filter((_, index) => index > currentSlide), {
+                scale: .7,
+                duration: 1,
                 x: -400,
                 y: 50,
                 rotate: 20,
                 filter: 'blur(5px)',
                 opacity: .7
-            })
-            gsap.set(txtRefs.current.filter((_, index) => index > currentSlide), {
-                opacity: 0,
-                duration: .2,
-                y: 10,
-            })
 
-            gsap.set(imgRefs.current[currentSlide], {
+            })
+                .to(txtRefs.current.filter((_, index) => index > currentSlide), {
+                    opacity: 0,
+                    duration: .2,
+                }, 0)
+
+
+            const activeSlideTl = gsap.timeline()
+            activeSlideTl.to(imgRefs.current[currentSlide], {
                 scale: 1,
                 duration: 1,
                 filter: 'blur(0px)',
@@ -119,63 +174,12 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
                 rotate: 0,
                 opacity: 1,
             })
+                .to(txtRefs.current[currentSlide], {
+                    opacity: 1,
+                    duration: .5,
+                }, .8)
         }
-
-        return () => {
-            gsap.getTweensOf('.slider-item').forEach(tween => tween.kill())
-        }
-    }, [])
-
-    useGSAP(() => {
-        const beforeSlideTl = gsap.timeline()
-        beforeSlideTl.to(imgRefs.current.filter((_, index) => index < currentSlide), {
-            scale: .7,
-            duration: 1,
-            x: 400,
-            filter: 'blur(5px)',
-            y: 50,
-            rotate: -20,
-            opacity: .7
-        })
-            .to(txtRefs.current.filter((_, index) => index < currentSlide), {
-                opacity: 0,
-                duration: .2,
-            }, 0)
-
-
-        const afterSlideTl = gsap.timeline()
-        afterSlideTl.to(imgRefs.current.filter((_, index) => index > currentSlide), {
-            scale: .7,
-            duration: 1,
-            x: -400,
-            y: 50,
-            rotate: 20,
-            filter: 'blur(5px)',
-            opacity: .7
-
-        })
-            .to(txtRefs.current.filter((_, index) => index > currentSlide), {
-                opacity: 0,
-                duration: .2,
-            }, 0)
-
-
-        const activeSlideTl = gsap.timeline()
-        activeSlideTl.to(imgRefs.current[currentSlide], {
-            scale: 1,
-            duration: 1,
-            filter: 'blur(0px)',
-            x: 0,
-            y: -30,
-            rotate: 0,
-            opacity: 1,
-        })
-            .to(txtRefs.current[currentSlide], {
-                opacity: 1,
-                duration: .5,
-            }, .8)
-
-    }, [currentSlide])
+    }, [currentSlide, itemsArray])
 
     useEffect(() => {
         const observerTouch = Observer.create({
@@ -200,8 +204,7 @@ const SliderPalestra = ({ itemsArray }: SliderPalestraProps) => {
                     <SvgPointer fill={currentColor} />
                     <div ref={contentRef} className='slider-content'>
                         {itemsArray.map((item, index) => (
-                            <div
-                                className='slider-item' key={index}>
+                            <div className='slider-item' key={index}>
                                 <img ref={(element) => (imgRefs.current[index] = element)} src={item.img} />
                                 <div ref={(element) => (txtRefs.current[index] = element)} className='slider-text'>
                                     <p>PALESTRA</p>

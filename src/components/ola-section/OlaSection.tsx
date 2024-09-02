@@ -32,13 +32,15 @@ type FrameItemProps = {
 
 const FrameItem = ({ title, link, img }: FrameItemProps) => {
     return (
-        <Link to={link}>
-            <div className='frame-item'>
-                <Button text='Acesse' link={link} />
-                <h2>{title}</h2>
+
+        <div className='frame-item'>
+            <Button text='Acesse' link={link} />
+            <h2>{title}</h2>
+            <Link to={link}>
                 <img src={img} />
-            </div>
-        </Link>
+            </Link>
+        </div>
+
     )
 }
 
@@ -179,18 +181,6 @@ const OlaSection = ({ text, button }: OlaSectionProps) => {
                         <div className='max-width'>
                             <div className='ola-content'>
                                 <PrismicRichText field={text} />
-                                {/* <h2>
-                                    Olá,
-                                </h2>
-                                <p>
-                                    <b>Fico muito feliz em saber que você chegou até aqui!</b>
-                                    <br /><br />
-                                    Aqui você irá encontrar informações oficiais sobre mim e do movimento da Produtividade
-                                    Sustentável.
-                                    <br /><br />
-                                    Já falamos sobre comunicação corporativa e equilíbrio entre objetivos pessoais e
-                                    profissionais para mais de 500 mil pessoas do Brasil, África, EUA e França.
-                                </p> */}
                                 <div>
                                     <Button text={button} link='/minha-historia' color='var(--c-primary-interaction)' />
                                 </div>

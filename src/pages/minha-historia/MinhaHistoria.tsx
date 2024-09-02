@@ -7,6 +7,7 @@ import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import GaleryImg from "../../components/galery/GaleryImg";
 import GaleryClients from "../../components/galery/GaleryClients";
+import { PrismicRichText, useSinglePrismicDocument } from "@prismicio/react";
 
 export const imgArray = [
     { src: PngGalery01 },
@@ -22,6 +23,11 @@ export const imgArray = [
 
 const MinhaHistoria = () => {
 
+    const [aboutMeContent] = useSinglePrismicDocument('sobre_mim')
+    const renderAboutMeContent = (field: string) => {
+        return aboutMeContent?.data[field][0].text
+    }
+
     useEffect(() => {
         window.scrollTo(0, 0)
     }, [])
@@ -32,7 +38,7 @@ const MinhaHistoria = () => {
             <HeroInternal
                 img={PngMinhaHistoriaHero}
                 pageName='Minha História'
-                quote='O tempo é fruto das condições que você  determina.'
+                quote={renderAboutMeContent("quote")}
             />
             <div className='about-me-container snap-item'>
                 <div className='about-me-wrapper'>
@@ -42,15 +48,11 @@ const MinhaHistoria = () => {
                             <h4>Izabella Camargo</h4>
                         </div>
                         <div className='tags-wrapper'>
-                            <p>Jornalista</p>
-                            <p>Palestrante</p>
-                            <p>Mentora</p>
-                            <p>Apresentadora</p>
-                            <p>Curadora</p>
-                            <p>Escritora</p>
-                            <p>Influenciadora</p>
-                            <p>Linkedin Creator</p>
-                            <p>Podcaster</p>
+                            {
+                                aboutMeContent?.data.tag.map((item: any, index: number) => (
+                                    <p key={index}>{item.tag_item[0].text}</p>
+                                ))
+                            }
                         </div>
                         <div className='spacer' />
                         <Link target='_blank' to='https://www.linkedin.com/in/izabellacamargoreal'>
@@ -63,72 +65,11 @@ const MinhaHistoria = () => {
                         </Link>
                     </div>
                     <div className='about-me-txt'>
-                        <h2>Release</h2>
-                        <p id='about-p'>
-                            Paranaense, mãe, jornalista, apresentadora, palestrante
-                            promotora de saúde, bem-estar no trabalho e longevidade.
-                            <br /><br />
-                            Criadora do movimento pela Produtividade Sustentável para
-                            que profissionais e empresas a alcancem os seus objetivos
-                            de carreira e de negócio sem prejuízos pelo caminho, sem
-                            perder a saúde e os relacionamentos. Ajudo CNPJs e CPF a
-                            falarem a mesma língua.
-                            <br /><br />
-                            Atua junto aos RHs, lideranças & liderados e apoiando as
-                            áreas de Sustentabilidade e ESG em organizações de todos
-                            os portes e segmentos. Realizo palestras, workshops e
-                            treinamentos personalizados.
-                            <br /><br />
-                            Depois de seu apagão ao vivo na TV Globo, tornou-se uma
-                            das pesquisadoras da síndrome de burnout mais respeitadas,
-                            além de certificada pela ISMA-BR para o gerenciamento do
-                            estresse e em Segurança Psicológica de Times pelo IISPT.
-                        </p>
-                        <h2>Projetos e Conquistas</h2>
+                        <h2>{renderAboutMeContent("main_title")}</h2>
+                        <PrismicRichText field={aboutMeContent?.data.main_text} />
+                        <h2>{renderAboutMeContent("projects_title")}</h2>
                         <div className='txt-row'>
-                            <p>
-                                <li>
-                                    Idealizadora do movimento pela Produtividade Sustentável;
-                                </li>
-                                <li>
-                                    Pesquisadora da síndrome de burnout;
-                                </li>
-                                <li>
-                                    Curadora de conteúdos relacionados à saúde integral e cultura do trabalho.
-                                </li>
-                                <li>
-                                    É especialista em comunicação e mediação de asssuntos corporativos sensíveis.
-                                </li>
-                                <li>
-                                    Apresenta o Interioriza, podcast número 17 de 2023, do Spotify. Programa de entrevistas sobre assuntos que já passaram do tempo de interiorizarmos.
-                                </li>
-                                <li>
-                                    LinkedIn Top Voice - Categoria: Equilíbrio Vida e Trabalho.
-                                </li>
-                                <li>
-                                    Maior influenciadora de RH do Brasil pelo Prêmio IBest.
-                                </li>
-                                <li>
-                                    3x TEDx Speaker.
-                                </li>
-                            </p>
-                            <p>
-                                <li>
-                                    Autora Best-Seller - “DÁ UM TEMPO! Como encontrar limite em um mundo sem limites".
-                                </li>
-                                <li>
-                                    Trabalhou como apresentadora e repórter da TV Globo, Band e SBT.
-                                </li>
-                                <li>
-                                    Mais de 500 mil pessoas já assistiram as palestras da jornalista e cerca de 1000 líderes passaram pelo letramento de comunicação assertiva.
-                                </li>
-                                <li>
-                                    Embaixadora do movimento gerar bem-estar da ABQV - Associação Brasileira de qualidade de vida.
-                                </li>
-                                <li>
-                                    Facilitadora em SEGURANÇA PSICOLÓGICA DE TIMES com certificação internacional pelo IISP/Team.As.One e em GERENCIAMENTO DO ESTRESSE pela Isma-BR e UCi, Center for Ocupational and Environmental Health, no 16º e 17º Curso de Gerenciamento do Stress.
-                                </li>
-                            </p>
+                            <PrismicRichText field={aboutMeContent?.data.project_text} />
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,12 @@ type FormSectionProps = {
     title: string,
     text: string
     formFields?: Array<{ field: string, required?: boolean, type?: string }>,
+    contactList?: {
+        function: string
+        name: string
+        phone: string
+        email?: string
+    }[]
 }
 
 const FormSection = ({
@@ -18,8 +24,9 @@ const FormSection = ({
         { field: 'Empresa' },
         { field: 'Telefone', type: 'tel' },
         { field: 'E-mail', type: 'email', required: true },
-        { field: 'Mensagem',  },
+        { field: 'Mensagem', },
     ],
+    contactList
 }: FormSectionProps) => {
 
     const getPagePath = () => {
@@ -87,7 +94,21 @@ const FormSection = ({
                     </div>
                     <div className='social-media-form'>
                         <div className='team-container'>
-                            <div className='team-item'>
+                            {
+                                contactList && contactList.map((contact, index) => {
+                                    return (
+                                        <div className='team-item' key={index}>
+                                            <p><span>{contact.function}</span></p>
+                                            <p>{contact.name}</p>
+                                            <p style={{ color: 'var(--c-primary)' }}>{contact.email ? contact.email : ''}</p>
+                                            <div>
+                                                <SmallButton link={`https://wa.me/${contact.phone}`} text={contact.phone} />
+                                            </div>
+                                        </div>
+                                    );
+                                })
+                            }
+                            {/* <div className='team-item'>
                                 <p><span>Contratar Palestras e Mentorias</span></p>
                                 <p>Maira Delamor</p>
                                 <div>
@@ -95,13 +116,13 @@ const FormSection = ({
                                 </div>
                             </div>
                             <div className='team-item'>
-                                <p style={{ color: 'var(--c-primary)' }}> Assessoria de Imprensa:</p>
+                                <p><span> Assessoria de Imprensa: </span></p>
                                 <p>Alessandra Bruno Rocha</p>
-                                <p><span>assessoriadeimprensa@izabellacamargo.com.br</span></p>
-                                <div style={{marginTop: "12px"}}>
+                                <p style={{ color: 'var(--c-primary)' }}>assessoriadeimprensa@izabellacamargo.com.br</p>
+                                <div style={{ marginTop: "12px" }}>
                                     <SmallButton link='https://wa.me/+5511974987070' text='+55 11 97498-7070' />
                                 </div>
-                            </div>
+                            </div> */}
                         </div>
                         <div className='social-footer-form'>
                             <p><span>Redes Sociais</span></p>

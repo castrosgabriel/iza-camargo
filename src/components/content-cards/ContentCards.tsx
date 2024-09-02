@@ -31,7 +31,7 @@ const Card = forwardRef<HTMLDivElement, CardProps>(({ id, title, description, im
             </div>
             <Button newTab text={ctaText} link={link} />
             {
-                image && <img className='img-wrapper' src={image} alt="placeholder" style={{borderRadius: '50%'}}/>
+                image && <img className='img-wrapper' src={image} alt="placeholder" style={{ borderRadius: '50%' }} />
             }
         </div>
     )
@@ -61,9 +61,9 @@ const ScrollHandler: React.FC<ScrollHandlerProps> = ({ direction }) => {
     return (
         <div className='card-arrow' style={{
             position: 'absolute',
-            left: direction === RIGHT ? 0 :  'calc(100vw - 13rem)' ,
+            left: direction === RIGHT ? 0 : 'calc(100vw - 13rem)',
         }}>
-            <img src={SvgArrow} style={{rotate:`${direction * 90}deg` }} onClick={() => { handleScroll(direction) }} />
+            <img src={SvgArrow} style={{ rotate: `${direction * 90}deg` }} onClick={() => { handleScroll(direction) }} />
         </div>
     )
 }
@@ -79,41 +79,44 @@ type ContentCardsProps = {
     }[]
 }
 
-const ContentCards = ({cardArray}: ContentCardsProps) => {
+const ContentCards = ({ cardArray }: ContentCardsProps) => {
 
     const cardsRefs = useRef<RefObject<HTMLDivElement>[]>(cardArray.map(() => createRef()));
 
     useGSAP(() => {
-        const mm = gsap.matchMedia()
-        mm.add('screen and (min-width: 768px)', () => {
-            gsap.from('.card-info', {
-                scrollTrigger: {
-                    trigger: '.card-container',
-                    start: 'top bottom',
-                    end: 'bottom bottom',
-                    scrub: true
-                },
-                opacity: 1,
-                duration: 1,
-                stagger: 0.4,
-                delay: 1,
-                y: '10rem',
+        if (!!cardArray.length) {
+            const mm = gsap.matchMedia()
+            mm.add('screen and (min-width: 768px)', () => {
+                gsap.from('.card-info', {
+                    scrollTrigger: {
+                        trigger: '.card-container',
+                        start: 'top bottom',
+                        end: 'bottom bottom',
+                        scrub: true
+                    },
+                    opacity: 0,
+                    duration: 1,
+                    stagger: 0.4,
+                    delay: 1,
+                    y: '10rem',
+                })
             })
-        })
-        mm.add('screen and (max-width: 768px)', () => {
-            gsap.from('.card-info', {
-                opacity: 0,
-                stagger: 0.4,
-                y: '20%',
-                scrollTrigger: {
-                    trigger: '.card-container',
-                    start: '40% bottom',
-                    end: '90% bottom',
-                    scrub: 2,
-                },
+            mm.add('screen and (max-width: 768px)', () => {
+                gsap.from('.card-info', {
+                    opacity: 0,
+                    stagger: 0.4,
+                    y: '20%',
+                    scrollTrigger: {
+                        trigger: '.card-container',
+                        start: '40% bottom',
+                        end: '90% bottom',
+                        scrub: 2,
+                    },
+                })
             })
-        })
-    }, [])
+        }
+
+    }, [cardArray])
 
     const handleCtaEnter = (id: number) => {
         const mm = gsap.matchMedia()
