@@ -9,11 +9,10 @@ const Modal = () => {
 
     const [modalContent] = useSinglePrismicDocument('modal')
 
-    console.log(modalContent);
-
+    const ativado = modalContent?.data.ativado;
     const link = modalContent?.data.link.url;
     const img = modalContent?.data.img.url;
-    
+
     const sectionId = 'modal-opened';
 
     const [isOpen, setIsOpen] = useState(() => {
@@ -29,20 +28,21 @@ const Modal = () => {
 
 
     return (
-        isOpen &&
-        <div className='modal-wrp'>
-            <div className='modal-ctn'>
-                <img
-                    onClick={() => setIsOpen(false)}
-                    className='close-ctn'
-                    src={SvgClose} alt='Close'
-                />
-                <Link to={link}>
-                    <img src={img} alt='Modal' />
-                </Link>
+        isOpen && ativado ?
+            <div className='modal-wrp'>
+                <div className='modal-ctn'>
+                    <img
+                        onClick={() => setIsOpen(false)}
+                        className='close-ctn'
+                        src={SvgClose} alt='Close'
+                    />
+                    <Link to={link}>
+                        <img src={img} alt='Modal' />
+                    </Link>
+                </div>
+                <div className='modal-bg' onClick={() => setIsOpen(false)} />
             </div>
-            <div className='modal-bg' onClick={() => setIsOpen(false)} />
-        </div>
+            : null
     )
 }
 
