@@ -5,6 +5,7 @@ import MenuWrapper from "../../components/menu/MenuWrapper";
 import FormSection from "../../components/form/FormSection";
 import { useEffect } from "react";
 import { useSinglePrismicDocument } from "@prismicio/react";
+import Modal from "../../components/modal/Modal";
 
 const Contato = () => {
     const [contactContent] = useSinglePrismicDocument('contato')
@@ -28,6 +29,7 @@ const Contato = () => {
 
     return (
         <>
+            <Modal  />
             <MenuWrapper whichIsActive='contato' />
             <HeroInternal
                 img={PngContactHero}

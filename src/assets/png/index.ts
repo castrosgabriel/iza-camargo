@@ -70,8 +70,10 @@ import PngCarlosBranco from './carlos-branco.jpeg';
 import PngDrieliDantas from './drieli-dantas.jpeg';
 import PngAvatarGeneric from './avatar-generic.png';
 import PngAcessoRapido from './acesso-rapido.png';
+import PngModal from './modal.png';
 
 export {
+    PngModal,
     PngAcessoRapido,
     PngAvatarGeneric,
     PngDrieliDantas,

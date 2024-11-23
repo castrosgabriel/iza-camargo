@@ -6,6 +6,7 @@ import MenuWrapper from "../../components/menu/MenuWrapper";
 import SliderPalestra from "./SliderPalestra";
 import ContactCTA from "../../components/form/ContactCTA";
 import { useSinglePrismicDocument } from "@prismicio/react";
+import Modal from "../../components/modal/Modal";
 
 const Palestras = () => {
 
@@ -29,6 +30,7 @@ const Palestras = () => {
 
     return (
         <>
+            <Modal />
             <MenuWrapper whichIsActive='palestras' />
 
             <HeroInternal

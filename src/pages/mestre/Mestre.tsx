@@ -7,6 +7,7 @@ import MenuWrapper from "../../components/menu/MenuWrapper";
 import './Mestre.css';
 import InternalFrame from "./InternalFrame";
 import { useSinglePrismicDocument } from "@prismicio/react";
+import Modal from "../../components/modal/Modal";
 
 const Mestre = () => {
 
@@ -20,7 +21,8 @@ const Mestre = () => {
     }, [])
 
     return (
-        <>
+        <>  
+            <Modal  />
             <MenuWrapper whichIsActive='mestre' />
             <HeroInternal
                 pageName='Mestre de Cerimonia'

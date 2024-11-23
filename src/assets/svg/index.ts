@@ -14,8 +14,10 @@ import SvgArrowGalery from './arrow-galery.svg';
 import SvgBlob from './blob.svg';
 import SvgLoadingSpin from './loading-spin.svg';
 import SvgSubmitted from './submitted.svg';
+import SvgClose from './close.svg';
 
 export {
+    SvgClose,
     SvgSubmitted,
     SvgLoadingSpin,
     SvgBlob,

@@ -8,6 +8,7 @@ import { Link } from "react-router-dom";
 import GaleryImg from "../../components/galery/GaleryImg";
 import GaleryClients from "../../components/galery/GaleryClients";
 import { PrismicRichText, useSinglePrismicDocument } from "@prismicio/react";
+import Modal from "../../components/modal/Modal";
 
 export const imgArray = [
     { src: PngGalery01 },
@@ -33,7 +34,8 @@ const MinhaHistoria = () => {
     }, [])
 
     return (
-        <>
+        <>  
+            <Modal  />
             <MenuWrapper whichIsActive='minha-historia' />
             <HeroInternal
                 img={PngMinhaHistoriaHero}

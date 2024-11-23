@@ -6,6 +6,7 @@ import MenuWrapper from "../../components/menu/MenuWrapper";
 import { useEffect } from "react";
 import InternalFrame from "../mestre/InternalFrame";
 import { useSinglePrismicDocument } from "@prismicio/react";
+import Modal from "../../components/modal/Modal";
 
 const Campanhas = () => {
     const [campanhaContent] = useSinglePrismicDocument('campanhas')
@@ -19,6 +20,7 @@ const Campanhas = () => {
 
     return (
         <>
+            <Modal  />
             <MenuWrapper whichIsActive='campanhas' />
             <HeroInternal
                 pageName='Campanhas e Ações'

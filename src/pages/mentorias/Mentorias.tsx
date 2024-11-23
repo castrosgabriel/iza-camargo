@@ -7,6 +7,7 @@ import ContactCTA from "../../components/form/ContactCTA";
 import Donut from "../../components/Donut";
 import './Mentorias.css';
 import { useSinglePrismicDocument } from "@prismicio/react";
+import Modal from "../../components/modal/Modal";
 
 type ItemProps = {
     number: string;
@@ -25,7 +26,7 @@ const Item = ({ number, text }: ItemProps) => {
 const Mentorias = () => {
 
     const [letramentoContent] = useSinglePrismicDocument('letramento')
-    const renderContentLetramento = (field:string) => {
+    const renderContentLetramento = (field: string) => {
         return letramentoContent?.data[field][0].text
     }
 
@@ -40,6 +41,7 @@ const Mentorias = () => {
 
     return (
         <>
+            <Modal />
             <MenuWrapper whichIsActive='mentorias' />
             <HeroInternal img={PngMentoriaHero} pageName='Letramento' quote={renderContentLetramento('quote')} />
             <div className='mentoria-info snap-item'>
@@ -61,7 +63,7 @@ const Mentorias = () => {
                     </div>
                 </div>
             </div>
-            <ContactCTA text={renderContentLetramento('contact_text')}/>
+            <ContactCTA text={renderContentLetramento('contact_text')} />
             <Footer />
         </>
     );

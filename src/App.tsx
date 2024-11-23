@@ -10,6 +10,7 @@ import { useEffect } from 'react'
 import MenuWrapper from './components/menu/MenuWrapper'
 import GaleryTestimonal from './components/galery/GaleryTestimonal'
 import { useSinglePrismicDocument } from '@prismicio/react'
+import Modal from './components/modal/Modal'
 
 const App = () => {
   const [homeContent] = useSinglePrismicDocument('home')
@@ -55,6 +56,7 @@ const App = () => {
 
   return (
     <>
+      <Modal />
       <MenuWrapper
         whichIsActive='home'
       />
